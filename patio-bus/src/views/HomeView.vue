@@ -1,16 +1,15 @@
 <template>
-  <div class="home">
-      <CartaCompVue/>
-  </div>
+  <CartaCompVue/>
 </template>
 
 <script>
+  import CartaCompVue from '@/components/CartaComp.vue';
 
-import CartaCompVue from '@/components/CartaComp.vue';
-export default {
-  name: 'HomeView',
-  components: {
-    CartaCompVue,
+  export default {
+    name: 'HomeView',
+
+    components: {
+      CartaCompVue,
+    },
   }
-}
 </script>
