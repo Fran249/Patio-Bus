@@ -41,6 +41,9 @@
           </v-img>
         </div>
       </v-img>
+      <v-img class="mt-12" src="../assets/Resto.Recuadro.png">
+
+      </v-img>
       </v-col>
     </v-row>
     </v-container>
