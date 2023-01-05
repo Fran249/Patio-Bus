@@ -26,8 +26,8 @@
     </v-carousel>
     <v-container fluid>
       <v-row>
-      <v-col cols="12" style="padding: 0;">
-      <v-img src="../assets/Cafet.Recuadro.png" >
+      <v-col cols="12" class="cafet-recuadro">
+      <v-img src="../assets/Cafet.Recuadro.png"  >
         <div style="width: 100%; height: 100%;" class="d-flex flex-row">
           <v-img style="margin-top: 12px" width="50%" height="100%" contain src="../assets/Cafet.Recuadro1.png" @click="dialogCafeteria1 = true">
 
@@ -70,11 +70,11 @@
       <v-img style="margin-top: 8px" src="../assets/Resto.Recuadro.png">
 
       </v-img>
-      <div class="d-flex flex-row" style="gap: 10px; padding-left: 10px ; padding-top: 10px; padding-rigt: 10px; ">
-        <v-img contain width="150" height="150" src="../assets/Entrada.png" @click="dialogResto1 = true">
+      <div class="d-flex flex-row entrada-sandwiches" >
+        <v-img contain width="140" height="150" src="../assets/Entrada.png" @click="dialogResto1 = true">
 
         </v-img>
-        <v-img contain width="150" height="150" src="../assets/Sandwiches.png" @click="dialogResto2 = true">
+        <v-img contain width="140" height="150" src="../assets/Sandwiches.png" @click="dialogResto2 = true">
 
         </v-img>
         <v-dialog v-model="dialogResto1" color="white">
@@ -88,13 +88,13 @@
           </div>
           </v-dialog>
       </div>
-      <div class="d-flex flex-row justify-space-between " style="gap: 10px; padding-left: 10px; padding-right: 15px; ">
-        <div class="d-flex flex-column" style="height: 100%" >
+      <div class="d-flex flex-row justify-center " style=" gap: 10px ; " >
+        <div class="d-flex flex-column" style="height: 100% ;" >
           <v-img contain width="170" height="100%" src="../assets/Carnes.png"  @click="dialogResto3 = true">
           </v-img>
           <v-img style="margin-top: 10px" contain width="170" height="100%" src="../assets/Guarniciones.png" @click="dialogResto4 = true" >
           </v-img>
-          <v-img style="margin-top: 10px" contain width="150" height="100%" src="../assets/Pastas.png" @click="dialogResto5 = true" >
+          <v-img style="margin-top: 10px" contain width="170" height="100%" src="../assets/Pastas.png" @click="dialogResto5 = true" >
           </v-img>
           <v-dialog v-model="dialogResto3" >
             <div style="background-color: white; padding: 20px">
@@ -112,17 +112,17 @@
           </div>
           </v-dialog>
         </div>
-        <div class="d-flex flex-column" style="height: 100%">
-          <v-img contain width="160" src="../assets/Empanadas.png"  @click="dialogResto6 = true">
+        <div class="d-flex flex-column" style="height: 100%;">
+          <v-img contain width="170" src="../assets/Empanadas.png"  @click="dialogResto6 = true">
           </v-img>
 
-          <v-img contain width="160" height="60" src="../assets/Tartas.png"  @click="dialogResto7 = true">
+          <v-img contain width="170" height="60" src="../assets/Tartas.png"  @click="dialogResto7 = true">
           </v-img>
 
-          <v-img contain width="160" height="150" src="../assets/Pizzas.png"  @click="dialogResto8 = true">
+          <v-img contain width="170" height="150" src="../assets/Pizzas.png"  @click="dialogResto8 = true">
           </v-img>
 
-          <v-img style="margin-top: 10px; margin-left: 15px;" contain width="145" height="100%" src="../assets/Postres.png" @click="dialogResto9 = true" >
+          <v-img style="margin-top: 10px;" contain width="170" height="100%" src="../assets/Postres.png" @click="dialogResto9 = true" >
           </v-img>
 
           <v-dialog v-model="dialogResto6" >
@@ -154,7 +154,7 @@
 
         </v-img>
       </div>
-<div class="d-flex flex-row justify-space-between" style="width: 100%; padding: 10px; gap: 10px;">
+<div class="d-flex flex-row bebidas " style="">
               <v-img contain width="10" src="../assets/dialogs/Bebidas 1.png" @click="dialogBebidas = true">
 
               </v-img>
@@ -236,7 +236,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
-
+.cafet-recuadro{
+  padding: 0;
+  margin-top: 10px;
+}
+.entrada-sandwiches{
+  gap: 10px;
+  padding-left: 10px ;
+   padding-top: 10px; 
+   padding-right: 10px;
+   width: 90%;
+  margin-left: 5%;
+}
 @font-face {
   font-family: 'RedHatDisplay';
   src: url('../assets/RedHatDisplay.TTF');
@@ -246,5 +257,21 @@ export default {
 }
 .v-dialog{
   border-radius: 0px !important;
+}
+
+.bebidas{
+  width: 100%; 
+  padding: 10px; 
+  gap: 100px;
+
+}
+@media screen and (max-width: 375px){
+  .entrada-sandwiches{
+    width: 100%;
+  margin-left: 0%;
+  }
+  .cafet-recuadro{
+  margin-top: 5px;
+}
 }
 </style>
