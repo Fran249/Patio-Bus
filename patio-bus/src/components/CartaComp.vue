@@ -28,11 +28,11 @@
       <v-row>
       <v-col cols="12" class="cafet-recuadro">
       <v-img src="../assets/Cafet.Recuadro.png"  >
-        <div style="width: 100%; height: 100%;" class="d-flex flex-row">
-          <v-img style="margin-top: 12px" width="50%" height="100%" contain src="../assets/Cafet.Recuadro1.png" @click="dialogCafeteria1 = true">
+        <div style="width: 100%; height: 100%; ;" class="d-flex flex-row">
+          <v-img style="margin-top: 20px" width="2%" height="100%" contain src="../assets/Cafet.Recuadro11.png" @click="dialogCafeteria1 = true">
 
           </v-img>
-          <v-img  style="margin-top: 13px" width="50%" height="100%" contain src="../assets/Cafet.Recuadro2.png"  @click="dialogCafeteria2 = true">
+          <v-img  style="margin-top: 18px" width="8%" height="100%" contain src="../assets/Cafet.Recuadro2.png"  @click="dialogCafeteria2 = true">
 
           </v-img>
           <v-dialog v-model="dialogCafeteria1" color="white">
@@ -52,18 +52,18 @@
           <v-img style="margin-top: 55px" width="15%" height="50%" contain src="../assets/ParaLlevar.Recuadro1.png" @click="dialogParaLlevar1 = true">
 
           </v-img>
-          <v-img  style="margin-top: 45px"  width="120" height="115" contain src="../assets/ParaLlevar.Recuadro2.png" @click="dialogParaLlevar2 = true">
+          <v-img  style="margin-top: 60px"  width="120" height="110" contain src="../assets/ParaLlevar.Recuadro2.png" @click="dialogParaLlevar2 = true">
 
           </v-img>
         </div>
         <v-dialog v-model="dialogParaLlevar1" color="white">
             <div style="background-color: white; padding: 20px;">
-              <v-img src="../assets/ParaLlevar.Recuadro1.png" ></v-img>
+              <v-img src="../assets/dialogs/ParaLlevar. Recuadro1.png" ></v-img>
             </div>
           </v-dialog>
           <v-dialog v-model="dialogParaLlevar2" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/ParaLlevar.Recuadro2.png"></v-img>
+            <v-img src="../assets/dialogs/ParaLlevar. Recuadro2.png"></v-img>
           </div>
           </v-dialog>
       </v-img>
@@ -155,10 +155,10 @@
         </v-img>
       </div>
 <div class="d-flex flex-row bebidas " style="">
-              <v-img contain width="10" src="../assets/dialogs/Bebidas 1.png" @click="dialogBebidas = true">
+              <v-img contain width="10"  src="../assets/dialogs/Bebidas 1.png" @click="dialogBebidas = true">
 
               </v-img>
-              <v-img contain width="90" src="../assets/dialogs/Bebidas 2.png" @click="dialogBebidas = true">
+              <v-img contain width="60" src="../assets/dialogs/Bebidas 2.png" @click="dialogBebidas = true">
 
               </v-img>
             </div>
@@ -171,12 +171,12 @@
     </v-row>
       <v-dialog v-model="popUp">
           <div style="width: 100%; height: 100%; padding: 10px; background: white;" class="d-flex flex-column align-center">
-            <h3 class="mb-5" style="font-family: 'RedHatDisplay'"> NO MAS ZOOM!</h3>
+            <h3 class="mb-5" style="font-family: 'RedHatDisplay'"> ! NO MÁS ZOOM !</h3>
             <p class="text-center" style="font-family: 'RedHatDisplay'"> 
               TE FACILITAMOS LA EXPERIENCIA
-              TAN SOLO CLICKEA EN LA SECCIÓN Y LA CARTA LO HACE POR VOS!
+              TAN SOLO CLICKEA EN LA SECCIÓN Y LA CARTA LO HACE POR VOS
             </p>
-            <v-btn color="transparent" elevation="0" @click="popUp = false">
+            <v-btn color="transparent" elevation="1" tile @click="popUp = false">
               <p class="mt-3" style="font-family: 'RedHatDisplay'">CONTINUAR</p>
             </v-btn>
           </div>
@@ -261,8 +261,10 @@ export default {
 
 .bebidas{
   width: 100%; 
-  padding: 10px; 
   gap: 100px;
+  padding-bottom: 10px; 
+  padding-left: 10px;
+  padding-right: 40px;
 
 }
 @media screen and (max-width: 375px){
