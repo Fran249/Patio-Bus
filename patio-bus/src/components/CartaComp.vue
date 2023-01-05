@@ -5,7 +5,7 @@
 
       </v-img>
     </v-app-bar>
-    <v-carousel height="60" style="margin-top: 20px" hide-delimiters show-arrows-on-hover>
+    <v-carousel height="60" style="margin-top: 20px" hide-delimiters :show-arrows="arrows">
       <v-carousel-item
       v-for="item in items" :key="item.src">
       <div style="width: 100%; gap: 4px" class="d-flex flex-row " >
@@ -195,6 +195,7 @@ export default {
       {src1: require('../assets/Combo3.png'),
       src2: require('../assets/Combo4.png')}
     ],
+    arrows: false,
     datosDialog: '',
     dialogComboModel : false,
     dialogCafeteria1: false,
@@ -229,6 +230,9 @@ export default {
     if(window.innerWidth < 960){
       this.popUp = true
     }
+    setTimeout(()=>{
+      this.arrows = true
+    }, 1500)
 
   }
 }
