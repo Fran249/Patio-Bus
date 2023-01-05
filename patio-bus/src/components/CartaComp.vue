@@ -37,12 +37,12 @@
           </v-img>
           <v-dialog v-model="dialogCafeteria1" color="white">
             <div style="background-color: white; padding: 20px">
-              <v-img src="../assets/Cafet.Recuadro1.png"></v-img>
+              <v-img src="../assets/dialogs/Cafet. Recuadro1.png"></v-img>
             </div>
           </v-dialog>
           <v-dialog v-model="dialogCafeteria2" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Cafet.Recuadro2.png"></v-img>
+            <v-img src="../assets/dialogs/Cafet. Recuadro2.png"></v-img>
           </div>
           </v-dialog>
         </div>
@@ -79,12 +79,12 @@
         </v-img>
         <v-dialog v-model="dialogResto1" color="white">
             <div style="background-color: white; padding: 20px">
-              <v-img src="../assets/Entrada.png"></v-img>
+              <v-img src="../assets/dialogs/Entrada.png"></v-img>
             </div>
           </v-dialog>
           <v-dialog v-model="dialogResto2" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Sandwiches.png"></v-img>
+            <v-img src="../assets/dialogs/Sandwiches.png"></v-img>
           </div>
           </v-dialog>
       </div>
@@ -98,17 +98,17 @@
           </v-img>
           <v-dialog v-model="dialogResto3" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Carnes.png"></v-img>
+            <v-img src="../assets/dialogs/Carnes.png"></v-img>
           </div>
           </v-dialog>
           <v-dialog v-model="dialogResto4" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Guarniciones.png"></v-img>
+            <v-img src="../assets/dialogs/Guarniciones.png"></v-img>
           </div>
           </v-dialog>
           <v-dialog v-model="dialogResto5" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Pastas.png"></v-img>
+            <v-img src="../assets/dialogs/Pastas.png"></v-img>
           </div>
           </v-dialog>
         </div>
@@ -127,28 +127,46 @@
 
           <v-dialog v-model="dialogResto6" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Empanadas.png"></v-img>
+            <v-img src="../assets/dialogs/Empanadas.png"></v-img>
           </div>
           </v-dialog>
           <v-dialog v-model="dialogResto7" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Tartas.png" ></v-img>
+            <v-img src="../assets/dialogs/Tartas.png" ></v-img>
           </div>
           </v-dialog>
           <v-dialog v-model="dialogResto8" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Pizzas.png" ></v-img>
+            <v-img src="../assets/dialogs/Pizzas.png" ></v-img>
           </div>
           </v-dialog>
           <v-dialog v-model="dialogResto9" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/Postres.png"></v-img>
+            <v-img src="../assets/dialogs/Postres.png"></v-img>
           </div>
           </v-dialog>
+
         </div>
 
       </div>
+        <div style="width: 100%; height: 50px; padding: 10px;" class="d-flex flex-column align-start">
+          <v-img contain width="100%" src="../assets/dialogs/Miscela..png" @click="dialogBebidas= true">
 
+        </v-img>
+      </div>
+<div class="d-flex flex-row justify-space-between" style="width: 100%; padding: 10px; gap: 10px;">
+              <v-img contain width="10" src="../assets/dialogs/Bebidas 1.png" @click="dialogBebidas = true">
+
+              </v-img>
+              <v-img contain width="90" src="../assets/dialogs/Bebidas 2.png" @click="dialogBebidas = true">
+
+              </v-img>
+            </div>
+            <v-dialog v-model="dialogBebidas" >
+            <div style="background-color: white; padding: 20px">
+            <v-img src="../assets/dialogs/Bebidas.png"></v-img>
+          </div>
+          </v-dialog>
       </v-col>
     </v-row>
       <v-dialog v-model="popUp">
@@ -192,6 +210,7 @@ export default {
     dialogResto7: false,
     dialogResto8: false,
     dialogResto9: false,
+    dialogBebidas: false,
     popUp: false,
   }),
   methods: {
