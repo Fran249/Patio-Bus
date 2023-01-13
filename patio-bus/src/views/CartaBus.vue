@@ -1,5 +1,18 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+      <CartaComp/>
 </template>
+
+
+
+<script>
+
+import CartaComp from '@/components/CartaComp.vue';
+
+  export default {
+    name: 'CartaBusView',
+    components: {
+      CartaComp,
+    }
+  }
+
+</script>
