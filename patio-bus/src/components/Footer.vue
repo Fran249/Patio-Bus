@@ -40,7 +40,7 @@
         <div class="columna3">
  <v-btn class="wsp-btn" style=" ;" v-if="
         !mobileViewSmall" elevation="9" fab fixed right bottom color="white">
-            <v-img src="../assets/WhatsAppVerde.png" contain width="65" height="65">
+            <v-img src="../assets/WhatsAppVerde.png" contain width="30" height="30">
 
             </v-img>
         </v-btn>
@@ -220,10 +220,10 @@ h3 {
 
 }
 .wsp-btn{
-    margin-bottom: 195px;
+    margin-bottom: 150px;
     margin-right: 95px; 
-    width: 105px; 
-    height: 105px;
+    width: 50px; 
+    height: 50px;
 }
 
 .columna3 {
