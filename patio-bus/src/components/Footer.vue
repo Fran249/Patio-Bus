@@ -9,7 +9,7 @@
                 </v-btn>
             </div>
             <div>
-                <v-btn icon @click="google" style="width: 25px; height: 20px;">
+                <v-btn icon  style="width: 25px; height: 20px;">
                     <v-icon color="#ffff">
                         mdi-google-maps
                     </v-icon>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <NavBar/>
+    <CarouselsVue/>
 <h5>¡Conocenos!</h5>
 <h1>MENÚ</h1>
     <v-container fluid>
@@ -193,14 +194,15 @@
 
 <script>
   import NavBar from '@/components/NavBar.vue';
- 
+  import CarouselsVue from '@/components/Carousels.vue';
   import FooterVue from '@/components/Footer.vue';
 
   export default {
     name: 'HomeView',
     components: {
       NavBar,
-      FooterVue
+      FooterVue,
+      CarouselsVue
     },
     data: ()=>({
       width: window.innerWidth
