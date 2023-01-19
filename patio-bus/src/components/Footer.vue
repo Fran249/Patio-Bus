@@ -178,7 +178,7 @@ h3 {
 }
 
 .grid-container {   
-    position: absolute;
+    position: relative;
     width: 100%;    
     top: 100vh;
     background-color: black;
