@@ -194,13 +194,13 @@
 <script>
   import NavBar from '@/components/NavBar.vue';
  
-  //import FooterVue from '@/components/Footer.vue';
+  import FooterVue from '@/components/Footer.vue';
 
   export default {
     name: 'HomeView',
     components: {
       NavBar,
-      //FooterVue
+      FooterVue
     },
     data: ()=>({
       width: window.innerWidth
