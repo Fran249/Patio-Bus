@@ -1,5 +1,5 @@
 <template>
-    <div style="heigth: 100vh">
+    <div style="heigth: 100vh" v-bind:style="{'-webkit-mask-image': `linear-gradient( black , rgb(235 167 71/ 0.5) ${percentage}% , rgb(235 167 71 / 0))`}">
         <v-row no-gutters>
             <v-col cols="5">
                  <div class="nav-izquierda">
@@ -44,9 +44,19 @@
 export default {
     name: 'NavBar',
     data: ()=>({
-
+        percentage: '600'
     }),
-
+    mounted(){
+    window.addEventListener( "scroll", () => {
+                   if ( window.scrollY > 0) {
+              this.percentage =  -window.scrollY +110
+            }
+            else {
+              this.percentage =  -window.scrollY + 5000
+            }
+        }
+    )
+  }
 }
 
 
@@ -148,26 +158,26 @@ export default {
 
         }
         15%{
-            transform: translateY(0px);
+            transform: translateY(-20px);
         }
         25%{
             transform: translateY(20px);
            
         }
         50%{
-            transform: translateY(0px);   
+            transform: translateY(-20px);   
         }
         60% {
             transform: translateY(20px);
         }
         75%{
-            transform: translateY(0px);  
+            transform: translateY(-20px);  
         }
         85%{
             transform: translateY(20px);
         }
         100%{
-            transform: translateY(0px);  
+            transform: translateY(-20px);  
         }
 }
 </style>
