@@ -157,7 +157,10 @@ export default {
       },
 
     ]
-  })
+  }),
+  mounted(){
+    
+  }
 }
 
 
@@ -220,12 +223,15 @@ position: absolute;
 
 .card {
   height: 300px;
+  border: none;
+  cursor: pointer;
 }
 
 .card__content {
+  height: 300px;
   text-align: center;
   position: relative;
-  padding: 15em 5em;
+ 
   transition: transform 3s;
   /* background: pink;*/
   transform-style: preserve-3d;
@@ -303,6 +309,9 @@ position: absolute;
 .card__back {
   transform: rotateY(.5turn);
   color: var(--clr);
-  background: #333;
+  background-color: black;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%), url('../assets/CarouselCarrito/Logo.png');
+  background-size: 90%;
+  background-position: -100%;
 }
 </style>
