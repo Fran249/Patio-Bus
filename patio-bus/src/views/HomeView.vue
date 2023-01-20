@@ -2,8 +2,10 @@
   <div>
     <NavBar />
     <CarouselsVue />
-    <h5>¡Conocenos!</h5>
+    <div class="d-flex flex-column align-center" style="width: 100%;">
+      <h5>¡Conocenos!</h5>
     <h1>MENÚ</h1>
+    </div>
     <v-container style="display: flex; justify-content: center;  flex-direction:row">
       <div class="bar-menu">
 
@@ -165,7 +167,20 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
-
+@font-face {
+  font-family: 'Quesha';
+  src: url('../assets/Quesha.ttf');
+}
+h1{
+  font-family: 'Quesha';
+  font-size: 100px;
+  margin-bottom: 0;
+}
+h5 {
+  font-family: 'Quesha';
+  font-size: 40px;
+  margin-bottom: 0;
+}
 .bar-menu{
   width: 80%;
   height: 3px;
