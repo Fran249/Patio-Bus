@@ -4,188 +4,26 @@
     <CarouselsVue/>
 <h5>¡Conocenos!</h5>
 <h1>MENÚ</h1>
-    <v-container fluid>
-<v-row dense>
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
+    <v-container style="">
+<v-row style="height: 200px;">
+  <v-col  xs="12" sm="12" md="4" xl="3"  v-for="(item, i) in items" :key="i">
+    <div class="card">
+  <div class="card__content">
     
-    <div class="card__front">
-
+    <div class="card__front" v-bind:style="{'background-image': `url(${item.src})`}">
+      <h3 class="card__title">{{ item.title }}</h3>
+      <p class="card__subtitle">{{ item.subtitle }}</p>
     </div> 
     
     <div class="card__back">
-
+      <button class="card__body">{{ item.cardBackBody }}</button>
     </div>
     
   </div>
 </div>
-      </div>
-      
-  </v-col>
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>  
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>
-  <v-col  xs="12" sm="12" md="4" xl="3"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content" >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>
-  <v-col  xs="12" sm="12" md="12" xl="9"  >
-    <div style="width: 100%; height: 100%; display: grid; place-items: center; ">
-        <div class="card-container">
-  <div class="card__content2 " >
-    
-    <div class="card__front">
-
-    </div> 
-    
-    <div class="card__back">
-
-    </div>
-    
-  </div>
-</div>
-      </div>
-      
-  </v-col>
+</v-col>
+ 
+ 
 </v-row>
     </v-container>
     <FooterVue />
@@ -205,7 +43,26 @@
       CarouselsVue
     },
     data: ()=>({
-      width: window.innerWidth
+      width: window.innerWidth,
+      items: [
+        {src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg',
+        color: '#333',
+        title: 'Entradas',
+        cardBackBody: 'This would be some longer text that gives a description of the things from the other side I guess'},
+        {src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg',
+        color: '#333',
+        title: 'Carnes',
+        cardBackBody: 'This would be some longer text that gives a description of the things from the other side I guess'},
+        {src:'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg',
+        color: '#333',
+        title: 'Guarniciones',
+        cardBackBody: 'This would be some longer text that gives a description of the things from the other side I guess'},
+        {src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg',
+        color: '#333',
+        title: 'Pastas',
+        cardBackBody: 'VER'}
+
+      ]
     })
   }
     
@@ -217,112 +74,39 @@
 <style>
 
 
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 
-h1, h5{
-  text-align: center;
+:root {
+  --level-one: translateZ(3rem);
+  --level-two: translateZ(6rem);
+  --level-three: translateZ(9rem);
   
+  --fw-normal: 400;
+  --fw-bold: 700;
+  
+  --clr: #b7c9e5;
 }
-h1{
-  font-size: 96px;
 
-}
-h5{
-  font-size: 24px;
-}
-.card-container{
-  width: 300px;
-  transition: 1.5s;
-  
-}
-.card-container:hover .card__content{
-  transition:  1.5s;
-  transform-style: preserve-3d;
-  transform: rotateY(180deg);
 
-  
+.card {
+  height: 300px;
 }
-.card-container:hover .card__content2{
-  transition:  1.5s;
-  transform-style: preserve-3d;
-  transform: rotateX(180deg);
 
-  
-}
 .card__content {
-  transition:  1.5s;
   text-align: center;
   position: relative;
-  padding: 10em 5em;
-
+  padding: 15em 5em;
+  transition: transform 3s;
+  /* background: pink;*/
+  transform-style: preserve-3d;
 }
 
-.card__content2 {
-  transition:  1.5s;
-  text-align: center;
-  position: relative;
-  padding: 10em 5em;
-
-}
-/* 
- .card__content {
-  animation: animation1 ease-in-out  infinite 3.5s;
-}
- .card__front::before {
-  animation: animation2  infinite 3.5s;
-
-  
+.card:hover .card__content {
+  transform: rotateY(.5turn);
 }
 
-
-<------ Animacion X & Y 3D ------->
-
-@keyframes animation1 {
-  0%{
-    transform: rotateY(0);
-
-  }
-  25%{
-    transform: rotateY(.5turn);
-  }
-  50%{
-    
-    
-    transform: rotateY(1turn);
-  }
-  75%{
-    transform: rotateX(.5turn);
-  }
-  100%{
-    
-    transform: rotateX(1turn);
-
-  }
-}
-
-@keyframes animation1 {
-  0%{
-    transform: rotateY(0);
-
-  }
-  50%{
-    transform: rotateY(.5turn);
-  }
-  100%{
-    
-    
-    transform: rotateY(1turn);
-  }
-}
-@keyframes animation2 {
-  0%{
-    backface-visibility: visible;
-  }
-  100%{
-    backface-visibility: hidden;
-  }
-}  */
-.card__front,.card__back {
-  
+.card__front,
+.card__back {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -333,46 +117,66 @@ h5{
   transform-style: preserve-3d;
   display: grid;
   align-content: center;
-  
-  
+  height: 300px;
 }
 
-
+.card__front {
+  background-color: var(--clr);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg);
+  background-size: cover;
+  background-blend-mode: overlay;
+  color: #333;
+}
 
 .card__front::before {
-  
   content: '';
-  background-image: url(../assets/2.png);
-  background-position: center;
   position: absolute;
   --spacer: 1em;
   top: var(--spacer);
   bottom: var(--spacer);
   left: var(--spacer);
   right: var(--spacer);
+  border-left: 2px solid currentColor;
   transform: var(--level-one);
-  
 }
-.card__back::after {
-  content: '';
-  background-image: url(../assets/2Volteada.png);
-  backface-visibility: hidden;
-  background-position: center;
-  position: absolute;
-  --spacer: 1em;
-  top: var(--spacer);
-  bottom: var(--spacer);
-  left: var(--spacer);
-  right: var(--spacer);
-  transform: var(--level-one);
-  
+
+.card__title {
+  font-size: 2.5rem;
+  transform: var(--level-three);
+  order: 2;
+  text-transform: uppercase;
 }
+
+.card__subtitle {
+  transform: var(--level-two);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: .75rem;
+  font-weight: var(--fw-bold);
+  opacity: .7;
+}
+
+.card__body {
+  transform: var(--level-two);
+  font-weight: var(fw-normal);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  border: 1px solid white;
+  width: 100px;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+}
+
+
+
 .card__back {
   transform: rotateY(.5turn);
-
   color: var(--clr);
-  
+  background: #333;
 }
+
+
 
 
 </style>
