@@ -167,7 +167,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 
 .bar-menu{
-  width: 80%;
+  width: 62vw;
   height: 3px;
   background-color: black;
   margin-top: 10px;
@@ -177,7 +177,7 @@ export default {
 position: absolute;
 }
 .bar-sub-menu{
-  width: 60%;
+  width: 59%;
   height: .5rem;
   background-color: black;
   margin-top: 10px;
