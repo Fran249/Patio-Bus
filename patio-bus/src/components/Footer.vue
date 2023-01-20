@@ -178,9 +178,9 @@ h3 {
 }
 
 .grid-container {   
-    position: relative;
+    margin-top: 100%;
     width: 100%;    
-    top: 100vh;
+    
     background-color: black;
     display: grid;
     grid-template-columns: repeat(3, 33.3%);

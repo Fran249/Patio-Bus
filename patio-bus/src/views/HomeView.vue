@@ -1,89 +1,131 @@
 <template>
   <div>
-    <NavBar/>
-    <CarouselsVue/>
-<h5>¡Conocenos!</h5>
-<h1>MENÚ</h1>
+    <NavBar />
+    <CarouselsVue />
+    <h5>¡Conocenos!</h5>
+    <h1>MENÚ</h1>
     <v-container style="">
-<v-row style="height: 200px;">
-  <v-col  xs="12" sm="12" md="4" xl="3"  v-for="(item, i) in items" :key="i">
-    <div class="card">
-  <div class="card__content">
-    
-    <div class="card__front" v-bind:style="{'background-image': `url(${item.src})`}">
-      <h3 class="card__title">{{ item.title }}</h3>
-      <p class="card__subtitle">{{ item.subtitle }}</p>
-    </div> 
-    
-    <div class="card__back">
-      <button class="card__body">{{ item.cardBackBody }}</button>
-    </div>
-    
-  </div>
-</div>
-</v-col>
- 
- 
-</v-row>
+      <v-row style="height: 200px;">
+        <v-col xs="12" sm="12" md="4" xl="3" v-for="(item, i) in items" :key="i">
+          <div class="card">
+            <div class="card__content">
+
+              <div class="card__front" v-bind:style="{ 'background-image': `url(${item.src})` }">
+                <h3 class="card__title">{{ item.title }}</h3>
+                <p class="card__subtitle">{{ item.subtitle }}</p>
+              </div>
+
+              <div class="card__back">
+                <button class="card__body">{{ item.cardBackBody }}</button>
+              </div>
+
+            </div>
+          </div>
+        </v-col>
+
+
+      </v-row>
     </v-container>
     <FooterVue />
   </div>
 </template>
 
 <script>
-  import NavBar from '@/components/NavBar.vue';
-  import CarouselsVue from '@/components/Carousels.vue';
-  import FooterVue from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import CarouselsVue from '@/components/Carousels.vue';
+import FooterVue from '@/components/Footer.vue';
 
-  export default {
-    name: 'HomeView',
-    components: {
-      NavBar,
-      FooterVue,
-      CarouselsVue
-    },
-    data: ()=>({
-      width: window.innerWidth,
-      items: [
-        {src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg',
+export default {
+  name: 'HomeView',
+  components: {
+    NavBar,
+    FooterVue,
+    CarouselsVue
+  },
+  data: () => ({
+    width: window.innerWidth,
+    items: [
+      {
+        src: require('../assets/ImagenesCards/entradas.jpg'),
         color: '#333',
         title: 'Entradas',
-        cardBackBody: 'This would be some longer text that gives a description of the things from the other side I guess'},
-        {src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg',
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/carnes.jpg'),
         color: '#333',
         title: 'Carnes',
-        cardBackBody: 'This would be some longer text that gives a description of the things from the other side I guess'},
-        {src:'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg',
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/guarniciones.jpg'),
         color: '#333',
         title: 'Guarniciones',
-        cardBackBody: 'This would be some longer text that gives a description of the things from the other side I guess'},
-        {src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg',
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/pastas.jpg'),
         color: '#333',
         title: 'Pastas',
-        cardBackBody: 'VER'}
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/sandwiches.jpg'),
+        color: '#333',
+        title: 'Sandwiches',
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/cover_fpa6sn8vqc_empanadas.jpg') ,
+        color: '#333',
+        title: 'Empanadas',
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/tartas.jpg'),
+        color: '#333',
+        title: 'Tartas',
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/pizzas.jpg'),
+        color: '#333',
+        title: 'Pizzas',
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/604fa64181ff2.jpg'),
+        color: '#333',
+        title: 'Postres',
+        cardBackBody: 'VER'
+      },
+      {
+        src: require('../assets/ImagenesCards/bebidas.jpg'),
+        color: '#333',
+        title: 'Bebidas',
+        cardBackBody: 'VER'
+      },
 
-      ]
-    })
-  }
-    
+    ]
+  })
+}
+
 
 </script>
 
 
 
 <style>
-
-
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 
 :root {
   --level-one: translateZ(3rem);
   --level-two: translateZ(6rem);
   --level-three: translateZ(9rem);
-  
+
   --fw-normal: 400;
   --fw-bold: 700;
-  
+
   --clr: #b7c9e5;
 }
 
@@ -175,8 +217,4 @@
   color: var(--clr);
   background: #333;
 }
-
-
-
-
 </style>
