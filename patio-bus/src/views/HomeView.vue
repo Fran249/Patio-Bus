@@ -4,13 +4,21 @@
     <CarouselsVue />
     <h5>¡Conocenos!</h5>
     <h1>MENÚ</h1>
+    <v-container style="display: flex; justify-content: center;  flex-direction:row">
+      <div class="bar-menu">
+
+    </div>
+    <div class="bar-sub-menu">
+        
+      </div>  
+    </v-container>
     <v-container style="">
       <v-row style="height: 200px;">
-        <v-col xs="12" sm="12" md="4" xl="3" v-for="(item, i) in items" :key="i">
+        <v-col :xs="item.xs" :sm="item.sm" :md="item.md" :xl="item.xl" v-for="(item, i) in items" :key="i">
           <div class="card">
             <div class="card__content">
 
-              <div class="card__front" v-bind:style="{ 'background-image': `url(${item.src})` }">
+              <div class="card__front" v-bind:style="{ 'background-image': `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%) , url(${item.src}) ` }">
                 <h3 class="card__title">{{ item.title }}</h3>
                 <p class="card__subtitle">{{ item.subtitle }}</p>
               </div>
@@ -49,61 +57,101 @@ export default {
         src: require('../assets/ImagenesCards/entradas.jpg'),
         color: '#333',
         title: 'Entradas',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/carnes.jpg'),
         color: '#333',
         title: 'Carnes',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/guarniciones.jpg'),
         color: '#333',
         title: 'Guarniciones',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/pastas.jpg'),
         color: '#333',
         title: 'Pastas',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/sandwiches.jpg'),
         color: '#333',
         title: 'Sandwiches',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/cover_fpa6sn8vqc_empanadas.jpg') ,
         color: '#333',
         title: 'Empanadas',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/tartas.jpg'),
         color: '#333',
         title: 'Tartas',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/pizzas.jpg'),
         color: '#333',
         title: 'Pizzas',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/604fa64181ff2.jpg'),
         color: '#333',
         title: 'Postres',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '4',
+        xl:'3'
       },
       {
         src: require('../assets/ImagenesCards/bebidas.jpg'),
         color: '#333',
         title: 'Bebidas',
-        cardBackBody: 'VER'
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '12',
+        xl:'9'
       },
 
     ]
@@ -117,6 +165,31 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+
+.bar-menu{
+  width: 80%;
+  height: 3px;
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+ 
+
+position: absolute;
+}
+.bar-sub-menu{
+  width: 60%;
+  height: .5rem;
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  z-index: 2;
+  transform: translateY(-.1rem) ;
+
+  
+
+}
+
+
 
 :root {
   --level-one: translateZ(3rem);
@@ -164,10 +237,10 @@ export default {
 
 .card__front {
   background-color: var(--clr);
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg);
+
   background-size: cover;
-  background-blend-mode: overlay;
-  color: #333;
+
+  color: #FFF;
 }
 
 .card__front::before {
