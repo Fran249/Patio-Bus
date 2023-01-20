@@ -182,7 +182,7 @@ h5 {
   margin-bottom: 0;
 }
 .bar-menu{
-  width: 80%;
+  width: 62vw;
   height: 3px;
   background-color: black;
   margin-top: 10px;
@@ -192,7 +192,7 @@ h5 {
 position: absolute;
 }
 .bar-sub-menu{
-  width: 60%;
+  width: 59%;
   height: .5rem;
   background-color: black;
   margin-top: 10px;
