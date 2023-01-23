@@ -1,8 +1,23 @@
 <template>
     <div>
+        <NavBar />
       <v-container>
-        <h4>¿Tengo que registrarme para comprar?</h4>
-        <p>Es necesario que te registres para comprar en muchogusto.com. Simplemente te pediremos al momento de comprar
+        <h3>¡CONOCENOS!</h3>
+        <h1>PREGUNTAS FRECUENTES</h1>
+        <v-container  style="display: flex; justify-content: center;  flex-direction:row">
+      
+      <div class="bar-menu">
+
+    </div>
+    <div class="bar-sub-menu">
+        
+      </div>  
+    </v-container>
+
+      </v-container>
+      
+      <h4>¿Tengo que registrarme para comprar?</h4>
+        <p>Es necesario que te registres para comprar en patiobus.com. Simplemente te pediremos al momento de comprar
             un
             mail, nombre, apellido, DNI y un teléfono para poder hacerle un correcto seguimiento a tu pedido. Es
             importante
@@ -36,23 +51,23 @@
             nuevamente en tu próximo pedido.</p>
         <h4> Olvidé mi clave. ¿Cómo hago para obtener una nueva clave?</h4>
         <p> Si generaste una contraseña y no la recordás, podés reemplazarla por una nueva fácilmente:
-        <ol>
+        <ul>
             <li>Hacé clic en “Ingresar con mail y contraseña”</li>
             <li>Seleccioná “¿Olvidaste tu contraseña?”</li>
             <li> Ingresá tu mail. Accede al link que te enviamos.</li>
             <li> Registrá la nueva contraseña.</li>
-        </ol>
+        </ul>
         </p>
         <h4>Días y horarios de atención</h4>
         <p>Podrás realizar tu pedido durante el periodo de atención correspondiente. Martes a Domingo de 6:00 a 21:00hs.
         </p>
-      </v-container>
       <FooterVue />
     </div>
 </template>
 
 <script>
 import FooterVue from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
 export default {
     name: 'Q&AView',
     data: () => ({
@@ -60,6 +75,46 @@ export default {
     }),
     components: {
     FooterVue,
+    NavBar,
     },
 }
 </script>
+<style>
+.bar-menu{
+  width: 85vw;
+  height: 3px;
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+ 
+
+position: absolute;
+}
+.bar-sub-menu{
+  width: 59%;
+  height: .5rem;
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  z-index: 2;
+  transform: translateY(-.1rem) ;
+}
+h3, h1{
+    text-align: center;
+}
+h4, p {
+  margin-left: 8%;
+  margin-right: 6%;
+}
+p{
+    font-size: 21.5px;
+}
+ul{
+    margin-left: 0.25%;
+}
+h4{
+    font-weight: bold;
+    font-size: 30px;
+
+}
+</style>
