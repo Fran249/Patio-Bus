@@ -210,7 +210,7 @@ h3 {
 .grid-container {   
     width: 100%;    
     position: absolute;
-    top: 158%;
+ 
     background-color: black;
     display: grid;
     grid-template-columns: repeat(3, 33.3%);
