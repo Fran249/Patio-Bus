@@ -79,7 +79,7 @@ export default {
     },
 }
 </script>
-<style>
+<style lang="scss" scoped>
 .bar-menu{
   width: 85vw;
   height: 3px;
