@@ -22,14 +22,14 @@
                 </v-btn>         
               
             </div>
-            <div class="d-flex flex-row mt-3">
+            <div class="d-flex flex-row mt-3 " >
                 <v-btn icon text>
                     <v-icon color="#ffff">
                         mdi-information
                     </v-icon>
                 </v-btn>
-                <router-link to="/Q&A">
-                <a @click="createItem" class="title-mg1 mt-2"><strong>PREGUNTAS FRECUENTES</strong></a>
+                <router-link to="/Q&A" class="Q">
+                <a @click="createItem" class="title-mg1 mt-2" ><strong>PREGUNTAS FRECUENTES</strong></a>
             </router-link>
             </div>
         </div>
@@ -146,6 +146,9 @@ export default {
 </script>
 
 <style lang="scss" scoped >
+.Q{
+    margin-top: 1.5%;
+}
 .v-dialog {
     background-color: #fff;
     width: 100%;
