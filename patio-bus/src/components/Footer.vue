@@ -28,8 +28,8 @@
                         mdi-information
                     </v-icon>
                 </v-btn>
-                <router-link to="/Q&A" class="Q">
-                <a @click="createItem" class="title-mg1 mt-2" ><strong>PREGUNTAS FRECUENTES</strong></a>
+                <router-link to="/Q&A">
+                <a @click="createItem" class="title-mg1 mt-5"><strong><p>PREGUNTAS FRECUENTES</p></strong></a>
             </router-link>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="columna3">
  <v-btn class="wsp-btn" style=" ;" v-if="
         !mobileViewSmall" elevation="9" fab :fixed="fixed" right bottom color="white">
-            <v-img src="../assets/WhatsAppVerde.png" contain width="30" height="30">
+            <v-img src="../assets/WhatsAppVerde.png" contain class="wsp">
 
             </v-img>
         </v-btn>
@@ -134,7 +134,7 @@ export default {
     },
     mounted(){
         window.addEventListener( "scroll", () => {
-            if(window.scrollY >= 3000){
+            if(window.scrollY >= 2400){
                 this.fixed = false
             }else {
                 this.fixed = true
@@ -146,8 +146,19 @@ export default {
 </script>
 
 <style lang="scss" scoped >
-.Q{
-    margin-top: 1.5%;
+@font-face {
+    font-family: 'red-hat';
+    src: url('../assets/RedHatDisplay.TTF');
+}
+.wsp-btn{
+    margin-bottom: 150px;
+    margin-right: 95px; 
+    width: 80px; 
+    height: 80px;
+}
+.wsp{
+    width: 50px;
+    height: 50px;
 }
 .v-dialog {
     background-color: #fff;
@@ -188,16 +199,18 @@ h3 {
 
 .title-mg1 {
     color: #FFF;
-    font-family: 'humanst521-1';
-    font-weight: bolder;
+    font-family: 'red-hat';
+    font-weight: lighter;
     font-size: 16px;
-    margin-top: 3px;
+}
+.title-mg1 p {
+    margin-top: 3%;
 }
 
 .grid-container {   
     width: 100%;    
     position: absolute;
-    top: 170%;
+    top: 158%;
     background-color: black;
     display: grid;
     grid-template-columns: repeat(3, 33.3%);
@@ -236,12 +249,7 @@ h3 {
     }
 
 }
-.wsp-btn{
-    margin-bottom: 150px;
-    margin-right: 95px; 
-    width: 50px; 
-    height: 50px;
-}
+
 
 .columna3 {
     grid-row: 1;
@@ -317,7 +325,7 @@ a {
 
 .title-mg1 {
     color: #fff;
-    font-family: humanst521-2;
+    font-family: 'red-hat';
 
 }
 
@@ -388,4 +396,20 @@ a {
     }
 
 }
+@media screen and (max-width: 1400px){
+        .grid-container{
+            top: 170%;
+        }
+        .wsp{
+            width: 25px;
+            height: 25px;
+        }
+        .wsp-btn{
+               margin-bottom: 200px;
+                margin-right: 50px; 
+            width: 50px;
+            height: 50px;
+        }
+    }
+
 </style>
