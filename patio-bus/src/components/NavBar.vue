@@ -95,7 +95,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .img-icon-after{
     width: 10rem ; height: 10rem;
 }
