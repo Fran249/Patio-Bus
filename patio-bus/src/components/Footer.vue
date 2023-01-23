@@ -28,7 +28,9 @@
                         mdi-information
                     </v-icon>
                 </v-btn>
+                <router-link to="/Q&A">
                 <a @click="createItem" class="title-mg1 mt-2"><strong>PREGUNTAS FRECUENTES</strong></a>
+            </router-link>
             </div>
         </div>
 

@@ -1,12 +1,18 @@
 <template>
   <div>
     <NavBar />
-    <CarouselsVue class="mt-15" />
-    <div class="d-flex flex-column align-center" style="width: 100%;">
+    <CarouselsVue />
+    <v-container>
+  <cards_cafet class="mb-15 mt-10"/>
+</v-container>
+  <v-container>
+    <div class="d-flex flex-column align-center mt-15" style="width: 100%;">
       <h5>¡Conocenos!</h5>
     <h1>MENÚ</h1>
     </div>
+  </v-container>
     <v-container style="display: flex; justify-content: center;  flex-direction:row">
+      
       <div class="bar-menu">
 
     </div>
@@ -14,6 +20,7 @@
         
       </div>  
     </v-container>
+
     <v-container style="">
       <v-row style="height: 200px;">
         <v-col :xs="item.xs" :sm="item.sm" :md="item.md" :xl="item.xl" v-for="(item, i) in items" :key="i">
@@ -32,8 +39,6 @@
             </div>
           </div>
         </v-col>
-
-
       </v-row>
     </v-container>
     <FooterVue />
@@ -44,13 +49,15 @@
 import NavBar from '@/components/NavBar.vue';
 import CarouselsVue from '@/components/Carousels.vue';
 import FooterVue from '@/components/Footer.vue';
+import cards_cafet from '@/components/cards_cafeteria.vue';
 
 export default {
   name: 'HomeView',
   components: {
     NavBar,
     FooterVue,
-    CarouselsVue
+    CarouselsVue,
+    cards_cafet
   },
   data: () => ({
     width: window.innerWidth,
@@ -157,8 +164,9 @@ export default {
       },
 
     ]
+    
   }),
-  mounted(){
+  mounted(){ 
     
   }
 }
