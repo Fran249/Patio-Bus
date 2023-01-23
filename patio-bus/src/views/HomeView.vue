@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <CarouselsVue />
+    <CarouselsVue class="mt-15" />
     <div class="d-flex flex-column align-center" style="width: 100%;">
       <h5>¡Conocenos!</h5>
     <h1>MENÚ</h1>

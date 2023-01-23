@@ -12,16 +12,48 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../assets/Combo1.png" class="d-block w-100" alt="...">
+      <v-img src="../assets/Combo1.png"  alt="...">
+        <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45">
+            <v-icon>
+              mdi-cart
+            </v-icon>
+          </v-btn>
+        </div>
+      </v-img>
     </div>
     <div class="carousel-item">
-      <img src="../assets/Combo2.png" class="d-block w-100" alt="...">
+      <v-img src="../assets/Combo2.png"  alt="...">
+        <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45">
+            <v-icon>
+              mdi-cart
+            </v-icon>
+          </v-btn>
+        </div>
+      </v-img>
     </div>
     <div class="carousel-item">
-      <img src="../assets/Combo3.png" class="d-block w-100" alt="...">
+      <v-img src="../assets/Combo3.png"  alt="...">
+        <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45">
+            <v-icon>
+              mdi-cart
+            </v-icon>
+          </v-btn>
+        </div>
+      </v-img>
     </div>
     <div class="carousel-item">
-      <img src="../assets/Combo4.png" class="d-block w-100" alt="...">
+      <v-img src="../assets/Combo4.png"  alt="...">
+        <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45">
+            <v-icon>
+              mdi-cart
+            </v-icon>
+          </v-btn>
+        </div>
+      </v-img>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -100,5 +132,8 @@ export default {
 }
 .carousel-indicators .no-active{
   width: 104px;
+}
+.carousel-control-prev{
+  left: 30%
 }
 </style>

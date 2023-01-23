@@ -1,5 +1,10 @@
 <template>
-    <div style="heigth: 100vh" v-bind:style="{'-webkit-mask-image': `linear-gradient( black , rgb(235 167 71/ 0.5) ${percentage}% , rgb(235 167 71 / 0))`}">
+    <div style="heigth: 100vh" >
+        <div  style="opacity: 0 ;width: 10rem; height: 10rem; border-radius: 50%; position: absolute; bottom: 76%; left: 38% ; z-index: 100;" id="IconoAfter" >
+                            <v-img src="../assets/Icono.png" contain  style=" width: 10rem ; height: 10rem;">
+
+                            </v-img>
+                        </div>
         <v-row no-gutters>
             <v-col cols="5">
                  <div class="nav-izquierda">
@@ -13,20 +18,22 @@
                        </div> 
                  </div>
             </v-col>
+
             <v-col cols="7">
 
-                <v-img src="../assets/navDerecha.png" height="100vh" style="">
-                    <div style="width: 100%; height: 100%; display: flex; justify-content: flex-start; align-items: flex-end; transform: translateX(-50px) ; position: absolute; " >
-                        <div  style="width: 100px; height: 100px; position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;" class="img-logoback" >
-                            <v-img src="../assets/logoVacio.png" contain width="100" height="100" style="" >
-                                <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;  " class="img-icon-flecha">
+                <v-img src="../assets/navDerecha.png" height="100vh" style=""  @click="scroll()">
+
+                    <div style=" width: 100%; height: 100%; display: flex; justify-content: flex-start; align-items: flex-end; transform: translateX(-50px) ; position: absolute; " >
+                        <div  style=" width: 100px; height: 100px; position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  " class="img-logoback" id="img-logoback">
+                            <v-img src="../assets/logoVacio.png" contain width="100" height="100" style=" " >
+                                <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;  " class="img-icon-flecha" id="img-logoback2">
                                      <v-img src="../assets/Icono-Flecha.png" width="30" height="30" contain >
 
                                      </v-img>   
                                 </div>
                             </v-img>
                         </div>
-                        <div  style="width: 100px; height: 100px; border-radius: 50%; position: absolute; top: 50% ; left: 44.5%;" class="img-logo">
+                        <div  style="width: 100px; height: 100px; border-radius: 50%; position: absolute; top: 50% ; left: 44.5%;" class="img-logo" id="img-logoback1">
                             <v-img src="../assets/Icono.png" contain width="100" height="100" style="">
 
                             </v-img>
@@ -50,12 +57,36 @@ export default {
     window.addEventListener( "scroll", () => {
                    if ( window.scrollY > 0) {
               this.percentage =  -window.scrollY +110
+              document.getElementById('img-logoback1').style.animation = "none";
+            document.getElementById('img-logoback').style.animation = "none";
+            document.getElementById('img-logoback').style.transition = "1s";
+            document.getElementById('img-logoback1').style.transition = "1s";            
+            document.getElementById('img-logoback1').style.opacity = "0";
+            document.getElementById('img-logoback').style.opacity = "0";
+            document.getElementById('IconoAfter').style.transition = ".5s"
+            document.getElementById('IconoAfter').style.opacity = "1"
+
             }
             else {
               this.percentage =  -window.scrollY + 5000
+              document.getElementById('img-logoback1').style.animation = "animacionLogo 4s ease-in-out infinite ";
+            document.getElementById('img-logoback').style.animation = "animacionLogoBack 4s ease-in-out infinite";
+              document.getElementById('img-logoback').style.transition = "1s";
+            document.getElementById('img-logoback1').style.transition = "1s";            
+            document.getElementById('img-logoback1').style.opacity = "1";
+            document.getElementById('img-logoback').style.opacity = "1";
+            document.getElementById('IconoAfter').style.opacity = "0"
             }
         }
     )
+  },
+  methods: {
+    scroll(){
+        window.scrollTo(0, 500)
+
+
+
+    }
   }
 }
 
@@ -65,6 +96,9 @@ export default {
 
 <style>
 
+body {
+    scroll-behavior: smooth;
+}
 .nav-izquierda{
     width: 100%;
     height: 100vh;
@@ -93,6 +127,7 @@ export default {
 
 .img-logo{
     animation: animacionLogo 4s ease-in-out infinite ;
+    cursor: pointer;
     
 }
 

@@ -39,7 +39,7 @@
 
         <div class="columna3">
  <v-btn class="wsp-btn" style=" ;" v-if="
-        !mobileViewSmall" elevation="9" fab fixed right bottom color="white">
+        !mobileViewSmall" elevation="9" fab :fixed="fixed" right bottom color="white">
             <v-img src="../assets/WhatsAppVerde.png" contain width="30" height="30">
 
             </v-img>
@@ -59,6 +59,7 @@
 
 <script>
 
+
 export default {
     name: 'FootEr',
 
@@ -67,6 +68,8 @@ export default {
         height: '',
         dialog: false,
         valid: false,
+        fixed: false,
+
         name: '',
         nameRules: [
             v => !!v || 'Tu nombre es requerido',
@@ -126,8 +129,17 @@ export default {
     created() {
         this.changeHeight();
         this.mobileViewFunctionSmall();
+    },
+    mounted(){
+        window.addEventListener( "scroll", () => {
+            if(window.scrollY >= 2020){
+                this.fixed = false
+            }else {
+                this.fixed = true
+            }  
+        })
     }
-
+ 
 }
 </script>
 
