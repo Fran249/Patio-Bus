@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <CarouselsVue />
+    <CarouselsVue style="margin-top: 10rem;"/>
     <v-container>
   <cards_cafet class="mb-15 mt-10"/>
 </v-container>
@@ -21,7 +21,7 @@
       </div>  
     </v-container>
 
-    <v-container style="">
+    <v-container style=" height: 0;">
       <v-row style="height: 200px;">
         <v-col :xs="item.xs" :sm="item.sm" :md="item.md" :xl="item.xl" v-for="(item, i) in items" :key="i">
           <div class="card">

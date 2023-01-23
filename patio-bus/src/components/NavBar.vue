@@ -1,11 +1,8 @@
 <template>
     <div style="heigth: 100vh" >
-        <div  style="opacity: 0 ;width: 10rem; height: 10rem; border-radius: 50%; position: absolute; bottom: 76%; left: 38% ; z-index: 100;" id="IconoAfter" >
-                            <v-img src="../assets/Icono.png" contain  style=" width: 10rem ; height: 10rem;">
 
-                            </v-img>
-                        </div>
         <v-row no-gutters>
+
             <v-col cols="5">
                  <div class="nav-izquierda">
                        <div class="nav-izquierda-img-container">
@@ -20,21 +17,25 @@
             </v-col>
 
             <v-col cols="7">
+                            <div  style="opacity: 0 ;width: 10rem; height: 10rem; border-radius: 50%; z-index: 100;" id="IconoAfter" class="icono-after">
+                            <v-img src="../assets/Icono.png" contain  style=" " class="img-icon-after">
 
+                            </v-img>
+                        </div>
                 <v-img src="../assets/navDerecha.png" height="100vh" style=""  @click="scroll()">
 
                     <div style=" width: 100%; height: 100%; display: flex; justify-content: flex-start; align-items: flex-end; transform: translateX(-50px) ; position: absolute; " >
-                        <div  style=" width: 100px; height: 100px; position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  " class="img-logoback" id="img-logoback">
-                            <v-img src="../assets/logoVacio.png" contain width="100" height="100" style=" " >
+                        <div  style="position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  " class="img-logoback" id="img-logoback">
+                            <v-img src="../assets/logoVacio.png" contain style=" width: 10rem; height: 10rem;" >
                                 <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;  " class="img-icon-flecha" id="img-logoback2">
-                                     <v-img src="../assets/Icono-Flecha.png" width="30" height="30" contain >
+                                     <v-img src="../assets/Icono-Flecha.png" width="50" height="50" contain >
 
                                      </v-img>   
                                 </div>
                             </v-img>
                         </div>
-                        <div  style="width: 100px; height: 100px; border-radius: 50%; position: absolute; top: 50% ; left: 44.5%;" class="img-logo" id="img-logoback1">
-                            <v-img src="../assets/Icono.png" contain width="100" height="100" style="">
+                        <div  style=" border-radius: 50%; position: absolute; top: 50% ; left: 44.5%;" class="img-logo" id="img-logoback1">
+                            <v-img src="../assets/Icono.png" contain  style=" width: 10rem; height: 10rem;">
 
                             </v-img>
                         </div>
@@ -95,7 +96,12 @@ export default {
 
 
 <style>
-
+.img-icon-after{
+    width: 10rem ; height: 10rem;
+}
+.icono-after{
+    position: absolute; bottom: 56%; left: 38% ;
+}
 body {
     scroll-behavior: smooth;
 }
@@ -215,4 +221,16 @@ body {
             transform: translateY(-20px);  
         }
 }
+
+@media screen and (max-width: 1400px){
+    .icono-after{
+        bottom: 60%; 
+        left: 38% ;
+    }
+    .img-icon-after{
+        width: 6rem;
+        height: 6rem;
+    }
+}
+
 </style>

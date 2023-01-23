@@ -134,7 +134,7 @@ export default {
     },
     mounted(){
         window.addEventListener( "scroll", () => {
-            if(window.scrollY >= 2020){
+            if(window.scrollY >= 3000){
                 this.fixed = false
             }else {
                 this.fixed = true
@@ -192,9 +192,9 @@ h3 {
 }
 
 .grid-container {   
-    margin-top: 100%;
     width: 100%;    
-    
+    position: absolute;
+    top: 170%;
     background-color: black;
     display: grid;
     grid-template-columns: repeat(3, 33.3%);
