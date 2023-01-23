@@ -63,7 +63,7 @@ export default {
     width: window.innerWidth,
     items: [
       {
-        src: require('../assets/ImagenesCards/entradas.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/entradas.jpg'),
         color: '#333',
         title: 'Entradas',
         cardBackBody: 'VER',
@@ -73,7 +73,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/carnes.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/carnes.jpg'),
         color: '#333',
         title: 'Carnes',
         cardBackBody: 'VER',
@@ -83,7 +83,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/guarniciones.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/guarniciones.jpg'),
         color: '#333',
         title: 'Guarniciones',
         cardBackBody: 'VER',
@@ -93,7 +93,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/pastas.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/pastas.jpg'),
         color: '#333',
         title: 'Pastas',
         cardBackBody: 'VER',
@@ -103,7 +103,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/sandwiches.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/sandwiches.jpg'),
         color: '#333',
         title: 'Sandwiches',
         cardBackBody: 'VER',
@@ -113,7 +113,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/cover_fpa6sn8vqc_empanadas.jpg') ,
+        src: require('../assets/ImagenesCards/ImgCardHome/empanadas.jpg') ,
         color: '#333',
         title: 'Empanadas',
         cardBackBody: 'VER',
@@ -123,7 +123,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/tartas.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/tartas.jpg'),
         color: '#333',
         title: 'Tartas',
         cardBackBody: 'VER',
@@ -133,7 +133,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/pizzas.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/pizzas.jpg'),
         color: '#333',
         title: 'Pizzas',
         cardBackBody: 'VER',
@@ -143,7 +143,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/604fa64181ff2.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/helados.jpg'),
         color: '#333',
         title: 'Postres',
         cardBackBody: 'VER',
@@ -153,7 +153,7 @@ export default {
         xl:'3'
       },
       {
-        src: require('../assets/ImagenesCards/bebidas.jpg'),
+        src: require('../assets/ImagenesCards/ImgCardHome/bebidas.jpg'),
         color: '#333',
         title: 'Bebidas',
         cardBackBody: 'VER',

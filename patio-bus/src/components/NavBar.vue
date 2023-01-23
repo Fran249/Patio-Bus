@@ -28,7 +28,7 @@
                         <div  style="position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  " class="img-logoback" id="img-logoback">
                             <v-img src="../assets/logoVacio.png" contain style=" width: 10rem; height: 10rem;" >
                                 <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;  " class="img-icon-flecha" id="img-logoback2">
-                                     <v-img src="../assets/Icono-Flecha.png" width="50" height="50" contain >
+                                     <v-img src="../assets/Icono-Flecha.png"  class="img-flecha" contain >
 
                                      </v-img>   
                                 </div>
@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     scroll(){
-        window.scrollTo(0, 500)
+        window.scrollTo(0, 1000)
 
 
 
@@ -142,6 +142,10 @@ body {
 }
 .img-icon-flecha{
     animation: iconoFlecha 4s ease-in-out infinite;
+}
+.img-flecha{
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -231,6 +235,17 @@ body {
         width: 6rem;
         height: 6rem;
     }
+    .img-logo{
+        width: 100px;
+        height: 100px;
+    }
+    .img-logoback{
+        width: 100px;
+        height: 100px;
+    }
+    .img-flecha{
+        width: 35px;
+        height: 35px;
+    }
 }
-
 </style>

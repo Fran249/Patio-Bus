@@ -6,7 +6,7 @@
       <v-col cols= "6" xs= "12" sm= "12" md= "6" lg= "6" xl= "6">
         <div class="card1">
           <div class="card__content1">
-            <div class="card__front1"  v-bind:style="{ 'background-image': `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%) , url(${require('../assets/ImagenesCards/infusiones.jpg')}) ` }">
+            <div class="card__front1"  v-bind:style="{ 'background-image': `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%) , url(${require('../assets/ImagenesCards/SnacksInfusiones/infusiones.jpg')}) ` }">
               <h3 class="card__title1">INFUSIONES</h3>
             </div>
 
@@ -20,7 +20,7 @@
       <v-col cols= "6" xs= "12" sm= "12" md= "6" lg= "6" xl= "6">
         <div class="card1">
           <div class="card__content1">
-            <div class="card__front1" v-bind:style="{ 'background-image': `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%) , url(${require('../assets/ImagenesCards/snacks-dulces.jpg')}) ` }">
+            <div class="card__front1" v-bind:style="{ 'background-image': `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%) , url(${require('../assets/ImagenesCards/SnacksInfusiones/snacks-dulces.jpg')}) ` }">
               <h3 class="card__title1">SNACKS DULCES</h3>
             </div>
 

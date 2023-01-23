@@ -111,10 +111,11 @@ export default {
 }
 .carousel-inner{
  height: 50vh;
- background-image: url(../assets/CarouselCarrito/1.png) , url(../assets/CarouselCarrito/1.png);
+ background-image: url(../assets/CarouselCarrito/1.png) , url(../assets/CarouselCarrito/blanco.jpg);
  background-position: left center , right center;
   background-repeat: no-repeat, no-repeat;
   background-size: 50% 100%;
+
 }
 .carousel-indicators{
   
@@ -134,6 +135,34 @@ export default {
   width: 104px;
 }
 .carousel-control-prev{
-  left: 30%
+  left: 30%;
+  height: 100px;
+  margin-top: 10rem
+}
+.carousel-control-next{
+  height: 100px;
+  margin-top: 10rem
+}
+.carousel-control-next-icon{
+background-image: url('../assets/Icono-FlechaRight.png');
+width: 25px;
+height: 40px;
+}
+
+.carousel-control-prev-icon{
+  background-image: url('../assets/Icono-FlechaLeft.png');
+  width: 25px;
+height: 40px;
+}
+@media screen and (max-width: 1600px) {
+  .carousel-control-prev{
+  left: 30%;
+  height: 100px;
+  margin-top: 5rem
+}
+.carousel-control-next{
+  height: 100px;
+  margin-top: 5rem
+}
 }
 </style>
