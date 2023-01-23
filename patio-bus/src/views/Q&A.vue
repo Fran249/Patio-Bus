@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import FooterVue from '@/components/Footer.vue';
+import FooterVue from '@/components/FooterVue.vue';
 import NavBar from '@/components/NavBar.vue';
 export default {
     name: 'Q&AView',

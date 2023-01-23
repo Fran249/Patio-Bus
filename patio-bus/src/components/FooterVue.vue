@@ -208,9 +208,9 @@ h3 {
 }
 
 .grid-container {   
-    width: 100%;    
-    position: absolute;
- 
+    width: 100%;
+    top: 100vh;
+
     background-color: black;
     display: grid;
     grid-template-columns: repeat(3, 33.3%);
@@ -398,7 +398,7 @@ a {
 }
 @media screen and (max-width: 1400px){
         .grid-container{
-            top: 170%;
+            top: 200vh;
         }
         .wsp{
             width: 25px;
