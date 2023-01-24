@@ -107,7 +107,7 @@ export default {
   width: 50%;
   height: 25%;
   margin-left: 40%;
-  margin-top: 6%;
+  margin-top: 5%;
 }
 .carousel-inner{
  height: 50vh;
