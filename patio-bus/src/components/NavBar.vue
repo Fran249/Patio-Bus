@@ -1,5 +1,5 @@
 <template>
-    <div style="heigth: 100vh" >
+    <div style="heigth: 100vh; " >
 
         <v-row no-gutters>
 
@@ -100,7 +100,9 @@ export default {
     width: 10rem ; height: 10rem;
 }
 .icono-after{
-    position: absolute; bottom: 56%; left: 38% ;
+    position: absolute;
+    top: 21.3%; 
+        left: 38% ;
 }
 body {
     scroll-behavior: smooth;
@@ -228,8 +230,8 @@ body {
 
 @media screen and (max-width: 1400px){
     .icono-after{
-        bottom: 60%; 
-        left: 38% ;
+
+        position: absolute; top: 16%;
     }
     .img-icon-after{
         width: 6rem;

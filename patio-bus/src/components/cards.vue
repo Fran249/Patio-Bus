@@ -3,7 +3,7 @@
         <v-container>
       <v-row >
         
-        <v-col :xs="item.xs" :sm="item.sm" :md="item.md" :xl="item.xl" v-for="(item, i) in items" :key="i">
+        <v-col cols="12" :xs="item.xs" :sm="item.sm" :md="item.md" :xl="item.xl" v-for="(item, i) in items" :key="i">
           <div class="card">
             <div class="card__content">
 
@@ -39,7 +39,7 @@ export default {
         title: 'Entradas',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
@@ -49,7 +49,7 @@ export default {
         title: 'Carnes',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
@@ -59,7 +59,7 @@ export default {
         title: 'Guarniciones',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
@@ -69,7 +69,7 @@ export default {
         title: 'Pastas',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
@@ -79,7 +79,7 @@ export default {
         title: 'Sandwiches',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
@@ -89,7 +89,7 @@ export default {
         title: 'Empanadas',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
@@ -99,7 +99,7 @@ export default {
         title: 'Tartas',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
@@ -109,7 +109,7 @@ export default {
         title: 'Pizzas',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
@@ -119,7 +119,7 @@ export default {
         title: 'Postres',
         cardBackBody: 'VER',
         xs:'12',
-        sm: '12',
+        sm: '6',
         md: '4',
         xl:'3'
       },
