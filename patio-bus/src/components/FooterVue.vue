@@ -151,8 +151,7 @@ export default {
     src: url('../assets/RedHatDisplay.TTF');
 }
 .wsp-btn{
-    margin-bottom: 150px;
-    margin-right: 95px; 
+
     width: 80px; 
     height: 80px;
 }
@@ -401,8 +400,7 @@ a {
             height: 25px;
         }
         .wsp-btn{
-               margin-bottom: 200px;
-                margin-right: 50px; 
+
             width: 50px;
             height: 50px;
         }

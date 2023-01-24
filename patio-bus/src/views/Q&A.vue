@@ -16,7 +16,7 @@
 
       </v-container>
       
-      <h4>¿Tengo que registrarme para comprar?</h4>
+      <h4 class="title">¿Tengo que registrarme para comprar?</h4>
         <p>Es necesario que te registres para comprar en patiobus.com. Simplemente te pediremos al momento de comprar
             un
             mail, nombre, apellido, DNI y un teléfono para poder hacerle un correcto seguimiento a tu pedido. Es
@@ -24,7 +24,7 @@
             que los datos que ingreses sean verdaderos por si necesitamos contactarte para validar datos de tu compra.
             Recordá que deberás ser mayor de edad. Además, luego podrás ver tus pedidos desde la sección “Registro de
             compra”.</p>
-        <h4>¿Están protegidos mis datos personales?</h4>
+        <h4 class="title">¿Están protegidos mis datos personales?</h4>
         <p> Sí, cada usuario dispondrá en todo momento de los derechos de acceso a la información, rectificación y
             supresión
             de sus datos personales conforme a la Ley Nº 25.326 sobre protección de datos de carácter personal. Tus
@@ -35,7 +35,7 @@
             Datos Personales, órgano de control de la Ley Nro. 25.326, tiene la atribución de atender las denuncias y
             reclamos que se interpongan en relación con el incumplimiento de las normas sobre protección de datos
             personales.</p>
-        <h4>¿Es seguro comprar en patiobus.com?</h4>
+        <h4 class="title">¿Es seguro comprar en patiobus.com?</h4>
         <p>Es muy seguro comprar en patiobus.com, contamos con altos estándares de seguridad según las buenas prácticas
             de
             los retails internacionales. Utilizamos servidores certificados, plataformas con estándares SSL (Secure
@@ -49,7 +49,7 @@
             tipo de <b>rembolso</b> será otorgado mediante códigos de descuento por el valor total de su compra para ser
             usado
             nuevamente en tu próximo pedido.</p>
-        <h4> Olvidé mi clave. ¿Cómo hago para obtener una nueva clave?</h4>
+        <h4 class="title"> Olvidé mi clave. ¿Cómo hago para obtener una nueva clave?</h4>
         <p> Si generaste una contraseña y no la recordás, podés reemplazarla por una nueva fácilmente:
         <ul>
             <li>Hacé clic en “Ingresar con mail y contraseña”</li>
@@ -58,7 +58,7 @@
             <li> Registrá la nueva contraseña.</li>
         </ul>
         </p>
-        <h4>Días y horarios de atención</h4>
+        <h4 class="title">Días y horarios de atención</h4>
         <p>Podrás realizar tu pedido durante el periodo de atención correspondiente. Martes a Domingo de 6:00 a 21:00hs.
         </p>
       <FooterVue />
@@ -80,6 +80,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
+@font-face {
+  font-family: 'red-hat';
+  src: url('../assets/RedHatDisplay.TTF');
+}
+
+h1, h3, .title{
+  font-family: 'red-hat';
+}
 .bar-menu{
   width: 85vw;
   height: 3px;
@@ -105,6 +114,7 @@ h3, h1{
 h4, p {
   margin-left: 8%;
   margin-right: 6%;
+  font-family: red-hat;
 }
 p{
     font-size: 21.5px;
