@@ -13,7 +13,9 @@
               </div>
 
               <div class="card__back">
+                <router-link to="/Guarniciones" > 
                 <button class="card__body">{{ item.cardBackBody }}</button>
+                </router-link>
               </div>
 
             </div>
