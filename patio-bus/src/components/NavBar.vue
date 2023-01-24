@@ -101,7 +101,7 @@ export default {
 }
 .icono-after{
     position: absolute;
-    top: 21.3%; 
+    top: 24%; 
         left: 38% ;
 }
 body {
@@ -231,7 +231,7 @@ body {
 @media screen and (max-width: 1400px){
     .icono-after{
 
-        position: absolute; top: 16%;
+        position: absolute; top: 17.5%;
     }
     .img-icon-after{
         width: 6rem;
