@@ -11,7 +11,9 @@
             </div>
 
             <div class="card__back1">
-              <button class="card__body1">VER</button>
+              <router-link class="card__body1" to="/Infusiones">
+              <button >VER</button>
+            </router-link>
             </div>
 
           </div>
@@ -25,7 +27,9 @@
             </div>
 
             <div class="card__back1">
-              <button class="card__body1">VER</button>
+              <router-link class="card__body1" to="/Snacks_Dulces">
+                <button >VER</button>
+              </router-link>
             </div>
 
           </div>
@@ -38,6 +42,8 @@
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
+
 
 export default {
     name: 'cards_cafet',
@@ -45,11 +51,16 @@ export default {
         width: window.innerWidth
     }),
     components: {
-
-    },
+    RouterLink
+},
 }
 </script>
-<style>
+<style lang="scss" scoped>
+
+a, a:hover, a:focus, a:visited, button{
+  text-decoration: none;
+  color: #FFF;
+  }
 :root {
   --level-one: translateZ(3rem);
   --level-two: translateZ(6rem);

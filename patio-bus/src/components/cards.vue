@@ -21,11 +21,29 @@
               <h3 class="card__title">{{ item.title }}</h3>
             </div>
 
+<<<<<<< Updated upstream
             <div v-bind:class="{card__back: item.title != 'Bebidas', card__back2: item.title == 'Bebidas'}">
               <router-link to="/Guarniciones">
                 <button class="card__body">
                   <p v-bind:class="{texto_btn: item.title != 'Bebidas', texto_btn1: item.title == 'Bebidas' }">{{ item.cardBackBody }}</p>
                 </button>
+=======
+        <v-container>
+      <v-row >
+        
+        <v-col cols="12" :xs="item.xs" :sm="item.sm" :md="item.md" :xl="item.xl" v-for="(item, i) in items" :key="i">
+          <div class="card">
+            <div class="card__content">
+
+              <div class="card__front" v-bind:style="{ 'background-image': `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%) , url(${item.src}) ` }">
+                <h3 class="card__title">{{ item.title }}</h3>
+                <p class="card__subtitle">{{ item.subtitle }}</p>
+              </div>
+
+              <div class="card__back">
+                <router-link class="card__body" :to="item.route" > 
+                <button >{{ item.cardBackBody }}</button>
+>>>>>>> Stashed changes
                 </router-link>
                 </div>
               </div>
@@ -41,6 +59,7 @@ export default {
   data: () => ({
     items: [
       {
+<<<<<<< Updated upstream
         src: require("../assets/ImagenesCards/ImgCardHome/entradas.jpg"),
         color: "#333",
         title: "Entradas",
@@ -139,6 +158,116 @@ export default {
         sm: "12",
         md: "12",
         xl: "9",
+=======
+        src: require('../assets/ImagenesCards/ImgCardHome/entradas.jpg'),
+        color: '#333',
+        title: 'Entradas',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Entradas'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/carnes.jpg'),
+        color: '#333',
+        title: 'Carnes',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Carnes'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/guarniciones.jpg'),
+        color: '#333',
+        title: 'Guarniciones',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Guarniciones'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/pastas.jpg'),
+        color: '#333',
+        title: 'Pastas',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Pastas'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/sandwiches.jpg'),
+        color: '#333',
+        title: 'Sandwiches',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Sandwiches'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/empanadas.jpg') ,
+        color: '#333',
+        title: 'Empanadas',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Empanadas'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/tartas.jpg'),
+        color: '#333',
+        title: 'Tartas',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Tartas'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/pizzas.jpg'),
+        color: '#333',
+        title: 'Pizzas',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Pizzas'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/helados.jpg'),
+        color: '#333',
+        title: 'Postres',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '6',
+        md: '4',
+        xl:'3',
+        route:'/Postres'
+      },
+      {
+        src: require('../assets/ImagenesCards/ImgCardHome/bebidas.jpg'),
+        color: '#333',
+        title: 'Bebidas',
+        cardBackBody: 'VER',
+        xs:'12',
+        sm: '12',
+        md: '12',
+        xl:'9',
+        route:'/Bebidas'
+>>>>>>> Stashed changes
       },
     ],
   }),
@@ -162,7 +291,11 @@ export default {
   border: none;
   cursor: pointer;
 }
-
+a, a:hover, a:focus, a:visited, button{
+  text-decoration: none;
+  color: #FFF;
+  
+}
 .card__content {
   height: 300px;
   text-align: center;
