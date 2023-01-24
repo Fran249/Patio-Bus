@@ -5,12 +5,12 @@
 
   <cards_cafet />
 
-    <div class="d-flex flex-column align-center mt-15" style="width: 100%;">
+    <div class="d-flex flex-column align-center" style="width: 100%; margin-top: 5rem;">
       <h5>¡Conocenos!</h5>
     <h1>MENÚ</h1>
     </div>
 
-    <v-container style="display: flex; justify-content: center;  flex-direction:row">
+    <v-container style="display: flex; justify-content: center;  flex-direction:row ; margin-bottom: 5rem;">
       
       <div class="bar-menu">
 

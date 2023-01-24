@@ -4,7 +4,7 @@
         <v-row no-gutters>
 
             <v-col cols="5">
-                 <div class="nav-izquierda">
+                 <div class="nav-izquierda" id="div1">
                        <div class="nav-izquierda-img-container">
                         <v-img src="../assets/PatioBusNavBlanco.png" width="65%" style="margin-top: 25%">
 
@@ -18,9 +18,9 @@
 
             <v-col cols="7">
 
-                <v-img src="../assets/navDerecha.png" height="90vh"   @click="scroll()">
+                <v-img src="../assets/navDerecha.png" height="100vh"   @click="scroll()" id="div2">
 
-                    <div style=" width: 100%; height: 90vh; display: flex; justify-content: flex-start; align-items: flex-end; " >
+                    <div style=" width: 100%; height: 100vh; display: flex; justify-content: flex-start; align-items: flex-end; " id="div3" >
                         <div  style="position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  " class="img-logoback" id="img-logoback">
                             <v-img src="../assets/logoVacio.png" contain style=" width: 10rem; height: 10rem;" >
                                 <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;  " class="img-icon-flecha" id="img-logoback2">
@@ -57,6 +57,7 @@ export default {
     }),
     mounted(){
     window.addEventListener( "scroll", () => {
+
                    if ( window.scrollY > 0) {
               this.percentage =  -window.scrollY +110
               document.getElementById('img-logoback1').style.animation = "none";
@@ -67,10 +68,21 @@ export default {
             document.getElementById('img-logoback').style.opacity = "0";
             document.getElementById('IconoAfter').style.transition = ".5s"
             document.getElementById('IconoAfter').style.opacity = "1"
-
+            document.getElementById('div1').style.height = '90vh'
+            document.getElementById('div2').style.height = '90vh'
+            document.getElementById('div3').style.height = '90vh'
+            document.getElementById('div1').style.transition = ".5s"
+            document.getElementById('div2').style.transition = ".5s"
+            document.getElementById('div3').style.transition = ".5s"
             }
             else {
               this.percentage =  -window.scrollY + 5000
+              document.getElementById('div1').style.height = '100vh'
+              document.getElementById('div2').style.height = '100vh'
+              document.getElementById('div3').style.height = '100vh'
+              document.getElementById('div1').style.transition = ".5s"
+                document.getElementById('div2').style.transition = ".5s"
+            document.getElementById('div3').style.transition = ".5s"
               document.getElementById('img-logoback1').style.animation = "animacionLogo 4s ease-in-out infinite ";
             document.getElementById('img-logoback').style.animation = "animacionLogoBack 4s ease-in-out infinite";
               document.getElementById('img-logoback').style.transition = "1s";
@@ -108,7 +120,7 @@ body {
 }
 .nav-izquierda{
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     background-color: black;
     display: grid;
     place-content: center;
