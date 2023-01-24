@@ -101,7 +101,7 @@ export default {
 
 
 
-<style>
+<style lang="scss" scoped>
 
 .carousel-item{
   width: 50%;
@@ -154,7 +154,7 @@ height: 40px;
   width: 25px;
 height: 40px;
 }
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1900px) {
   .carousel-control-prev{
   left: 30%;
   height: 100px;

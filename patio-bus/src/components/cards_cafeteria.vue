@@ -3,7 +3,7 @@
     <div>
     <v-container>
     <v-row style="height: 300px;">
-      <v-col cols= "6" xs= "12" sm= "12" md= "6" lg= "6" xl= "6">
+      <v-col cols="12" xs= "12" sm= "12" md= "6" lg= "6" xl= "6">
         <div class="card1">
           <div class="card__content1">
             <div class="card__front1"  v-bind:style="{ 'background-image': `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%) , url(${require('../assets/ImagenesCards/SnacksInfusiones/infusiones.jpg')}) ` }">
