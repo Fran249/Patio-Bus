@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <div style="">
     <NavBar />
-    <CarouselsVue style="margin-top: 10rem;"/>
+    <CarouselsVue style="margin-top: 10rem; height: 100vh;"/>
 
   <cards_cafet class="mb-15 mt-10"/>
-
 
     <div class="d-flex flex-column align-center mt-15" style="width: 100%;">
       <h5>¡Conocenos!</h5>
@@ -20,6 +19,8 @@
         
       </div>  
     </v-container>
+    
+
       <CardsVue />
       <FooterVue/>
 

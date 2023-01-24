@@ -1,7 +1,7 @@
 <template>
-    <div>
+
         <v-container>
-      <v-row style="height: 200px;">
+      <v-row >
         
         <v-col :xs="item.xs" :sm="item.sm" :md="item.md" :xl="item.xl" v-for="(item, i) in items" :key="i">
           <div class="card">
@@ -23,7 +23,7 @@
       
       </v-row>
     </v-container>
-    </div>
+
 </template>
 
 
