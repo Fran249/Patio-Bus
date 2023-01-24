@@ -17,14 +17,10 @@
             </v-col>
 
             <v-col cols="7">
-                            <div  style="opacity: 0 ;width: 10rem; height: 10rem; border-radius: 50%; z-index: 100;" id="IconoAfter" class="icono-after">
-                            <v-img src="../assets/Icono.png" contain  style=" " class="img-icon-after">
 
-                            </v-img>
-                        </div>
-                <v-img src="../assets/navDerecha.png" height="100vh" style=""  @click="scroll()">
+                <v-img src="../assets/navDerecha.png" height="90vh"   @click="scroll()">
 
-                    <div style=" width: 100%; height: 100%; display: flex; justify-content: flex-start; align-items: flex-end; transform: translateX(-50px) ; position: absolute; " >
+                    <div style=" width: 100%; height: 90vh; display: flex; justify-content: flex-start; align-items: flex-end; " >
                         <div  style="position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  " class="img-logoback" id="img-logoback">
                             <v-img src="../assets/logoVacio.png" contain style=" width: 10rem; height: 10rem;" >
                                 <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;  " class="img-icon-flecha" id="img-logoback2">
@@ -45,6 +41,11 @@
             </v-col>
 
         </v-row>
+                               <div  style="opacity: 0 ;width: 100%; height: 10vh; border-radius: 50%; z-index: 100;" id="IconoAfter" class="icono-after">
+                            <v-img src="../assets/Icono.png" contain  style=" " class="img-icon-after">
+
+                            </v-img>
+                        </div>
     </div>
 </template>
 
@@ -97,19 +98,17 @@ export default {
 
 <style scoped>
 .img-icon-after{
-    width: 10rem ; height: 10rem;
-}
-.icono-after{
-    position: absolute;
-    top: 24%; 
-        left: 38% ;
+    margin-left: 40vw;
+    transform: translateY(-50px);
+    width: 100px;
+    height: 100px;
 }
 body {
     scroll-behavior: smooth;
 }
 .nav-izquierda{
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     background-color: black;
     display: grid;
     place-content: center;
@@ -229,14 +228,7 @@ body {
 }
 
 @media screen and (max-width: 1400px){
-    .icono-after{
 
-        position: absolute; top: 17.5%;
-    }
-    .img-icon-after{
-        width: 6rem;
-        height: 6rem;
-    }
     .img-logo{
         width: 100px;
         height: 100px;
