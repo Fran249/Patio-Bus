@@ -110,7 +110,7 @@ export default {
 
 <style scoped>
 .img-icon-after{
-    margin-left: 40vw;
+    margin-left: 50vw;
     transform: translateY(-50px);
     width: 100px;
     height: 100px;

@@ -10,8 +10,8 @@
         v-for="(item, i) in items"
         :key="i"
       >
-        <div class="card">
-          <div class="card__content">
+        <div v-bind:class="{card: item.title != 'Bebidas' , card1: item.title == 'Bebidas'}">
+          <div v-bind:class="{card__content: item.title != 'Bebidas', card__content1: item.title == 'Bebidas'}">
             <div
               class="card__front"
               v-bind:style="{
@@ -24,7 +24,7 @@
             <div v-bind:class="{card__back: item.title != 'Bebidas', card__back2: item.title == 'Bebidas'}">
               <router-link to="/Guarniciones">
                 <button class="card__body">
-                  <p>{{ item.cardBackBody }}</p>
+                  <p v-bind:class="{texto_btn: item.title != 'Bebidas', texto_btn1: item.title == 'Bebidas' }">{{ item.cardBackBody }}</p>
                 </button>
                 </router-link>
                 </div>
@@ -177,6 +177,27 @@ export default {
   transform: rotateY(0.5turn);
 }
 
+.card1:hover .card__content1 {
+  transform: rotateX(0.5turn);
+}
+
+
+.card1 {
+  height: 300px;
+  border: none;
+  cursor: pointer;
+}
+
+.card__content1 {
+  height: 300px;
+  text-align: center;
+  position: relative;
+
+  transition: transform 3s;
+  /* background: pink;*/
+  transform-style: preserve-3d;
+}
+
 .card__front,
 .card__back, 
 .card__back2 
@@ -241,9 +262,16 @@ export default {
   justify-self: center;
   justify-content: center;
 }
-p{
+.texto_btn{
   border: 1px solid white;
   width: 100px;
+
+}
+.texto_btn1{
+
+  border: 1px solid white;
+  width: 100px;
+  
 }
 
 .card__back {
@@ -271,6 +299,8 @@ p{
     url("../assets/CarouselCarrito/Logo.png");
   background-size: 40%;
   background-position: -5%;
+  transform: rotateX(180deg);
+
 }
 
 </style>
