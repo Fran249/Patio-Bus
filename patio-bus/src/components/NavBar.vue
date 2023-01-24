@@ -60,12 +60,9 @@ export default {
 
                    if ( window.scrollY > 0) {
               this.percentage =  -window.scrollY +110
-              document.getElementById('img-logoback1').style.animation = "none";
-            document.getElementById('img-logoback').style.animation = "none";
-            document.getElementById('img-logoback').style.transition = "1s";
-            document.getElementById('img-logoback1').style.transition = "1s";            
-            document.getElementById('img-logoback1').style.opacity = "0";
-            document.getElementById('img-logoback').style.opacity = "0";
+              document.getElementById('img-logoback1').style.cursor = "auto"  
+            document.getElementById('div3').style.opacity = "0"
+            document.getElementById('div3').style.transition = ".5s"      
             document.getElementById('IconoAfter').style.transition = ".5s"
             document.getElementById('IconoAfter').style.opacity = "1"
             document.getElementById('div1').style.height = '90vh'
@@ -74,20 +71,23 @@ export default {
             document.getElementById('div1').style.transition = ".5s"
             document.getElementById('div2').style.transition = ".5s"
             document.getElementById('div3').style.transition = ".5s"
+            
             }
             else {
               this.percentage =  -window.scrollY + 5000
               document.getElementById('div1').style.height = '100vh'
               document.getElementById('div2').style.height = '100vh'
               document.getElementById('div3').style.height = '100vh'
+              document.getElementById('img-logoback1').style.cursor = "pointer"
+            document.getElementById('div3').style.opacity = "1"
+            document.getElementById('div3').style.transition = ".5s"   
               document.getElementById('div1').style.transition = ".5s"
                 document.getElementById('div2').style.transition = ".5s"
-            document.getElementById('div3').style.transition = ".5s"
-              document.getElementById('img-logoback1').style.animation = "animacionLogo 4s ease-in-out infinite ";
-            document.getElementById('img-logoback').style.animation = "animacionLogoBack 4s ease-in-out infinite";
+
+
               document.getElementById('img-logoback').style.transition = "1s";
             document.getElementById('img-logoback1').style.transition = "1s";            
-            document.getElementById('img-logoback1').style.opacity = "1";
+            document.getElementById('img-logoback2').style.opacity = "1";
             document.getElementById('img-logoback').style.opacity = "1";
             document.getElementById('IconoAfter').style.opacity = "0"
             }
