@@ -14,7 +14,7 @@
     <div class="carousel-item active">
       <v-img src="../assets/Combo1.png"  alt="...">
         <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
             <v-icon>
               mdi-cart
             </v-icon>
@@ -73,6 +73,8 @@
 
 
 <script>
+import store from '@/store';
+
 export default {
     name: 'CarouselsVue',
     data: ()=>({
@@ -90,8 +92,14 @@ export default {
                     src: 'https://i.imgur.com/mlC0zPx.jpg'
                 },
 
-            ]
+            ],
+            carrito : store.state.carrito
     }),
+    methods: {
+      carritoOpen(){
+        store.commit('toggleCarrito', true)
+      }
+    }
 
 
 
@@ -104,7 +112,7 @@ export default {
 <style lang="scss" scoped>
 
 .carousel-item{
-  width: 50%;
+  width: 60%;
   height: 25%;
   margin-left: 40%;
   margin-top: 5%;
@@ -130,9 +138,12 @@ export default {
 .carousel-indicators .active {
   width: 104px;
 
+
 }
 .carousel-indicators .no-active{
   width: 104px;
+
+  background-color: grey;
 }
 .carousel-control-prev{
   left: 30%;
@@ -141,12 +152,15 @@ export default {
 }
 .carousel-control-next{
   height: 100px;
-  margin-top: 10rem
+  margin-top: 10rem;
+  
+transform: translateX(120px);
 }
 .carousel-control-next-icon{
 background-image: url('../assets/Icono-FlechaRight.png');
 width: 25px;
 height: 40px;
+
 }
 
 .carousel-control-prev-icon{

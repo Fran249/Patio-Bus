@@ -43,7 +43,7 @@
             Layer) para realizar transacciones electrónicas seguras, lo que significa que toda tu información personal
             no
             podrá ser leída ni capturada por terceros mientras viaja por la red.</p>
-        <h4>¿Cómo hago para reclamar o cancelar un pedido?</h4>
+        <h4 class="title">¿Cómo hago para reclamar o cancelar un pedido?</h4>
         <p>Por cualquier reclamo o cancelación respecto de tu pedido, debés comunicarte vía WhatsApp al 02284-577478.
             Todo
             tipo de <b>rembolso</b> será otorgado mediante códigos de descuento por el valor total de su compra para ser
