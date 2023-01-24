@@ -22,7 +22,7 @@
             </div>
 
             <div v-bind:class="{card__back: item.title != 'Bebidas', card__back2: item.title == 'Bebidas'}">
-              <router-link to="/Guarniciones">
+              <router-link :to="item.route">
                 <button class="card__body">
                   <p v-bind:class="{texto_btn: item.title != 'Bebidas', texto_btn1: item.title == 'Bebidas' }">{{ item.cardBackBody }}</p>
                 </button>
@@ -49,6 +49,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Entradas'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/carnes.jpg"),
@@ -59,6 +60,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Carnes'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"),
@@ -69,6 +71,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Guarniciones'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/pastas.jpg"),
@@ -79,6 +82,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Pastas'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/sandwiches.jpg"),
@@ -89,6 +93,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Sandwiches'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/empanadas.jpg"),
@@ -99,6 +104,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Empanadas'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/tartas.jpg"),
@@ -109,6 +115,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Tartas'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/pizzas.jpg"),
@@ -119,6 +126,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Pizzas'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/helados.jpg"),
@@ -129,6 +137,7 @@ export default {
         sm: "6",
         md: "4",
         xl: "3",
+        route:'/Postres'
       },
       {
         src: require("../assets/ImagenesCards/ImgCardHome/bebidas.jpg"),
@@ -139,13 +148,19 @@ export default {
         sm: "12",
         md: "12",
         xl: "9",
+        route:'/Bebidas'
       },
     ],
   }),
 };
 </script>
 
-<style scoped>
+<style >
+
+a, a:hover, a:visited , a:focus{
+  text-decoration: none;
+  color: white;
+}
 :root {
   --level-one: translateZ(3rem);
   --level-two: translateZ(6rem);
@@ -256,7 +271,7 @@ export default {
   font-weight: var(fw-normal);
   font-size: 1.5rem;
   line-height: 1.6;
-
+  color: white;
   width: 100%;
   display: flex;
   justify-self: center;
