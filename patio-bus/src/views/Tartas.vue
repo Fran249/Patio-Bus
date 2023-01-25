@@ -1,7 +1,8 @@
 <template>
     <div>
      <NavBar />
-     <h1>MENÚ(tartas)</h1>
+     <h1>MENU</h1>
+     <LinksMenus/>
      <v-container style="display: flex;  flex-direction:row">
      
     <v-row >
@@ -51,7 +52,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-h1{text-align: center;}
+h1{
+  text-align: center;
+  font-size: 80px;
+  font-family: 'Quesha';
+
+}
 .carousel{
     width: 100%;
     height: 300px;   

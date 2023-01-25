@@ -146,10 +146,7 @@ export default {
 </script>
 
 <style lang="scss" scoped >
-@font-face {
-    font-family: 'red-hat';
-    src: url('../assets/RedHatDisplay.TTF');
-}
+
 .wsp-btn{
 
     width: 80px; 

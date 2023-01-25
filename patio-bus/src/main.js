@@ -5,7 +5,9 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import FooterVue from '@/components/FooterVue.vue'
 import CarritoVue from '@/components/Carrito.vue';
+import LinksMenus from '@/components/LinksMenus.vue';
 
+Vue.component('LinksMenus', LinksMenus)
 Vue.component('FooterVue', FooterVue)
 Vue.component('CarritoVue', CarritoVue)
 Vue.config.productionTip = false

@@ -61,10 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
-@font-face {
-  font-family: 'Quesha';
-  src: url('../assets/Quesha.ttf');
-}
+  
 .cont_footer{
   margin: 0;
   padding: 0;

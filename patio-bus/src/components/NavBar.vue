@@ -42,9 +42,14 @@
 
         </v-row>
                                <div  style="opacity: 0 ;width: 100%; height: 10vh; border-radius: 50%; z-index: 100;" id="IconoAfter" class="icono-after">
-                            <v-img src="../assets/Icono.png" contain  style=" " class="img-icon-after">
+                            <v-img src="../assets/Icono.png" contain  style=" " class="img-icon-after"  v-if="$route.fullPath == '/'">
 
                             </v-img>
+                            <v-img src="../assets/logoVacio.png" contain  style=" " class="img-icon-after"  v-if="$route.fullPath != '/'">
+                                <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                                    <a href="/" style="text-decoration: none ; color: black;" ><h3 class="text-volver" >VOLVER</h3></a>
+                                </div>
+                            </v-img>                                  
                         </div>
                         <v-dialog v-model="carritoCompra" hide-overlay >
                             <CarritoVue />
@@ -131,13 +136,22 @@ computed: {
 
 <style >
 
+.text-volver{
+    font-family: 'Quesha';
+    font-size: 25px;
+}
+
 .v-dialog{
     width: 70%;
     height: 90%;
     background-color: white;
 }
+.icono-after{
+    display: flex;
+    justify-content: center;
+}
 .img-icon-after{
-    margin-left: 50vw;
+
     transform: translateY(-50px);
     width: 100px;
     height: 100px;

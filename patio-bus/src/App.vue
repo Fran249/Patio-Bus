@@ -14,3 +14,15 @@ export default {
   }),
 };
 </script>
+<style>
+@font-face {
+  font-family: 'Quesha';
+  src: url('./assets/Quesha.ttf');
+}
+
+@font-face {
+  font-family: 'red-hat';
+  src: url('./assets/RedHatDisplay.TTF');
+}
+
+</style>

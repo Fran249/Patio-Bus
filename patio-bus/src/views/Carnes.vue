@@ -1,7 +1,8 @@
 <template>
     <div>
      <NavBar />
-     <h1>MENÚ(Carnes)</h1>
+     <h1>MENÚ</h1>
+      <LinksMenus/>
      <v-container style="display: flex;  flex-direction:row">
      
     <v-row >
@@ -40,6 +41,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+
 export default {
     name: 'Carnes-Vue',
     data: () => ({
@@ -51,7 +53,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-h1{text-align: center;}
+h1{
+  text-align: center;
+  font-size: 80px;
+  font-family: 'Quesha';
+
+}
 .carousel{
     width: 100%;
     height: 300px;   

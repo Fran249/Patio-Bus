@@ -1,9 +1,10 @@
 <template>
     <div>
      <NavBar />
-     <h1>MENÚ(Infusiones)</h1>
+     <h3 class="coffe">COFFE</h3>
+     <LinksInfuSnacks/>
      <v-container style="display: flex;  flex-direction:row">
-     
+
     <v-row >
       <v-col cols="12" >
         <div >
@@ -39,15 +40,18 @@
 </template>
 
 <script>
+import LinksInfuSnacks from '@/components/LinksInfuSnacks.vue';
 import NavBar from '@/components/NavBar.vue';
 import store from '@/store';
 export default {
     name: 'Infusiones-Vue',
     data: () => ({
-        width: window.innerWidth
+        width: window.innerWidth,
+        
     }),
     components: {
         NavBar,
+        LinksInfuSnacks,
     },
     methods:{
       carritoOpen(){
@@ -57,7 +61,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-h1{text-align: center;}
+
+.coffe{
+  font-family: 'Quesha';
+  text-align: center;
+  font-size: 80px;
+}
 .carousel{
     width: 100%;
     height: 300px;   

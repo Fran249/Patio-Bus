@@ -81,10 +81,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 
-@font-face {
-  font-family: 'red-hat';
-  src: url('../assets/RedHatDisplay.TTF');
-}
 
 h1, h3, .title{
   font-family: 'red-hat';
