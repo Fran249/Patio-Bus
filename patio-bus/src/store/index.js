@@ -5,14 +5,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    carrito: false
+    carrito: false,
+
   },
   getters: {
+
   },
   mutations: {
+
     toggleCarrito: (state, value) => (state.carrito = value),
+
   },
   actions: {
+
     toggleCarrito({ commit }, value) {
       commit("toggleCarrito", value);
     },

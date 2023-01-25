@@ -23,13 +23,7 @@
 
       <CardsVue />
       <FooterVue/>
-    <v-dialog v-model="carrito">
-      <h3>pruebas</h3>
-      <h3>pruebas</h3>
-      <h3>pruebas</h3>
-      <h3>pruebas</h3>
-      <h3>pruebas</h3>
-    </v-dialog>
+   
 
   </div>
 </template>
@@ -40,7 +34,7 @@ import CarouselsVue from '@/components/Carousels.vue';
 
 import cards_cafet from '@/components/cards_cafeteria.vue';
 import CardsVue from '@/components/cards.vue';
-import store from '@/store';
+
 
 export default {
   name: 'HomeView',
@@ -48,19 +42,16 @@ export default {
     NavBar,
     CarouselsVue,
     cards_cafet,
-    CardsVue
+    CardsVue,
+  
   },
   data: () => ({
     width: window.innerWidth,
-   carrito : store.state.carrito
+   
+
     
   }),
-  mounted(){ 
-    
-  },
-  computed:{
-    
-  }
+
 }
 
 

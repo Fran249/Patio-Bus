@@ -25,7 +25,7 @@
     <div class="carousel-item">
       <v-img src="../assets/Combo2.png"  alt="...">
         <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
             <v-icon>
               mdi-cart
             </v-icon>
@@ -36,7 +36,7 @@
     <div class="carousel-item">
       <v-img src="../assets/Combo3.png"  alt="...">
         <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
             <v-icon>
               mdi-cart
             </v-icon>
@@ -47,7 +47,7 @@
     <div class="carousel-item">
       <v-img src="../assets/Combo4.png"  alt="...">
         <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
             <v-icon>
               mdi-cart
             </v-icon>
@@ -93,11 +93,11 @@ export default {
                 },
 
             ],
-            carrito : store.state.carrito
+            
     }),
     methods: {
       carritoOpen(){
-        store.commit('toggleCarrito', true)
+        store.commit("toggleCarrito" , true)
       }
     }
 
@@ -153,8 +153,8 @@ export default {
 .carousel-control-next{
   height: 100px;
   margin-top: 10rem;
-  
-transform: translateX(120px);
+  width: 20px;
+transform: translateX(50px);
 }
 .carousel-control-next-icon{
 background-image: url('../assets/Icono-FlechaRight.png');

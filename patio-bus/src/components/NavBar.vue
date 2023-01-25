@@ -46,14 +46,21 @@
 
                             </v-img>
                         </div>
+                        <v-dialog v-model="carritoCompra" hide-overlay >
+                            <CarritoVue />
+
+                    </v-dialog>
     </div>
 </template>
 
 <script>
+
+import store from '@/store';
 export default {
     name: 'NavBar',
     data: ()=>({
-        percentage: '600'
+        percentage: '600',
+        carrito: store.state.carrito,
     }),
     mounted(){
     window.addEventListener( "scroll", () => {
@@ -101,14 +108,34 @@ export default {
 
 
     }
-  }
+  },
+  updated(){ 
+    this.carrito = store.state.carrito
+  },
+
+computed: {
+  carritoCompra: {
+      get() {
+        return store.state.carrito;
+      },
+      set(value) {
+        store.commit("toggleCarrito", value);
+      },
+    },
+}
 }
 
 
 </script>
 
 
-<style scoped>
+<style >
+
+.v-dialog{
+    width: 70%;
+    height: 90%;
+    background-color: white;
+}
 .img-icon-after{
     margin-left: 50vw;
     transform: translateY(-50px);

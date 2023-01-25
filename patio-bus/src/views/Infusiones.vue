@@ -16,7 +16,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <v-img src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="...">
+      <v-img src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="..." @click="carritoOpen()">
         
       </v-img>
     </div>      
@@ -40,6 +40,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import store from '@/store';
 export default {
     name: 'Infusiones-Vue',
     data: () => ({
@@ -48,6 +49,11 @@ export default {
     components: {
         NavBar,
     },
+    methods:{
+      carritoOpen(){
+        store.commit("toggleCarrito" , true)
+      }
+    }
 }
 </script>
 <style lang="scss" scoped>
