@@ -159,7 +159,7 @@ export default {
 
 a, a:hover, a:visited , a:focus{
   text-decoration: none;
-  color: white;
+  color: black;
 }
 :root {
   --level-one: translateZ(3rem);
