@@ -28,22 +28,26 @@
         <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
     </div>
     <div class="grid-cont">
-        <div class="imagen-plato" style="background-color: black; width: 100%; height: 100%">
+        <div class="img-card-izquierda" style="background-color: black; width: 100%; height: 100%">
             
         </div>
 
         <div class="columna2">
-        <h2>Sandwiche</h2>
+        <h2>Café</h2>
         <p>Lorem ipsum dolor sit amet  elit.</p>
-        <div class="botonera">
-            <div class="contador">
-               <h3>2</h3>
-            </div>
-            <div class="botones">
-                <button class="sumador">+</button>
-                <button class="restador">-</button>
-            </div>
-            </div>
+        <v-card-actions >
+                    <div class="d-flex flex-column" style="width:100%">
+                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
+                        <button class="button">
+                            <h3 class="h3-button">45ml</h3>
+                        </button>
+                        <button class="button">
+                            <h3 class="h3-button">75ml</h3>
+                        </button>
+                        </div>
+                 
+                    </div>
+                </v-card-actions>
         </div>
         <div class="precio"><h3>$0.00</h3></div>
         <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
@@ -74,8 +78,8 @@
         <h1 style="justify-content: flex-end; margin-right: 15%; font-style: italic; font-size: 36px; font-weight: 702 ;"> $0.00  </h1>
 
     </div>
-  <div style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 7%;">
-    <button style="border: 2px solid black;">INICIAR MI COMPRA</button></div>
+  <div class="iniciarCompra" style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 3%;">
+    <button style="">  <p>INICIAR MI COMPRA</p></button></div>
 
     </div>
 </template>
@@ -221,6 +225,50 @@ export default {
        flex-direction: row;
        color: black;
        align-items: center;
-        
-    }
+      }
+      .iniciarCompra{
+        padding:  55px 0px 55px 0px;
+      }
+      .iniciarCompra button{
+        background-color: black;
+        justify-content: center;
+        display: flex;         
+        color: white; 
+        align-items: center;
+        padding: 14px 42px 14px 42px;
+
+      }
+      .iniciarCompra button p{
+        font-size: 20px;
+        font-weight: 500;
+        font-family: 'red-hat';
+        margin-bottom: 0;
+       
+      }
+    
+.button{
+    width: 100px;
+    border: 1px solid black;
+}
+.h3-button{
+    font-family: 'red-hat';
+    font-style: italic;
+    font-size: 18px;
+    margin-top: 3px;
+}
+.button:hover {
+    background-color: black;
+    color: white;
+    transition: .5s;
+
+}
+.img-card-izquierda{   
+    background-image: url('../assets/ImagenesCards/caf{e.jpg') ;
+    background-size: 100%;
+    background-position: center;
+    background-size: cover;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    
+}
 </style>
