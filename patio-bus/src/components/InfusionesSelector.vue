@@ -5,7 +5,9 @@
                 <v-col cols="6">
                             <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;" >
                             <div class="img-card-izquierda">
-                                
+                                <v-btn style="background-color: white; " width="70" height="70" icon>
+                                    <h3 style="font-family: 'red-hat'; font-style: italic; font-size: 20px; text-align: center;" class="mt-2">$0,00</h3>         
+                                </v-btn>    
                             </div>              
                 <div style="width: 100%;">
                     <h3 class="title-cafe">
@@ -57,36 +59,36 @@
                 </v-col>
                 <v-col cols="6">
                     <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                <v-img src="../assets/ImagenesCards/InfusionesSelector.jpg">
+                <v-img src="../assets/ImagenesCards/CafeDoble.jpg">
 
                 </v-img>
                 <v-card-title>
                     <h3 class="title-cafe">
-                        Café
+                        Café doble
                     </h3>
                 </v-card-title>
             </v-card>
                 </v-col>
                 <v-col cols="6">
                     <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                <v-img src="../assets/ImagenesCards/InfusionesSelector.jpg">
+                <v-img src="../assets/ImagenesCards/CafeConLeche.jpg">
 
                 </v-img>
                 <v-card-title>
                     <h3 class="title-cafe">
-                        Café
+                        Café con leche
                     </h3>
                 </v-card-title>
             </v-card>
                 </v-col>
                 <v-col cols="6">
                     <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                <v-img src="../assets/ImagenesCards/InfusionesSelector.jpg">
+                <v-img src="../assets/ImagenesCards/CafeConLeche.jpg">
 
                 </v-img>
                 <v-card-title>
                     <h3 class="title-cafe">
-                        Café
+                        Cortado
                     </h3>
                 </v-card-title>
             </v-card>
@@ -122,6 +124,10 @@ export default {
     background-image: url('../assets/ImagenesCards/InfusionesSelector.jpg');
     background-size: 100%;
     background-position: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 15px;
 }
 .title-cafe{
     font-family: 'red-hat';
