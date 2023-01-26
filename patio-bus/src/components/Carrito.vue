@@ -27,7 +27,55 @@
         <div class="precio"><h3>$0.00</h3></div>
         <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
     </div>
-  
+    <div class="grid-cont">
+        <div class="imagen-plato" style="background-color: black; width: 100%; height: 100%">
+            
+        </div>
+
+        <div class="columna2">
+        <h2>Sandwiche</h2>
+        <p>Lorem ipsum dolor sit amet  elit.</p>
+        <div class="botonera">
+            <div class="contador">
+               <h3>2</h3>
+            </div>
+            <div class="botones">
+                <button class="sumador">+</button>
+                <button class="restador">-</button>
+            </div>
+            </div>
+        </div>
+        <div class="precio"><h3>$0.00</h3></div>
+        <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
+    </div>
+    <div class="grid-cont">
+        <div class="imagen-plato" style="background-color: black; width: 100%; height: 100%">
+            
+        </div>
+
+        <div class="columna2">
+        <h2>Sandwiche</h2>
+        <p>Lorem ipsum dolor sit amet  elit.</p>
+        <div class="botonera">
+            <div class="contador">
+               <h3>2</h3>
+            </div>
+            <div class="botones">
+                <button class="sumador">+</button>
+                <button class="restador">-</button>
+            </div>
+            </div>
+        </div>
+        <div class="precio"><h3>$0.00</h3></div>
+        <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
+    </div>
+    <div class="subtotal" style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;">
+        <h1 style="justify-content: flex-start; margin-left: 7%; font-size: 26px; font-weight:bolder;">SUBTOTAL</h1>
+        <h1 style="justify-content: flex-end; margin-right: 15%; font-style: italic; font-size: 36px; font-weight: 702 ;"> $0.00  </h1>
+
+    </div>
+  <div style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 7%;">
+    <button style="border: 2px solid black;">INICIAR MI COMPRA</button></div>
 
     </div>
 </template>
@@ -165,5 +213,14 @@ export default {
     place-items:end end;
    }
 }
-
+.subtotal h1{
+       font-family: 'red-hat';
+       letter-spacing: -0.015em2;
+       width: 50%;
+       display: flex;
+       flex-direction: row;
+       color: black;
+       align-items: center;
+        
+    }
 </style>
