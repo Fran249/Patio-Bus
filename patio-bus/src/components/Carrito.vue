@@ -150,6 +150,7 @@ export default {
     font-family: 'red-hat';
     font-style: italic;
     font-weight: 400;
+    margin-top: 25px;
 }
 .botonx{
     grid-column: 4/5;
