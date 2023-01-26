@@ -74,8 +74,8 @@
         <h1 style="justify-content: flex-end; margin-right: 15%; font-style: italic; font-size: 36px; font-weight: 702 ;"> $0.00  </h1>
 
     </div>
-  <div style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 7%;">
-    <button style="border: 2px solid black;">INICIAR MI COMPRA</button></div>
+  <div class="iniciarCompra" style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 3%;">
+    <button style="">  <p>INICIAR MI COMPRA</p></button></div>
 
     </div>
 </template>
@@ -221,6 +221,25 @@ export default {
        flex-direction: row;
        color: black;
        align-items: center;
-        
-    }
+      }
+      .iniciarCompra{
+        padding:  55px 0px 55px 0px;
+      }
+      .iniciarCompra button{
+        background-color: black;
+        justify-content: center;
+        display: flex;         
+        color: white; 
+        align-items: center;
+        padding: 14px 42px 14px 42px;
+
+      }
+      .iniciarCompra button p{
+        font-size: 20px;
+        font-weight: 500;
+        font-family: 'red-hat';
+        margin-bottom: 0;
+       
+      }
+      
 </style>
