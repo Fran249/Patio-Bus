@@ -4,6 +4,7 @@
         <v-row no-gutters>
 
             <v-col cols="5">
+
                  <div class="nav-izquierda" id="div1">
                        <div class="nav-izquierda-img-container">
                         <v-img src="../assets/PatioBusNavBlanco.png" width="65%" style="margin-top: 25%">
@@ -19,8 +20,20 @@
             <v-col cols="7">
 
                 <v-img src="../assets/navDerecha.png" height="100vh"   @click="scroll()" id="div2">
-
+                    <div style="position: absolute; top:10%; right: 0 ; width: 10%; height: 100%; gap: 5px;" class="d-flex flex-column">
+                            <button style="background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;">
+                                <v-icon color="white" size="30">
+                                    mdi-account
+                                </v-icon>
+                            </button>
+                            <button style="background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;">
+                                <v-icon color="black" size="30">
+                                    mdi-account-plus
+                                </v-icon>
+                            </button>
+                        </div>
                     <div style=" width: 100%; height: 100vh; display: flex; justify-content: flex-start; align-items: flex-end; " id="div3" >
+
                         <div  style="position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  " class="img-logoback" id="img-logoback">
                             <v-img src="../assets/logoVacio.png" contain style=" width: 10rem; height: 10rem;" >
                                 <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;  " class="img-icon-flecha" id="img-logoback2">
@@ -30,6 +43,7 @@
                                 </div>
                             </v-img>
                         </div>
+
                         <div  style=" border-radius: 50%; position: absolute; top: 50% ; left: 44.5%;" class="img-logo" id="img-logoback1">
                             <v-img src="../assets/Icono.png" contain  style=" width: 10rem; height: 10rem;">
 
