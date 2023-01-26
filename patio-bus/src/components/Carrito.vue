@@ -1,10 +1,10 @@
 <template>
     <div>
     <v-container style="display: flex; flex-direction: row; justify-content: space-between;">
-        <div style=" text-align: center;" >
-        <h2 >MIS COMPRAS</h2>
+        <div style=" text-align: center; width: 100%; padding: 15px;" >
+        <h2 class="title-compras">MIS COMPRAS</h2>
     </div> 
-        <button style="align-self: flex-end;">X</button>
+        <button style="align-self: flex-start; " @click="closeCarrito()"><v-icon>mdi-close</v-icon></button>
         </v-container>        
     <div class="grid-cont">
         <div class="imagen-plato" style="background-color: black; width: 100%; height: 100%">
@@ -12,18 +12,20 @@
         </div>
 
         <div class="columna2">
-        <h2>Lorem ipsum dolor</h2>
-        <h5>Lorem ipsum dolor sit amet  elit.</h5>
+        <h2>Sandwiche</h2>
+        <p>Lorem ipsum dolor sit amet  elit.</p>
         <div class="botonera">
-            <div class="contador">gad</div>
+            <div class="contador">
+               <h3>2</h3>
+            </div>
             <div class="botones">
-                <div class="sumador">+</div>
-            <div class="restador">-</div>
-        </div>
-        </div>
+                <button class="sumador">+</button>
+                <button class="restador">-</button>
+            </div>
+            </div>
         </div>
         <div class="precio"><h3>$0.00</h3></div>
-        <div class="botonx"><button>X</button></div>
+        <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
     </div>
   
 
@@ -32,11 +34,17 @@
 
 
 <script>
+import store from '@/store';
 export default {
     name: 'CarritoVue',
     data: ()=>({
         
     }),
+    methods:{
+        closeCarrito(){
+            store.commit("toggleCarrito" , false)
+        }
+    }
 
 }
 
@@ -44,6 +52,11 @@ export default {
 
 
 <style lang="scss" scoped>
+
+.title-compras{
+    font-family: 'Quesha';
+    font-size: 40px;
+}
 .grid-cont{
     padding: 50px;
     display: grid;
@@ -69,44 +82,74 @@ export default {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    
+
     
   
 }
- .botonera{padding: 0;
-    border: 2px solid black;
+.columna2 h2{
+        font-family: 'red-hat';
+        font-size: 20px;
+        font-weight: bolder;
+        color: black;
+        
+    }
+.columna2 p{
+    font-family: 'red-hat';
+    color: grey;
+    font-size: 15px;
+    font-weight: lighter;
+        
+}
+ .botonera{
+    padding: 0;
+    border: 1px solid black;
     width:25%;
-    height: 71px;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    gap: 5px; 
     
      
     }
     .contador{       
-    width: 70%;      
-    height: 50px;    
-    display: flex;
-    flex-direction:row ; 
-    place-items:center end ;     
-    align-items: center;
+    width: 60%;
+    height: 100%;
+    display: grid;
+    place-items: center;    
        }
+    .contador h3 {
+        font-family: 'red-hat';
+        font-weight: bolder;
+        font-size: 20px;
+        color: black;
+        
+
+    }
     .botones{
-        display: flex;
+    display: flex;
     flex-direction:column;
-    width: 30%;
-        height: 100%;
-    border-left: 2px solid black;
+    width: 40%;
+    height: 100%;
+    border-left: 1px solid black;
+
     .sumador{text-align: center;
-        border-bottom: 2px solid black;
+        height: 50%;
+        border-bottom: 1px solid black;
     }
     .restador{
-        text-align: center; 
+        text-align: center;
+        height: 50%;
     }
     }
 .precio{
     grid-column: 3/4;
     grid-row: 1/2;
+
+
+}
+.precio h3 {
+    font-family: 'red-hat';
+    font-style: italic;
+    font-weight: 400;
 }
 .botonx{
     grid-column: 4/5;
