@@ -3,11 +3,10 @@
      <NavBar />
      <h3 class="coffe">COFFE</h3>
      <LinksInfuSnacks/>
-     <v-container style="display: flex;  flex-direction:row">
+     <v-container>
 
     <v-row >
       <v-col cols="12" >
-        <div >
         <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active no-active" aria-current="true" aria-label="Slide 1"></button>
@@ -17,7 +16,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <v-img src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="..." @click="carritoOpen()">
+      <v-img contain src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="..." @click="carritoOpen()">
         
       </v-img>
     </div>      
@@ -31,10 +30,10 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-    </div>
       </v-col>
     </v-row>
   </v-container>
+  <InfusionesSelector/>
   <FooterVue/>
     </div>
 </template>
@@ -42,6 +41,7 @@
 <script>
 import LinksInfuSnacks from '@/components/LinksInfuSnacks.vue';
 import NavBar from '@/components/NavBar.vue';
+import InfusionesSelector from '@/components/InfusionesSelector.vue';
 import store from '@/store';
 export default {
     name: 'Infusiones-Vue',
@@ -52,6 +52,7 @@ export default {
     components: {
         NavBar,
         LinksInfuSnacks,
+        InfusionesSelector
     },
     methods:{
       carritoOpen(){
