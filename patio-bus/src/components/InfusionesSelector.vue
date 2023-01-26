@@ -158,12 +158,20 @@ export default {
     justify-content: center;
     gap: 6px;
     padding: 3px;
+    margin-top: 20px;
 }
+.button:hover {
+    background-color: black;
+    color: white;
+    transition: .5s;
+
+}
+
 
 @media screen and (min-width: 1500px){
     .button{
-    width: 200px;
-    margin-left: 35px;
+    width: 130px;
+    
 }
 
 
