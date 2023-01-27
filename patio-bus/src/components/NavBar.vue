@@ -69,7 +69,7 @@
                             <CarritoVue />
 
                     </v-dialog>
-                    <v-dialog v-model="ingreso">
+                    <v-dialog v-model="ingreso" >
                         <IngresoComp/>
                     </v-dialog>
                     <v-dialog>
@@ -147,6 +147,7 @@ export default {
 
 
 <style >
+
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -176,6 +177,7 @@ export default {
     width: 50vw;
     height: 90%;
     background-color: white;
+    border-radius: 0px;
 }
 .icono-after{
     display: flex;
