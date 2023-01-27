@@ -29,11 +29,9 @@
           ></v-text-field>
             <a @click="ingreso = false" class="d-flex justify-end a-withP"><p>¿Olvidaste tu contraseña?</p></a>
      
-            <v-btn width="70%" type="submit" class="ml-15" color="#febf2c">
-                <p class="mt-4 p-v-btn" >
-                    ACCEDER
-                </p>
-            </v-btn>
+            <button class="button">
+                <h3>ACCEDER</h3>
+            </button>
       </form>
       <p>{{error}}</p>
 </div>
@@ -60,6 +58,9 @@ export default {
 
 
 <style lang="scss" scoped>
+.button{
+    background-color: #000;
+}
 .h3-icon-cont h3{
     font-family: 'Quesha';
     font-size: 40px;
