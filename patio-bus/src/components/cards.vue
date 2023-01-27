@@ -255,6 +255,7 @@ a, a:hover, a:visited , a:focus{
   transform: var(--level-three);
   order: 2;
   text-transform: uppercase;
+  font-family: 'red-hat';
 }
 
 .card__subtitle {

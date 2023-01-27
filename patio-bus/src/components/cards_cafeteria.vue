@@ -133,6 +133,7 @@ a, a:hover, a:focus, a:visited, button{
   transform: var(--level-three);
   order: 2;
   text-transform: uppercase;
+  font-family: 'red-hat';
 }
 
 .card__subtitle1 {
