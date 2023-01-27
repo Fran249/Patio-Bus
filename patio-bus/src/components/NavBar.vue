@@ -156,7 +156,7 @@ computed: {
 }
 
 .v-dialog{
-    width: 70%;
+    width: 50vw;
     height: 90%;
     background-color: white;
 }
