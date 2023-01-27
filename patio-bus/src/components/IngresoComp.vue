@@ -2,7 +2,7 @@
 <div class="form-container">
     <div style="width: 100%" class="d-flex flex-row justify-space-between h3-icon-cont">
         <h3>¡BIENVENIDO!</h3>
-        <v-btn elevation="0" color="#000" icon >
+        <v-btn elevation="0" color="#000" icon @click="closeIngreso()">
             <v-icon>mdi-close</v-icon>
         </v-btn>
     </div>
@@ -41,6 +41,9 @@
 
 
 <script>
+import store from '@/store';
+
+
 export default {
     name: 'IngresoComp',
     data: ()=>({
@@ -52,8 +55,11 @@ export default {
             width : window.innerWidth
     }),
     methods:{
+        closeIngreso(){
+            store.commit('toggleIngreso', false)
+        }
+    },
 
-    }
 }
 
 </script>

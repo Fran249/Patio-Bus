@@ -19,14 +19,14 @@
 
             <v-col cols="7">
 
-                <v-img src="../assets/navDerecha.png" height="100vh"   @click="scroll()" id="div2">
+                <v-img src="../assets/navDerecha.png" height="100vh"   id="div2">
                     <div style="position: absolute; top:10%; right: 0 ; width: 10%; height: 100%; gap: 5px;" class="d-flex flex-column">
-                            <button style="background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;">
+                            <button style="background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
                                 <v-icon color="white" size="30">
                                     mdi-account
                                 </v-icon>
                             </button>
-                            <button style="background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;">
+                            <button style="background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
                                 <v-icon color="black" size="30">
                                     mdi-account-plus
                                 </v-icon>
@@ -72,7 +72,7 @@
                     <v-dialog v-model="ingreso" >
                         <IngresoComp/>
                     </v-dialog>
-                    <v-dialog>
+                    <v-dialog v-model="registro">
                         <RegistroComp/>
                     </v-dialog>
     </div>
@@ -86,7 +86,7 @@ export default {
     data: () => ({
         percentage: "600",
         carrito: store.state.carrito,
-        ingreso: true,
+
     }),
     mounted() {
         window.addEventListener("scroll", () => {
@@ -125,7 +125,14 @@ export default {
     methods: {
         scroll() {
             window.scrollTo(0, 1000);
+        },
+        openIngreso(){
+            store.commit('toggleIngreso', true)
+        },
+        openRegistro(){
+            store.commit('toggleRegistro', true)
         }
+
     },
     updated() {
         this.carrito = store.state.carrito;
@@ -137,6 +144,22 @@ export default {
             },
             set(value) {
                 store.commit("toggleCarrito", value);
+            },
+        },
+        ingreso: {
+            get() {
+                return store.state.ingreso;
+            },
+            set(value) {
+                store.commit("toggleIngreso", value);
+            },
+        },
+        registro: {
+            get() {
+                return store.state.registro;
+            },
+            set(value) {
+                store.commit("toggleRegistro", value);
             },
         },
     },
