@@ -69,7 +69,7 @@
                             <CarritoVue />
 
                     </v-dialog>
-                    <v-dialog>
+                    <v-dialog v-model="ingreso">
                         <IngresoComp/>
                     </v-dialog>
                     <v-dialog>
@@ -86,6 +86,7 @@ export default {
     data: () => ({
         percentage: "600",
         carrito: store.state.carrito,
+        ingreso: true,
     }),
     mounted() {
         window.addEventListener("scroll", () => {
@@ -139,7 +140,6 @@ export default {
             },
         },
     },
-    components: { RegistroComp }
 }
 
 
