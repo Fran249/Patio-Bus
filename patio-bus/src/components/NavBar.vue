@@ -149,7 +149,26 @@ computed: {
 
 
 <style >
+::-webkit-scrollbar {
+  width: 7px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #B9B1B1; 
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #D9D9D9; 
+ 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #D9D9D9; 
+}
 .text-volver{
     font-family: 'Quesha';
     font-size: 25px;
