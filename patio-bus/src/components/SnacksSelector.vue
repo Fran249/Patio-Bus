@@ -12,8 +12,8 @@
                           Café
                       </h3>
                   </div>
-                  <v-card-text>
-                      <p class="text-p">
+                  <v-card-text class="v-text">
+                      <p class="text-p ">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto ipsum officiis facilis velit itaque
                       vel quam quod, placeat doloribus minus modi aliquam, officia nesciunt laudantium.
                       Expedita sit debitis distinctio corrupti.
@@ -98,7 +98,17 @@
               </v-col>
               </v-row>
           
-  
+    <div class="container-selectors-up">
+        <div class="select-container">
+        <div class="selectores">
+            <div class="selector1"></div>
+            <div class="selector2"></div>
+            <div class="selector3"></div>
+            <div class="selector4"></div>
+        </div>
+        <h3 class="mt-2">1 de 4</h3>
+    </div>
+    </div>
     </v-container>
   </template>
   
@@ -120,6 +130,43 @@
   
   
   <style lang="scss" scoped>
+  .container-selectors-up{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .select-container{
+    width: 50%;
+    h3{
+        text-align: center;
+        font-family: 'red-hat';
+        font-size: 15px;
+        height: 20px;
+        
+    }
+   
+    .selectores{
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+        .selector1, .selector2, .selector3, .selector4{
+        width: 101px;
+        background-color: #D9D9D9;
+        transition: .5s;
+        height: 5px;
+    }
+        .selector1:hover, .selector2:hover, .selector3:hover, .selector4:hover{
+            background-color: #B9B1B1;
+            transition: .5s;
+            cursor: pointer;
+        }
+    }
+  }
+  .select-container h3{
+        padding: 0;
+        margin: 0;
+    }
   .grid-botonera{
     display: grid;
     grid-template-columns: repeat(3, 50px);
@@ -197,12 +244,17 @@
   }
   
   
-  @media screen and (min-width: 1500px){
+  @media screen and (min-width: 1400px){
       .button{
       width: 130px;
       
   }
-  
+  .v-text{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   }
   @media screen and (max-width: 1300px) {
