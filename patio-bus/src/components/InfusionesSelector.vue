@@ -4,11 +4,9 @@
             <v-row>
                 <v-col cols="6">
                             <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;" >
-                            <div class="img-card-izquierda">
-                                <v-btn style="background-color: white; " width="70" height="70" icon>
-                                    <h3 style="font-family: 'red-hat'; font-style: italic; font-size: 20px; text-align: center;" class="mt-2">$0,00</h3>         
-                                </v-btn>    
-                            </div>              
+                                <v-img src="../assets/ImagenesCards/InfusionesSelector.jpg" style="height: 250px">
+                                    
+                                </v-img>           
                 <div style="width: 100%;">
                     <h3 class="title-cafe">
                         Café
@@ -96,7 +94,17 @@
                 </v-row>
             </v-col>
             </v-row>
-        
+            <div class="container-selectors-up">
+        <div class="select-container">
+        <div class="selectores">
+            <div class="selector1"></div>
+            <div class="selector2"></div>
+            <div class="selector3"></div>
+            <div class="selector4"></div>
+        </div>
+        <h3 class="mt-2">1 de 4</h3>
+    </div>
+    </div>
 
   </v-container>
 </template>
@@ -118,6 +126,43 @@ export default {
 
 
 <style lang="scss" scoped>
+  .container-selectors-up{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .select-container{
+    width: 50%;
+    h3{
+        text-align: center;
+        font-family: 'red-hat';
+        font-size: 15px;
+        height: 20px;
+        
+    }
+   
+    .selectores{
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+        .selector1, .selector2, .selector3, .selector4{
+        width: 101px;
+        background-color: #D9D9D9;
+        transition: .5s;
+        height: 5px;
+    }
+        .selector1:hover, .selector2:hover, .selector3:hover, .selector4:hover{
+            background-color: #B9B1B1;
+            transition: .5s;
+            cursor: pointer;
+        }
+    }
+  }
+  .select-container h3{
+        padding: 0;
+        margin: 0;
+    }
 .img-card-izquierda{
     height: 50%;
     width: 100%; 
