@@ -6,7 +6,11 @@ import vuetify from './plugins/vuetify'
 import FooterVue from '@/components/FooterVue.vue'
 import CarritoVue from '@/components/Carrito.vue';
 import LinksMenus from '@/components/LinksMenus.vue';
+import IngresoComp from '@/components/IngresoComp.vue'
+import RegistroComp from '@/components/RegistroComp.vue'
 
+Vue.component('IngresoComp', IngresoComp)
+Vue.component('RegistroComp', RegistroComp)
 Vue.component('LinksMenus', LinksMenus)
 Vue.component('FooterVue', FooterVue)
 Vue.component('CarritoVue', CarritoVue)
