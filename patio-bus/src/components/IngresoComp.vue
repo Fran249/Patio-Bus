@@ -3,7 +3,7 @@
     <div style="width: 100%" class="grid-cont h3-icon-cont">
         <h3 class="h3-welcome">¡BIENVENIDO!</h3>
 
-        <v-btn elevation="0" color="#000" icon class="btn-close" >
+        <v-btn elevation="0" color="#000" icon class="btn-close" @click="closeIngreso()" >
             <v-icon>mdi-close</v-icon>
         </v-btn>
     </div>
@@ -124,7 +124,7 @@ a p{
     justify-content: center;
 }
 .email{
- width: 450px;
+ width: 510px;
 }
 
 </style>
