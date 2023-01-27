@@ -1,5 +1,11 @@
 <template>
 <div class="form-container">
+    <div style="width: 100%" class="d-flex flex-row justify-space-between h3-icon-cont">
+        <h3>¡BIENVENIDO!</h3>
+        <v-btn elevation="0" color="#000" icon >
+            <v-icon>mdi-close</v-icon>
+        </v-btn>
+    </div>
     <form @submit.prevent="ingresoUsuario({email:email, password:pass})" class="form">
           <v-text-field
               type="email"
@@ -54,7 +60,11 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.h3-icon-cont h3{
+    font-family: 'Quesha';
+    font-size: 40px;
+    color: #000;
+}
 .form-container{
     padding: 25px;
 }
