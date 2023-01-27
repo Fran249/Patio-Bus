@@ -69,6 +69,12 @@
                             <CarritoVue />
 
                     </v-dialog>
+                    <v-dialog v-model="ingreso">
+                        <IngresoComp/>
+                    </v-dialog>
+                    <v-dialog>
+                        <RegistroComp/>
+                    </v-dialog>
     </div>
 </template>
 
@@ -76,72 +82,64 @@
 
 import store from '@/store';
 export default {
-    name: 'NavBar',
-    data: ()=>({
-        percentage: '600',
+    name: "NavBar",
+    data: () => ({
+        percentage: "600",
         carrito: store.state.carrito,
+        ingreso: true,
     }),
-    mounted(){
-    window.addEventListener( "scroll", () => {
-
-                   if ( window.scrollY > 0) {
-              this.percentage =  -window.scrollY +110
-              document.getElementById('img-logoback1').style.cursor = "auto"  
-            document.getElementById('div3').style.opacity = "0"
-            document.getElementById('div3').style.transition = ".5s"      
-            document.getElementById('IconoAfter').style.transition = ".5s"
-            document.getElementById('IconoAfter').style.opacity = "1"
-            document.getElementById('div1').style.height = '90vh'
-            document.getElementById('div2').style.height = '90vh'
-            document.getElementById('div3').style.height = '90vh'
-            document.getElementById('div1').style.transition = ".5s"
-            document.getElementById('div2').style.transition = ".5s"
-            document.getElementById('div3').style.transition = ".5s"
-            
+    mounted() {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 0) {
+                this.percentage = -window.scrollY + 110;
+                document.getElementById("img-logoback1").style.cursor = "auto";
+                document.getElementById("div3").style.opacity = "0";
+                document.getElementById("div3").style.transition = ".5s";
+                document.getElementById("IconoAfter").style.transition = ".5s";
+                document.getElementById("IconoAfter").style.opacity = "1";
+                document.getElementById("div1").style.height = "90vh";
+                document.getElementById("div2").style.height = "90vh";
+                document.getElementById("div3").style.height = "90vh";
+                document.getElementById("div1").style.transition = ".5s";
+                document.getElementById("div2").style.transition = ".5s";
+                document.getElementById("div3").style.transition = ".5s";
             }
             else {
-              this.percentage =  -window.scrollY + 5000
-              document.getElementById('div1').style.height = '100vh'
-              document.getElementById('div2').style.height = '100vh'
-              document.getElementById('div3').style.height = '100vh'
-              document.getElementById('img-logoback1').style.cursor = "pointer"
-            document.getElementById('div3').style.opacity = "1"
-            document.getElementById('div3').style.transition = ".5s"   
-              document.getElementById('div1').style.transition = ".5s"
-                document.getElementById('div2').style.transition = ".5s"
-
-
-              document.getElementById('img-logoback').style.transition = "1s";
-            document.getElementById('img-logoback1').style.transition = "1s";            
-            document.getElementById('img-logoback2').style.opacity = "1";
-            document.getElementById('img-logoback').style.opacity = "1";
-            document.getElementById('IconoAfter').style.opacity = "0"
+                this.percentage = -window.scrollY + 5000;
+                document.getElementById("div1").style.height = "100vh";
+                document.getElementById("div2").style.height = "100vh";
+                document.getElementById("div3").style.height = "100vh";
+                document.getElementById("img-logoback1").style.cursor = "pointer";
+                document.getElementById("div3").style.opacity = "1";
+                document.getElementById("div3").style.transition = ".5s";
+                document.getElementById("div1").style.transition = ".5s";
+                document.getElementById("div2").style.transition = ".5s";
+                document.getElementById("img-logoback").style.transition = "1s";
+                document.getElementById("img-logoback1").style.transition = "1s";
+                document.getElementById("img-logoback2").style.opacity = "1";
+                document.getElementById("img-logoback").style.opacity = "1";
+                document.getElementById("IconoAfter").style.opacity = "0";
             }
-        }
-    )
-  },
-  methods: {
-    scroll(){
-        window.scrollTo(0, 1000)
-
-
-
-    }
-  },
-  updated(){ 
-    this.carrito = store.state.carrito
-  },
-
-computed: {
-  carritoCompra: {
-      get() {
-        return store.state.carrito;
-      },
-      set(value) {
-        store.commit("toggleCarrito", value);
-      },
+        });
     },
-}
+    methods: {
+        scroll() {
+            window.scrollTo(0, 1000);
+        }
+    },
+    updated() {
+        this.carrito = store.state.carrito;
+    },
+    computed: {
+        carritoCompra: {
+            get() {
+                return store.state.carrito;
+            },
+            set(value) {
+                store.commit("toggleCarrito", value);
+            },
+        },
+    },
 }
 
 
