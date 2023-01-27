@@ -16,7 +16,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <v-img contain src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="..." @click="carritoOpen()">
+      <v-img style="height: 300px;" contain src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="..." @click="carritoOpen()">
         
       </v-img>
     </div>      
