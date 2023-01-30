@@ -157,7 +157,7 @@ export default {
 }
 
 .grid-cont .imagen-plato {
-    background-image: url("../assets/ImagenesCards/38031.webp");
+    background-image: url("../assets/ImagenesCards/SandwichJyQ.jpg");
     background-size: cover;
     background-position: center;
     grid-column: 1/2;

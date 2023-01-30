@@ -55,7 +55,7 @@
                 <v-row>
                     <v-col cols="6">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg" >
+                            <v-img src="../assets/ImagenesCards/SandwichMila.jpg" >
 
                             </v-img>
                             <v-card-title>
@@ -70,7 +70,7 @@
                     </v-col>
                     <v-col cols="6">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg" >
+                            <v-img src="../assets/ImagenesCards/SandwichMila.jpg"  >
 
                             </v-img>
                             <v-card-title>
@@ -85,12 +85,12 @@
                     </v-col>
                     <v-col cols="6">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg" >
+                            <v-img src="../assets/ImagenesCards/SandwichSalame.jpg" >
 
                             </v-img>
                             <v-card-title>
                                 <div style="width: 100%;" class="d-flex flex-row">
-                                    <h3 class="title-cafe">
+                                    <h3 class="title-cafe jyq" >
                                         Sandwich Jamón y Queso
                                     </h3>
 
@@ -100,7 +100,7 @@
                     </v-col>
                     <v-col cols="6">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg" >
+                            <v-img src="../assets/ImagenesCards/SandwichSalame.jpg" >
 
                             </v-img>
                             <v-card-title>
@@ -206,7 +206,9 @@ export default {
     padding-left: 30px;
     padding-top: 10px;
     padding-bottom: 15.22px;
+
 }
+
 .title-cafe1 {
     font-weight: bold;
     font-family: 'red-hat';
