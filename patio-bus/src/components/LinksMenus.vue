@@ -1,5 +1,10 @@
 <template>
+<div>
+  <div class="d-flex flex-row justify-center" style="width: 100%">
+              <h3>MENÚ</h3>
+            </div>
           <v-container style="display: flex ; justify-content: center;">
+
         <v-breadcrumbs
   divider=" "
   v-for="(item, i) in items "
@@ -12,6 +17,7 @@
 </v-breadcrumbs-item>
 </v-breadcrumbs>
       </v-container>
+</div>
 
 
 </template>
@@ -51,7 +57,10 @@ export default{
 
 <style scoped>
 
-
+h3{
+  font-family: 'Quesha';
+  font-size: 80px;
+}
 
 h5{
  color: black;

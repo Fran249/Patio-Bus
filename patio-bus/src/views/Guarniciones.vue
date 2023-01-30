@@ -1,7 +1,6 @@
 <template>
     <div>
      <NavBar />
-     <h3 class="title-h1">gaga</h3>
      <LinksMenus/>
      <v-container>
 
@@ -53,12 +52,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.title-h1{
-  text-align: center;
-  font-size: 80px;
-  font-family: 'Quesha';
 
-}
 
 .carousel{
     width: 100%;
