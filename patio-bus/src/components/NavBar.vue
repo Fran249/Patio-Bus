@@ -10,11 +10,25 @@
                         <v-img src="../assets/PatioBusNavBlanco.png" width="65%" style="margin-top: 25%">
 
                         </v-img>
-                        <v-img src="../assets/navIzquierda.png" width="45%" >
 
-                        </v-img>
-                       </div> 
+
+                            <v-img src="../assets/navIzquierda.png" width="45%" >
+                            
+                            </v-img>
+                            <div class="d-flex flex-column" style="width: 100%" id="div-botones">
+                                <v-btn icon href='https://www.instagram.com/muchogusto.info/'>
+                                            <v-img src="../assets/Inst.2.png" contain width="25" height="20"></v-img>
+                                        </v-btn>   
+                                <v-btn icon href="https://www.facebook.com/Mucho-Gusto-110256295138152"  >
+                                    <v-img src="../assets/Fce2.png" contain width="25" height="20" style="border-radius: 50%;"></v-img>
+                                </v-btn>
+                                <v-btn icon href="https://www.facebook.com/Mucho-Gusto-110256295138152"  >
+                                    <v-icon color="white" size="30">mdi-google-maps</v-icon>
+                                </v-btn>
+                            </div>
+                       </div>
                  </div>
+
             </v-col>
 
             <v-col cols="7">
@@ -86,6 +100,7 @@ export default {
 
                    if ( window.scrollY > 0) {
               this.percentage =  -window.scrollY +110
+              document.getElementById('div-botones').style.marginBottom = "50px" 
               document.getElementById('img-logoback1').style.cursor = "auto"  
             document.getElementById('div3').style.opacity = "0"
             document.getElementById('div3').style.transition = ".5s"      
@@ -101,6 +116,7 @@ export default {
             }
             else {
               this.percentage =  -window.scrollY + 5000
+              document.getElementById('div-botones').style.marginBottom = "0px" 
               document.getElementById('div1').style.height = '100vh'
               document.getElementById('div2').style.height = '100vh'
               document.getElementById('div3').style.height = '100vh'
