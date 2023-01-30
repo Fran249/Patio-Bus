@@ -32,19 +32,21 @@
                                 </v-icon>
                             </button>
                         </div>
-                    <div style=" width: 100%; height: 100vh; display: flex; justify-content: flex-start; align-items: flex-end; " id="div3" >
+                    <div   id="div3"  >
+                        
+                        <div  style="position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  "  class="img-logoback" id="img-logoback" >
+                            <v-img src="../assets/logoVacio.png" contain style=" width: 10rem; height: 10rem;"  >
+                                <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center  "   class="img-icon-flecha" id="img-logoback2">
+       
+                                        <v-img src="../assets/Icono-Flecha.png"  class="img-flecha" contain  >
 
-                        <div  style="position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  " class="img-logoback" id="img-logoback">
-                            <v-img src="../assets/logoVacio.png" contain style=" width: 10rem; height: 10rem;" >
-                                <div style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;  " class="img-icon-flecha" id="img-logoback2">
-                                     <v-img src="../assets/Icono-Flecha.png"  class="img-flecha" contain >
+                                        </v-img> 
 
-                                     </v-img>   
                                 </div>
                             </v-img>
                         </div>
 
-                        <div  style=" border-radius: 50%; position: absolute; top: 50% ; left: 44.5%;" class="img-logo" id="img-logoback1">
+                        <div  style=" border-radius: 50%; position: absolute; top: 50% ; left: 44.5%;" @click="quitarClass()"  class="img-logo" id="img-logoback1">
                             <v-img src="../assets/Icono.png" contain  style=" width: 10rem; height: 10rem;">
 
                             </v-img>
@@ -99,7 +101,7 @@ export default {
                 document.getElementById("IconoAfter").style.opacity = "1";
                 document.getElementById("div1").style.height = "90vh";
                 document.getElementById("div2").style.height = "90vh";
-                document.getElementById("div3").style.height = "90vh";
+                document.getElementById("div3").style.height = "100px";
                 document.getElementById("div1").style.transition = ".5s";
                 document.getElementById("div2").style.transition = ".5s";
                 document.getElementById("div3").style.transition = ".5s";
@@ -108,7 +110,7 @@ export default {
                 this.percentage = -window.scrollY + 5000;
                 document.getElementById("div1").style.height = "100vh";
                 document.getElementById("div2").style.height = "100vh";
-                document.getElementById("div3").style.height = "100vh";
+                document.getElementById("div3").style.height = "100px";
                 document.getElementById("img-logoback1").style.cursor = "pointer";
                 document.getElementById("div3").style.opacity = "1";
                 document.getElementById("div3").style.transition = ".5s";
@@ -123,8 +125,11 @@ export default {
         });
     },
     methods: {
-        scroll() {
+        quitarClass(){
             window.scrollTo(0, 1000);
+        },
+        scroll() {
+            
         },
         openIngreso(){
             store.commit('toggleIngreso', true)
@@ -169,7 +174,7 @@ export default {
 </script>
 
 
-<style >
+<style lang="scss" >
 
 ::-webkit-scrollbar {
   width: 7px;
@@ -247,9 +252,11 @@ body {
     
 }
 
+
 .img-logoback{
     animation: animacionLogoBack 4s ease-in-out infinite;
 }
+
 .img-icon-flecha{
     animation: iconoFlecha 4s ease-in-out infinite;
 }
