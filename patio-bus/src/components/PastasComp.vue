@@ -317,7 +317,7 @@ export default {
 .button2{        
     display: flex;   
     border-bottom: 1px solid black;  
-    height: 50px;
+    height: 49px;
     width: 100px;
     border-radius: 0;  
     cursor: pointer;        
