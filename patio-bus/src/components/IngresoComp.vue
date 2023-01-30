@@ -88,7 +88,7 @@ a p{
  
     }
     .btn-close{
-        place-self: end;
+        place-self: center;
      
         grid-column: 4/5;
         grid-row: 1/2;

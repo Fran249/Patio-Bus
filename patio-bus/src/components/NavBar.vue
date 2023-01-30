@@ -224,8 +224,8 @@ export default {
 }
 
 .v-dialog{
-    width: 50vw;
-    height: 90%;
+    width: 40vw;
+    height: 100%;
     background-color: white;
     border-radius: 0px;
 }

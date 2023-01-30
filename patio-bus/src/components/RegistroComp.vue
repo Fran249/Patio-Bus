@@ -1,5 +1,5 @@
 <template>
-<div style="padding: 30px">
+<div style="padding: 100px">
     <div style="width: 100%" class="d-flex flex-row mb-10">
         <div style="width: 100%" class="d-flex justify-space-between">
         <h3>¡CREÁ TU CUENTA!</h3>
