@@ -3,14 +3,14 @@
         <v-row>
             <v-col cols="6">
                 <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;">
-                    <v-img src="../assets/ImagenesCards/ñoquis.jpg" style="height: 250px">
+                    <v-img src="../assets/ImagenesCards/SandwichMila.jpg" style="height: 250px">
 
                     </v-img>
                     <div style="width: 100%;" class="d-flex flex-row">
-                        <h3 class="title-cafe">
-                            Ñoquis
+                        <h3 class="title-cafe1">
+                           Sandwich - Milanesa de Carne
                         </h3>
-                        
+
                     </div>
                     <v-card-text>
                         <p class="text-p">
@@ -22,66 +22,33 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-card-actions style="padding:2px">
-                    <div class="d-flex flex-column" style="width:100%">
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                            <button class="button">
-                                <h3 class="h3-button">Fileto</h3>
+                            <div class="d-flex flex-column" style="width:100%">
+                                <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
+                                    <div class="columna2">
+                                        <h2>Sandwiche</h2>
+                                        <p>Lorem ipsum dolor sit amet elit.</p>
+                                        <div class="botonera">
+                                            <div class="contador">
+                                                <h3>2</h3>
+                                            </div>
+                                            <div class="botones">
+                                                <button class="sumador">+</button>
+                                                <button class="restador">-</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </v-card-actions>
+                        <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
+                            <button class=" comprar  mr-5 mb-1 ">
+                                <h3 class="h3-comprar mt-1">AGREGAR</h3>
+                                <v-icon color="black" size="20" class="mt-1 ">
+                                    mdi-cart
+                                </v-icon>
                             </button>
-                            <button class="button">
-                                <h3 class="h3-button">Bolognesa</h3>
-                            </button>
-
-                            
                         </div>
-                        
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start mt-5">
-                                <v-menu offset-y  >
-                                    <template v-slot:activator="{ on, attrs }" >
-                                        <button class="button1" dark v-bind="attrs" v-on="on" >
-                                            <h3 class="h3-button1 ml-5" >Tuco </h3>  
-                                            <v-icon class="icono-menu mt-1">mdi-menu-down </v-icon>                                          
-                                        </button>
-                                    </template>
-                                    <div v-for="(item, index) in items" :key="index">
-                                        <button class="button2">
-                                            <h3> {{ item.title }}</h3>
-                                        </button>
 
-                                    </div>
-                                </v-menu>                                
-                                <v-menu offset-y >
-                                    <template v-slot:activator="{ on, attrs }" >
-                                        <button class="button1 " dark v-bind="attrs" v-on="on" >
-                                            <h3 class="h3-button1 ml-5" >Crema </h3>  
-                                            <v-icon class="icono-menu mt-1">mdi-menu-down </v-icon>                                          
-                                        </button>
-                                    </template>
-                                    <div v-for="(item, index2) in items2" :key="index2">
-                                        <button class="button2">
-                                            <h3> {{ item.title }}</h3>
-                                        </button>
-
-                                    </div>
-                                   <!-- <v-list class="list">
-                                        <v-list-item class="button2" v-for="(item, index2) in items2" :key="index2">
-                                            <h3 class="list-title">{{ item.title }}</h3>
-                                        </v-list-item>
-                                    </v-list>-->
-                                </v-menu>
-                            
-                            </div>
-                           
-                    </div>
-                </v-card-actions>
-                            <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                                <button class=" comprar  mr-5 mb-1 ">
-                                    <h3 class="h3-comprar mt-1">AGREGAR</h3> 
-                                    <v-icon color="black" size="20" class="mt-1 ">
-                                        mdi-cart
-                                    </v-icon>
-                                </button>
-                            </div>
-                        
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -95,9 +62,9 @@
                             <v-card-title>
                                 <div style="width: 100%;" class="d-flex flex-row">
                                     <h3 class="title-cafe">
-                                        Ñoquis
+                                        Sandwich  Milanesa de Carne
                                     </h3>
-                                    
+
                                 </div>
                             </v-card-title>
                         </v-card>
@@ -110,9 +77,9 @@
                             <v-card-title>
                                 <div style="width: 100%;" class="d-flex flex-row">
                                     <h3 class="title-cafe">
-                                        Tallarines
+                                        Sandwich  Milanesa de Pollo
                                     </h3>
-                                    
+
                                 </div>
                             </v-card-title>
                         </v-card>
@@ -125,9 +92,9 @@
                             <v-card-title>
                                 <div style="width: 100%;" class="d-flex flex-row">
                                     <h3 class="title-cafe">
-                                        Sorrentinos
+                                        Sandwich Jamón y Queso
                                     </h3>
-                                    
+
                                 </div>
                             </v-card-title>
                         </v-card>
@@ -140,7 +107,7 @@
                             <v-card-title>
                                 <div style="width: 100%;" class="d-flex flex-row">
                                     <h3 class="title-cafe">
-                                        Ravioles
+                                        Sandwich Salame y Queso 
                                     </h3>
                                 </div>
                             </v-card-title>
@@ -166,16 +133,9 @@
 
 <script>
 export default {
-    name: 'PastasComp',
+    name: 'SandwichesComp',
     data: () => ({
-        items: [
-            { title: 'Carne' },
-            { title: 'Pollo' },            
-        ],
-        items2: [
-            { title: 'Verdeo' },
-            { title: 'Cuatro Quesos' },            
-        ],
+
     }),
     methods: {
 
@@ -243,19 +203,20 @@ export default {
     padding-left: 30px;
     padding-top: 10px;
 }
+.title-cafe1 {
+    font-weight: bold;
+    font-family: 'red-hat';
+    color: black;
+    font-size: 24px;
+    padding-left: 30px;
+    padding-top: 10px;
+}
 
 .text-p {
+    margin-left: 20px;
     font-family: 'red-hat';
     color: grey;
 }
-
-.h3-button {
-    font-family: 'red-hat';
-    font-style: italic;
-    font-size: 18px;
-    margin-top: 3px;
-}
-
 .h3-comprar {
     font-family: 'red-hat';
     font-weight: 700;
@@ -264,10 +225,7 @@ export default {
 
 }
 
-.button {
-    width: 100px;
-    border: 1px solid black;
-}
+
 
 .comprar {
     width: 150px;
@@ -280,6 +238,7 @@ export default {
     padding: 3px;
     margin-top: 20px;
 }
+
 .comprar:hover {
     background-color: black;
     color: white;
@@ -287,56 +246,78 @@ export default {
 
 }
 
-.button:hover {
-    background-color: black;
-    color: white;
-    transition: .5s;
+.columna2 {
+    margin-left: 26px;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+
+
 }
-.h3-button1{
-    font-weight: 500;
+
+.columna2 h2 {
     font-family: 'red-hat';
-    font-style: italic;
-    font-size: 18px;
-    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: black;
+
 }
-.button1 {
-    display: flex;    
-    border-radius: 0;
-    width: 100px;
+
+.columna2 p {
+    font-family: 'red-hat';
+    color: grey;
+    font-size: 15px;
+    font-weight: lighter;
+
+}
+.botonera {
+    padding: 0;
     border: 1px solid black;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+
 }
-.button1:hover     {
-    background-color:black;
-    color: white;
-    transition: .5s;
+
+.contador {
+    width: 60%;
+    height: 100%;
+    display: grid;
+    place-items: center;
 }
-.button1:hover .icono-menu{    
-    color: white;
-    transition: .5s;
-} 
-.button2{        
-    display: flex;   
-    border-bottom: 1px solid black;  
-    height: 50px;
-    width: 100px;
-    border-radius: 0;  
-    cursor: pointer;        
-    justify-content: center;
-    align-items:  center;
-    background-color: #ffff;
-}
- .button2 h3 {padding: 5px;
-     font-weight: 500;
+
+.contador h3 {
     font-family: 'red-hat';
-    font-style: italic;
-    font-size: 18px;    
-    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+    color: black;
+
+
+}
+
+.botones {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    border-left: 1px solid black;
+
+    .sumador {
+        text-align: center;
+        height: 50%;
+        border-bottom: 1px solid black;
     }
 
-.button2:hover{
-    background-color: black;
-    color: white;
-    transition: .5s;
+    .restador {
+        text-align: center;
+        height: 50%;
+    }
 }
 
 @media screen and (min-width: 1500px) {
