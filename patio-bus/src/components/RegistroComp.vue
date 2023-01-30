@@ -9,6 +9,7 @@
     </div>
         <form @submit.prevent="crearUsuario({email:email, password:pass1})" class="v-form">
                 <v-text-field
+                    class="text-field"
                     type="email" 
                     v-model="email"
                     filled
@@ -17,6 +18,7 @@
                     placeholder="E-mail"
                 ></v-text-field>
                 <v-text-field
+                    class="text-field"
                     v-model="pass1"
                     filled
                     full-width
@@ -26,6 +28,7 @@
                     placeholder="Contraseña"
                 ></v-text-field>
                 <v-text-field
+                    class="text-field"
                     v-model="pass2"
                     filled
                     full-width
@@ -35,16 +38,18 @@
                     placeholder="Confirmar contraseña"
                 ></v-text-field>
 
+
                 <button 
                  
-                class="ml-13 mt-10 btn-reg" 
-                color="#000"
-                type="submit"
-                >
-                <p class="mt-4 finalizar-registro"  >
-                    FINALIZAR REGISTRO
-                </p>
-            </button>
+                 class=" mt-10 btn-reg" 
+                 color="#000"
+                 type="submit"
+                 >
+                 <p class="mt-4 finalizar-registro"  >
+                     FINALIZAR REGISTRO
+                 </p>
+             </button>
+
             </form>
    </div>
 </template>
@@ -66,6 +71,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .text-field{
+        width: 100%
+    }
+}
 h3{
     font-family: 'Quesha';
     font-size: 40px;
