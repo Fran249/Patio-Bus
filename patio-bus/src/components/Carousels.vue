@@ -12,7 +12,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <v-img src="../assets/Combo1.png"  alt="...">
+      <v-img src="../assets/Combo1.png" contain alt="...">
         <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
           <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
             <v-icon>

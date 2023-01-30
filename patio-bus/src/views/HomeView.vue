@@ -1,6 +1,9 @@
 <template>
   <div style="">
     <NavBar />
+    <div class="para-llevar">
+
+    </div>
     <CarouselsVue style="margin-top: 5rem; margin-bottom: 5rem;"/>
 
   <cards_cafet />
@@ -12,12 +15,7 @@
 
     <v-container style="display: flex; justify-content: center;  flex-direction:row ; margin-bottom: 5rem;">
       
-      <div class="bar-menu">
-
-    </div>
-    <div class="bar-sub-menu">
-        
-      </div>  
+      <v-img src="../assets/IconosNew/Iconos/Miscela. Linea.png"></v-img>
     </v-container>
     
 
@@ -62,6 +60,16 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
   
+
+.para-llevar{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 250px;
+  background-image: url('../assets/IconosNew/Iconos/ParaLlevar.png');
+  background-position: center;
+  background-size: 80%;
+}
 .cont_footer{
   margin: 0;
   padding: 0;
