@@ -42,11 +42,12 @@
                                             <v-icon class="icono-menu mt-1">mdi-menu-down </v-icon>                                          
                                         </button>
                                     </template>
-                                    <v-list>
-                                        <v-list-item class="button2 " v-for="(item, index) in items" :key="index">
-                                            <v-list-item-title class="button2" > <button>{{ item.title }} </button></v-list-item-title>
-                                        </v-list-item>
-                                    </v-list>
+                                    <div v-for="(item, index) in items" :key="index">
+                                        <button class="button2">
+                                            <h3> {{ item.title }}</h3>
+                                        </button>
+
+                                    </div>
                                 </v-menu>                                
                                 <v-menu offset-y >
                                     <template v-slot:activator="{ on, attrs }" >
@@ -55,11 +56,17 @@
                                             <v-icon class="icono-menu mt-1">mdi-menu-down </v-icon>                                          
                                         </button>
                                     </template>
-                                    <v-list>
-                                        <v-list-item v-for="(item, index2) in items2" :key="index2">
-                                            <v-list-item-title>{{ item.title }}</v-list-item-title>
+                                    <div v-for="(item, index2) in items2" :key="index2">
+                                        <button class="button2">
+                                            <h3> {{ item.title }}</h3>
+                                        </button>
+
+                                    </div>
+                                   <!-- <v-list class="list">
+                                        <v-list-item class="button2" v-for="(item, index2) in items2" :key="index2">
+                                            <h3 class="list-title">{{ item.title }}</h3>
                                         </v-list-item>
-                                    </v-list>
+                                    </v-list>-->
                                 </v-menu>
                             
                             </div>
@@ -284,8 +291,6 @@ export default {
     background-color: black;
     color: white;
     transition: .5s;
-    
-
 }
 .h3-button1{
     font-weight: 500;
@@ -309,21 +314,35 @@ export default {
     color: white;
     transition: .5s;
 } 
-.button2{
+.button2{        
+    display: flex;   
+    border-bottom: 1px solid black;  
+    height: 50px;
     width: 100px;
-    border: 1px solid black;  
-    border-top: none;       
-    border-radius: 0;
-    font-weight: 500;
+    border-radius: 0;  
+    cursor: pointer;        
+    justify-content: center;
+    align-items:  center;
+    background-color: #ffff;
+}
+ .button2 h3 {padding: 5px;
+     font-weight: 500;
     font-family: 'red-hat';
     font-style: italic;
     font-size: 18px;    
     text-align: center;
-    cursor: pointer;
-    padding-top: 0;
-    
+    }
+
+.button2:hover{
+    background-color: black;
+    color: white;
+    transition: .5s;
 }
 
+.list{
+    padding: 0;
+    margin: 0;
+}
 @media screen and (min-width: 1500px) {
     .button {
         width: 100px;
