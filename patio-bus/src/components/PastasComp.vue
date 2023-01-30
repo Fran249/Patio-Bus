@@ -35,7 +35,7 @@
                         </div>
                         
                         <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start mt-5">
-                                <v-menu offset-y >
+                                <v-menu offset-y  >
                                     <template v-slot:activator="{ on, attrs }" >
                                         <button class="button1" dark v-bind="attrs" v-on="on" >
                                             <h3 class="h3-button1 ml-5" >Tuco </h3>  
@@ -43,8 +43,8 @@
                                         </button>
                                     </template>
                                     <v-list>
-                                        <v-list-item v-for="(item, index) in items" :key="index">
-                                            <v-list-item-title>{{ item.title }}</v-list-item-title>
+                                        <v-list-item class="button2 " v-for="(item, index) in items" :key="index">
+                                            <v-list-item-title class="button2" > <button>{{ item.title }} </button></v-list-item-title>
                                         </v-list-item>
                                     </v-list>
                                 </v-menu>                                
@@ -67,8 +67,8 @@
                     </div>
                 </v-card-actions>
                             <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                                <button class="button comprar  mr-5 mb-1 ">
-                                    <h3 class="h3-comprar mt-1">AGREGAR</h3>
+                                <button class=" comprar  mr-5 mb-1 ">
+                                    <h3 class="h3-comprar mt-1">AGREGAR</h3> 
                                     <v-icon color="black" size="20" class="mt-1 ">
                                         mdi-cart
                                     </v-icon>
@@ -162,8 +162,8 @@ export default {
     name: 'GuarnicionesComp',
     data: () => ({
         items: [
-            { title: 'Estofado de pollo' },
-            { title: 'Estofado de ternera' },            
+            { title: 'Carne' },
+            { title: 'Pollo' },            
         ],
         items2: [
             { title: 'Verdeo' },
@@ -251,6 +251,7 @@ export default {
 
 .h3-comprar {
     font-family: 'red-hat';
+    font-weight: 700;
 
     font-size: 15px;
 
@@ -263,6 +264,7 @@ export default {
 
 .comprar {
     width: 150px;
+    border: 1px solid black;
     color: black;
     display: flex;
     flex-direction: row;
@@ -271,11 +273,18 @@ export default {
     padding: 3px;
     margin-top: 20px;
 }
+.comprar:hover {
+    background-color: black;
+    color: white;
+    transition: .5s;
+
+}
 
 .button:hover {
     background-color: black;
     color: white;
     transition: .5s;
+    
 
 }
 .h3-button1{
@@ -300,7 +309,20 @@ export default {
     color: white;
     transition: .5s;
 } 
-
+.button2{
+    width: 100px;
+    border: 1px solid black;  
+    border-top: none;       
+    border-radius: 0;
+    font-weight: 500;
+    font-family: 'red-hat';
+    font-style: italic;
+    font-size: 18px;    
+    text-align: center;
+    cursor: pointer;
+    padding-top: 0;
+    
+}
 
 @media screen and (min-width: 1500px) {
     .button {
