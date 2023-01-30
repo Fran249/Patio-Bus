@@ -7,7 +7,7 @@
 
     <div class="d-flex flex-column align-center" style="width: 100%; margin-top: 5rem;">
       <h5>¡Conocenos!</h5>
-    <h1>MENÚ</h1>
+    <h1 style="color: #000;">MENÚ</h1>
     </div>
 
     <v-container style="display: flex; justify-content: center;  flex-direction:row ; margin-bottom: 5rem;">

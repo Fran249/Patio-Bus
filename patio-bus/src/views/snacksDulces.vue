@@ -35,11 +35,13 @@
       </v-col>
     </v-row>
   </v-container>
+  <SnacksSelector/>
   <FooterVue/>
     </div>
 </template>
 
 <script>
+import SnacksSelector from '@/components/SnacksSelector.vue';
 import LinksInfuSnacks from '@/components/LinksInfuSnacks.vue';
 import NavBar from '@/components/NavBar.vue';
 export default {
@@ -49,7 +51,8 @@ export default {
     }),
     components: {
         NavBar,
-        LinksInfuSnacks    
+        LinksInfuSnacks,
+        SnacksSelector,
     },
 }
 </script>
