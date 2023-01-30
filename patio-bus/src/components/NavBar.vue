@@ -12,7 +12,7 @@
                         </v-img>
 
 
-                            <v-img src="../assets/navIzquierda.png" width="45%" >
+                            <v-img src="../assets/navIzquierda.png" width="50%" >
                             
                             </v-img>
                             <div class="d-flex flex-column" style="width: 100%" id="div-botones">
@@ -110,7 +110,7 @@ export default {
 
                    if ( window.scrollY > 0) {
               this.percentage =  -window.scrollY +110
-              document.getElementById('div-botones').style.marginBottom = "50px" 
+              document.getElementById('div-botones').style.marginBottom = "100px" 
               document.getElementById('img-logoback1').style.cursor = "auto"  
             document.getElementById('div3').style.opacity = "0"
             document.getElementById('div3').style.transition = ".5s"      
@@ -126,7 +126,7 @@ export default {
             }
             else {
               this.percentage =  -window.scrollY + 5000
-              document.getElementById('div-botones').style.marginBottom = "0px" 
+              document.getElementById('div-botones').style.marginBottom = "50px" 
               document.getElementById('div1').style.height = '100vh'
               document.getElementById('div2').style.height = '100vh'
               document.getElementById("div3").style.height = "100px";
