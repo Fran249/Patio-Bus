@@ -1,7 +1,6 @@
 <template>
     <div>
      <NavBar />
-     <h1>MENU</h1>
      <LinksMenus/>
      <v-container style="display: flex;  flex-direction:row">
      

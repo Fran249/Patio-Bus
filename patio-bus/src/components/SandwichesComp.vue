@@ -25,15 +25,14 @@
                             <div class="d-flex flex-column" style="width:100%">
                                 <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
                                     <div class="columna2">
-                                        <h2>Sandwiche</h2>
-                                        <p>Lorem ipsum dolor sit amet elit.</p>
+
                                         <div class="botonera">
                                             <div class="contador">
                                                 <h3>2</h3>
                                             </div>
                                             <div class="botones">
-                                                <button class="sumador">+</button>
-                                                <button class="restador">-</button>
+                                                <button v-bind:style="{'background-color': color1}" @mouseover="color = '#fff' , color1 = '#000'" @mouseleave="color = '#000' , color1 = '#fff'" class="sumador"><v-icon :color="color">mdi-plus</v-icon></button>
+                                                <button v-bind:style="{'background-color': color3}" @mouseover="color2 = '#fff' , color3 = '#000'" @mouseleave="color2 = '#000' , color3 = '#fff'" class="restador"><v-icon :color="color2">mdi-minus</v-icon></button>
                                             </div>
                                         </div>
                                     </div>
@@ -41,9 +40,9 @@
                             </div>
                         </v-card-actions>
                         <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                            <button class=" comprar  mr-5 mb-1 ">
+                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'">
                                 <h3 class="h3-comprar mt-1">AGREGAR</h3>
-                                <v-icon color="black" size="20" class="mt-1 ">
+                                <v-icon v-bind:style="{'color' : colorCart}" size="20" class="mt-1 ">
                                     mdi-cart
                                 </v-icon>
                             </button>
@@ -56,7 +55,7 @@
                 <v-row>
                     <v-col cols="6">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg">
+                            <v-img src="../assets/ImagenesCards/Tallarines.jpg" >
 
                             </v-img>
                             <v-card-title>
@@ -71,7 +70,7 @@
                     </v-col>
                     <v-col cols="6">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg">
+                            <v-img src="../assets/ImagenesCards/Tallarines.jpg" >
 
                             </v-img>
                             <v-card-title>
@@ -86,7 +85,7 @@
                     </v-col>
                     <v-col cols="6">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg">
+                            <v-img src="../assets/ImagenesCards/Tallarines.jpg" >
 
                             </v-img>
                             <v-card-title>
@@ -101,7 +100,7 @@
                     </v-col>
                     <v-col cols="6">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg">
+                            <v-img src="../assets/ImagenesCards/Tallarines.jpg" >
 
                             </v-img>
                             <v-card-title>
@@ -135,7 +134,11 @@
 export default {
     name: 'SandwichesComp',
     data: () => ({
-
+        color: '#000',
+        color1 : '#fff',
+        color2: '#000',
+        color3 : '#fff',
+        colorCart: '#000'
     }),
     methods: {
 
@@ -202,6 +205,7 @@ export default {
     font-size: 14px;
     padding-left: 30px;
     padding-top: 10px;
+    padding-bottom: 15.22px;
 }
 .title-cafe1 {
     font-weight: bold;
@@ -259,26 +263,12 @@ export default {
 
 }
 
-.columna2 h2 {
-    font-family: 'red-hat';
-    font-size: 20px;
-    font-weight: bolder;
-    color: black;
 
-}
-
-.columna2 p {
-    font-family: 'red-hat';
-    color: grey;
-    font-size: 15px;
-    font-weight: lighter;
-
-}
 .botonera {
     padding: 0;
     border: 1px solid black;
-    width: 50%;
-    height: 100%;
+    width: 100px;
+    height: 80px;
     display: flex;
     flex-direction: row;
 
