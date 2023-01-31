@@ -60,6 +60,7 @@ export default{
 h3{
   font-family: 'Quesha';
   font-size: 80px;
+  color: #000;
 }
 
 h5{

@@ -8,7 +8,9 @@ import CarritoVue from '@/components/Carrito.vue';
 import LinksMenus from '@/components/LinksMenus.vue';
 import IngresoComp from '@/components/IngresoComp.vue'
 import RegistroComp from '@/components/RegistroComp.vue'
+import LinksPerfilCompra from '@/components/LinksPerfilCompra'
 
+Vue.component('LinksPerfilCompra', LinksPerfilCompra)
 Vue.component('IngresoComp', IngresoComp)
 Vue.component('RegistroComp', RegistroComp)
 Vue.component('LinksMenus', LinksMenus)
