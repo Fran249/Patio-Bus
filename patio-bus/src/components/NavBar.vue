@@ -220,7 +220,7 @@ export default {
 }
 
 .v-dialog{
-    width: 40vw;
+    width: 50vw;
     height: 100%;
     background-color: white;
     border-radius: 0px;
