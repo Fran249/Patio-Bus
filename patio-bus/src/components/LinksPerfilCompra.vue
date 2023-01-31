@@ -17,17 +17,17 @@
 
 
 <v-breadcrumbs-item  :href="item.route"> 
-<div style="width: 100%" class="d-flex flex-row  align-center">
-    <h5 class="mt-3" v-bind:class="{exact_active: $route.path == item.route , registroCompra: item.title == 'REGISTRO DE COMPRAS'}">
+<div style="width: 100%" class="d-flex flex-row ">
+    <h5 class="mt-3" v-bind:class="{exact_active: $route.path == item.route , registroCompra: item.title == 'REGISTRO DE COMPRAS', registroCompra2: $route.path == '/RegistroComprasUser' && item.title == 'REGISTRO DE COMPRAS'}">
  
  {{item.title }}
  
    </h5>
 
 </div>
-<div vertical dark class="divider" v-if="item.title == 'MI PERFIL'"></div>
-</v-breadcrumbs-item>
 
+</v-breadcrumbs-item>
+<div vertical dark class="divider" v-if="item.title == 'MI PERFIL'"></div>
 </v-breadcrumbs>
       </v-container>
 </div>
@@ -76,6 +76,10 @@ h5{
 }
 .registroCompra{
     width: 180px;
+    padding-left: 0;
+}
+.registroCompra2{
+    width: 200px;
     padding-left: 0;
 }
 

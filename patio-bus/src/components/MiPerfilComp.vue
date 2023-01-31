@@ -28,6 +28,7 @@
                 <v-text-field type="text" label="DNI*" color="grey" v-model="dni"  class="labels" @click="vaciarDni()"></v-text-field>
                 <v-text-field type="text" label="Dirección*" color="grey" v-model="direccion" class="labels" @click="vaciarDireccion()"></v-text-field>
                 <v-text-field type="text" label="Teléfono de contacto*" color="grey" v-model="telefonoContacto" class="labels" @click="vaciarTelefono()"></v-text-field>
+                <h3 class="campo">*Campo obligatorio</h3>
                     <button class="btn">
                         <h3>GUARDAR CAMBIOS</h3>
                     </button>
@@ -73,16 +74,24 @@ export default{
 
 
 <style lang="scss" scoped>
-/* Rectangle 96 */
+
+
+.campo{
+    font-family: 'red-hat';
+    font-size: 14px;
+    color: #6F6F6F;
+
+}
 .btn-img{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    background-color: black;
     height: 37px;
     width: 190px;
+    opacity: 0;
+    transition: 1s;
 }
 .btn {
     /* Rectangle 92 */
@@ -123,8 +132,11 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
-.img-avatar:hover{
+.img-avatar:hover {
     background-image: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%), url(../assets/ImagenesCards/EnsaladaCesar.jpg);
+}
+.img-avatar:hover  .btn-img{
+    opacity: 1;
 }
 .v-text-field{
     padding-bottom: 50px;
