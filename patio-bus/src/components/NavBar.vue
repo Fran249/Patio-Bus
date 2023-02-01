@@ -44,7 +44,7 @@
                                     <v-img class="ml-1" width="25" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.png"></v-img>
                             </button>
                                                    
-                            <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="$router.push('/RegistroComprasUser')">
+                            <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="$router.push('/MiPerfil')">
                                     <v-img class="ml-1" width="25" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.png"></v-img>
                             </button>
                             <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="cerrarSesion">

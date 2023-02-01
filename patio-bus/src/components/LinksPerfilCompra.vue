@@ -1,11 +1,6 @@
 <template>
 <div>
-    <div class="d-flex justify-center">
-        <div class="d-flex flex-row justify-center" style="width: 43% ;">
-            <h3>¡HOLA</h3><v-img contain class="v-image" height="100px" src="../assets/IconosNew/Iconos/164-waving-hand-emoji-coloring-page.png"></v-img>
-            <h3>{{nombre }}</h3>
-        </div>
-    </div>
+
           <v-container style="display: flex ; justify-content: center;">
 
         <v-breadcrumbs

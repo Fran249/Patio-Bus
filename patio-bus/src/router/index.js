@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 
 import HomeView from '../views/HomeView.vue'
@@ -5,13 +6,24 @@ import HomeView from '../views/HomeView.vue'
 
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig} from '../firebase/index'
-import { getAuth} from "firebase/auth";
 
-const auth = getAuth();
+import {auth} from '../firebase/index'
+
+
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+const firestore = getFirestore();
+
 initializeApp(firebaseConfig);
 import VueRouter from 'vue-router'
-import store from '@/store';
 
+async function getRol(uid){
+
+  const docuRef = doc(firestore, `Usuarios/${uid}`);
+  const docuCifrada = await getDoc(docuRef);
+  const infoFinal = docuCifrada.data().rol;
+  return infoFinal;
+
+} 
 
 Vue.use(VueRouter)
 
@@ -154,9 +166,20 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/MiPerfil.vue'),
-    meta: {
-      requiresAuth : true
-    }
+    beforeEnter: (to,from, next) => {
+      auth.onAuthStateChanged(user => {
+        getRol(user.uid).then((rol)=>{
+          if( rol == 'admin'){
+            next()
+          }else if ( rol == null){
+            next('/error')
+          }else if (rol == 'user'){
+            next('/error')
+          }
+            next();
+        })     
+      })
+    },
   },
   {
     path: '/RegistroComprasUser',
@@ -166,15 +189,19 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/RegistroComprasUser.vue'),
     beforeEnter: (to,from, next) => {
-      if( store.state.rol == 'admin'){
-        next()
-      }else if ( store.state.usuario.rol == null){
-        next('/error')
-      }else if (store.state.usuario.rol == 'user'){
-        next('/error')
-      }
-        next();
-
+      
+      auth.onAuthStateChanged(user => {
+          getRol(user.uid).then((rol)=>{
+            if( rol == 'admin'){
+              next()
+            }else if ( rol == null){
+              next('/error')
+            }else if (rol == 'user'){
+              next('/error')
+            }
+              next();
+          })     
+        })
     },
   },
 ]
