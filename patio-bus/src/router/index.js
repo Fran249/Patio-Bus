@@ -1,6 +1,17 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
+
+
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig} from '../firebase/index'
+import { getAuth} from "firebase/auth";
+
+const auth = getAuth();
+initializeApp(firebaseConfig);
+import VueRouter from 'vue-router'
+import store from '@/store';
+
 
 Vue.use(VueRouter)
 
@@ -143,7 +154,9 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/MiPerfil.vue'),
-    
+    meta: {
+      requiresAuth : true
+    }
   },
   {
     path: '/RegistroComprasUser',
@@ -152,7 +165,17 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/RegistroComprasUser.vue'),
-    
+    beforeEnter: (to,from, next) => {
+      if( store.state.rol == 'admin'){
+        next()
+      }else if ( store.state.usuario.rol == null){
+        next('/error')
+      }else if (store.state.usuario.rol == 'user'){
+        next('/error')
+      }
+        next();
+
+    },
   },
 ]
 
@@ -160,6 +183,25 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+
+  if(to.matched.some(record => record.meta.requiresAuth)){
+    const usuario = auth.currentUser
+    //const role = store.state.rol
+    //console.log(usuario, role)
+
+    if (!usuario) {
+      next({
+        path: '/'
+      })
+    } else {
+      next()
+    }
+  }else {
+    next()
+  }
 })
 
 export default router

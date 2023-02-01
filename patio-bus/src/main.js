@@ -10,13 +10,18 @@ import IngresoComp from '@/components/IngresoComp.vue'
 import RegistroComp from '@/components/RegistroComp.vue'
 import LinksPerfilCompra from '@/components/LinksPerfilCompra'
 
+Vue.config.productionTip = false
+
+
 Vue.component('LinksPerfilCompra', LinksPerfilCompra)
 Vue.component('IngresoComp', IngresoComp)
 Vue.component('RegistroComp', RegistroComp)
 Vue.component('LinksMenus', LinksMenus)
 Vue.component('FooterVue', FooterVue)
 Vue.component('CarritoVue', CarritoVue)
+
 Vue.config.productionTip = false
+
 import {auth} from './firebase'
 
 

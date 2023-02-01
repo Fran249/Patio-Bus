@@ -35,19 +35,21 @@
 
                 <v-img src="../assets/navDerecha.png" height="100vh"   id="div2">
                     <div style="position: absolute; top:10%; right: 0 ; width: 10%; height: 100%; gap: 5px;" class="d-flex flex-column">
-                            <button v-if="!existeUsuario" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
+                            <!--Iniciar Sesion-->
+                            <button  style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
                                 <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.Blanco.png"></v-img>
                             </button>
-                            <button v-if="!existeUsuario" style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
+                            <!--Registrarte-->
+                            <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
                                     <v-img class="ml-1" width="25" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.png"></v-img>
                             </button>
-                            <button v-if="existeUsuario" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="$router.push('/MiPerfil')">
-                                <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.Blanco.png"></v-img>
+                                                   
+                            <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="$router.push('/RegistroComprasUser')">
+                                    <v-img class="ml-1" width="25" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.png"></v-img>
                             </button>
-                            <button v-if="existeUsuario" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="cerrarSesion">
-                                <v-icon color="white">mdi-close</v-icon>
+                            <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="cerrarSesion">
+                                <v-icon>mdi-close</v-icon>
                             </button>
-
                         </div>
                     <div   id="div3"  >
                         
