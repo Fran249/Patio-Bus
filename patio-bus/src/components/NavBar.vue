@@ -35,12 +35,19 @@
 
                 <v-img src="../assets/navDerecha.png" height="100vh"   id="div2">
                     <div style="position: absolute; top:10%; right: 0 ; width: 10%; height: 100%; gap: 5px;" class="d-flex flex-column">
-                            <button style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
+                            <button v-if="!existeUsuario" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
                                 <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.Blanco.png"></v-img>
                             </button>
-                            <button style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
+                            <button v-if="!existeUsuario" style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
                                     <v-img class="ml-1" width="25" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.png"></v-img>
                             </button>
+                            <button v-if="existeUsuario" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="$router.push('/MiPerfil')">
+                                <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.Blanco.png"></v-img>
+                            </button>
+                            <button v-if="existeUsuario" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="cerrarSesion">
+                                <v-icon color="white">mdi-close</v-icon>
+                            </button>
+
                         </div>
                     <div   id="div3"  >
                         
@@ -91,7 +98,7 @@
 </template>
 
 <script>
-
+import {mapActions, mapState , mapGetters} from 'vuex'
 import store from '@/store';
 export default {
     name: "NavBar",
@@ -143,6 +150,7 @@ export default {
         });
     },
     methods: {
+        ...mapActions(['cerrarSesion']),
         quitarClass(){
             window.scrollTo(0, 1000);
         },
@@ -154,8 +162,7 @@ export default {
         },
         openRegistro(){
             store.commit('toggleRegistro', true)
-        }
-
+        },
     },
     updated() {
         this.carrito = store.state.carrito;
@@ -185,6 +192,8 @@ export default {
                 store.commit("toggleRegistro", value);
             },
         },
+        ...mapGetters(['existeUsuario']),
+        ...mapState(['usuario']),
     },
 }
 

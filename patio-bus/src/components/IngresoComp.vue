@@ -30,21 +30,22 @@
           ></v-text-field>
             <a @click="ingreso = false" class="d-flex justify-end a-withP"><p>¿Olvidaste tu contraseña?</p></a>
             <div style="width: 100%" class="d-flex flex-row justify-center ">
-                     
-            <button class="button">
+              <p>{{error}}</p>       
+            <button class="button" type="submit">
                 <h3 class="button-h3">ACCEDER</h3>
             </button>
             </div>
       </form>
-      <p>{{error}}</p>
+      
 </div>
 </template>
 
 
 <script>
 import store from '@/store';
-
-
+import { mapActions, mapState } from 'vuex'
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+const auth = getAuth()
 export default {
     name: 'IngresoComp',
     data: ()=>({
@@ -58,7 +59,30 @@ export default {
     methods:{
         closeIngreso(){
             store.commit('toggleIngreso', false)
-        }
+        },
+        ...mapActions(['ingresoUsuario']),
+
+reEstablecerContraseña(){
+  sendPasswordResetEmail(auth, this.email)
+  .then(() => {
+    // Password reset email sent!
+    // ..
+    this.email= ''
+    setTimeout(this.sendEmail = true, 1300)
+
+
+  })
+  .catch((error) => {
+    console.log(error)
+    // ..
+  });
+},
+    },
+    computed:{
+      ...mapState(['error'])
+  },
+  watch: {
+      
     },
 
 }

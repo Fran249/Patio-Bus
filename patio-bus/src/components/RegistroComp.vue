@@ -57,6 +57,7 @@
 
 <script>
 import store from '@/store';
+import {mapActions, mapState} from 'vuex'
 export default {
     name: 'RegistroComp',
     data: ()=>({
@@ -65,8 +66,15 @@ export default {
     methods:{
         closeRegistro(){
             store.commit('toggleRegistro', false)
+        },
+        ...mapActions(['crearUsuario'])
+    },
+    computed:{
+          ...mapState(['error']),
+          desactivar(){
+            return this.pass1 === this.pass2 && this.pass1.trim() !== ''
         }
-    }
+      }
 }
 </script>
 
