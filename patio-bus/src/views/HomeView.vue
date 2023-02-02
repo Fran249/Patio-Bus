@@ -65,7 +65,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 250px;
+  height: 300px;
   background-image: url('../assets/IconosNew/Iconos/ParaLlevar.png');
   background-position: center;
   background-size: 80%;
