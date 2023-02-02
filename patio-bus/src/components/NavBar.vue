@@ -239,9 +239,9 @@ export default {
 }
 .router-link h3{
     text-decoration: none;
-    font-family: 'Quesha';
+    font-family: 'red-hat';
     color: black;
-    font-size: 30px;
+    font-size: 15px;
     color: #000;
     border-bottom: solid 0px black;
 
@@ -258,9 +258,9 @@ export default {
     transform: scaleX(1); 
 }
 .cerrar-sesion{
-    font-family: 'Quesha';
+    font-family: 'red-hat';
     color: black;
-    font-size: 30px;
+    font-size: 15px;
     cursor: pointer;
 }
 
