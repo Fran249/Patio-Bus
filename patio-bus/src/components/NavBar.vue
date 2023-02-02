@@ -36,20 +36,42 @@
                 <v-img src="../assets/navDerecha.png" height="100vh"   id="div2">
                     <div style="position: absolute; top:10%; right: 0 ; width: 10%; height: 100%; gap: 5px;" class="d-flex flex-column">
                             <!--Iniciar Sesion-->
-                            <button  style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
+                            <button v-if="!existeUsuario" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
                                 <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.Blanco.png"></v-img>
                             </button>
+                            <!--Menu Desplegable-->
+                            <v-menu offset-y left  v-if="existeUsuario" close-on-content-click >
+                            <template v-slot:activator="{ on, attrs }">
+                                <button v-on="on" v-bind="attrs"  style="display: grid; place-items: center; background-color : rgb(255,255,255 ,.7); width: 52%; height: 7%;">
+                                <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-FlechaInvertida.png" ></v-img>
+                            </button>
+                            </template>
+                            <v-list style="background-color: rgb(255, 255, 255, .7); border-radius: 1px;" >
+                                <v-list-item>
+                                    <router-link class="router-link" to="/MiPerfil"><h3>MI PERFIL</h3></router-link>
+                                </v-list-item>
+                                <v-list-item>
+                                    <router-link class="router-link" to="/RegistroComprasUser"><h3>REGISTRO DE COMPRAS</h3></router-link>
+                                </v-list-item>
+                                <v-list-item>
+                                    <h3 class="cerrar-sesion" @click="cerrarSesion">CERRAR SESIÓN</h3>
+                                </v-list-item>
+                            </v-list>
+                            </v-menu>
+                            
                             <!--Registrarte-->
-                            <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
+                            <button v-if="!existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
                                     <v-img class="ml-1" width="25" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.png"></v-img>
                             </button>
-                                                   
-                            <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="$router.push('/MiPerfil')">
-                                    <v-img class="ml-1" width="25" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.png"></v-img>
+                            <!--Carrito-->
+                            <button v-if="existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 52%; height: 7%;" @click="openCarrito()">
+                                   <v-icon  color="#000">mdi-cart</v-icon>
                             </button>
-                            <button  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="cerrarSesion">
-                                <v-icon>mdi-close</v-icon>
-                            </button>
+                            <div  v-if="existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 52%; height: 4%;" >
+                                   <p class="notif">{{ notif }}</p>
+                            </div>
+
+
                         </div>
                     <div   id="div3"  >
                         
@@ -107,7 +129,8 @@ export default {
     data: () => ({
         percentage: "600",
         carrito: store.state.carrito,
-
+        menuOn: false,
+        notif: 3,
     }),
 
     mounted(){
@@ -156,15 +179,15 @@ export default {
         quitarClass(){
             window.scrollTo(0, 1000);
         },
-        scroll() {
-            
-        },
         openIngreso(){
             store.commit('toggleIngreso', true)
         },
         openRegistro(){
             store.commit('toggleRegistro', true)
         },
+        openCarrito(){
+            store.commit('toggleCarrito', true)
+        }
     },
     updated() {
         this.carrito = store.state.carrito;
@@ -204,6 +227,42 @@ export default {
 
 
 <style lang="scss" >
+
+.notif{
+    font-family: 'red-hat';
+    font-size: 15px;
+    font-weight: bold;
+}
+.v-menu__content{
+    border-radius: 1px;
+    box-shadow: none;
+}
+.router-link h3{
+    text-decoration: none;
+    font-family: 'Quesha';
+    color: black;
+    font-size: 30px;
+    color: #000;
+    border-bottom: solid 0px black;
+
+
+}
+.router-link h3:after , .cerrar-sesion:after{
+    display:block;
+  content: '';
+  border-bottom: solid 1px black;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+.router-link h3:hover:after, .cerrar-sesion:hover:after{
+    transform: scaleX(1); 
+}
+.cerrar-sesion{
+    font-family: 'Quesha';
+    color: black;
+    font-size: 30px;
+    cursor: pointer;
+}
 
 ::-webkit-scrollbar {
   width: 7px;

@@ -29,8 +29,9 @@
               :type="value ? 'password' : 'text'"
           ></v-text-field>
             <a @click="ingreso = false" class="d-flex justify-end a-withP"><p>¿Olvidaste tu contraseña?</p></a>
-            <div style="width: 100%" class="d-flex flex-row justify-center ">
-              <p>{{error}}</p>       
+            <div style="width: 100%" class="d-flex flex-column justify-center align-center">
+                <p v-if="error == 'FirebaseError: Firebase: Error (auth/user-not-found).'">Usuario no encontrado</p>
+                <p v-if="error == 'FirebaseError: Firebase: Error (auth/wrong-password).'">Contraseña Incorrecta</p>  
             <button class="button" type="submit">
                 <h3 class="button-h3">ACCEDER</h3>
             </button>
