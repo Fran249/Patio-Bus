@@ -14,7 +14,7 @@
 
             <div class="columna2">
                 <h2>{{card.titulo}}</h2>
-                <p>Lorem ipsum dolor sit amet elit.</p>
+                <p>{{ card.descripcion }}</p>
                 <div class="botonera">
                     <div class="contador">
                         <h3>2</h3>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="precio">
-                <h3>$0.00</h3>
+                <h3>${{ card.precio }}</h3>
             </div>
             <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
         </div>
@@ -36,24 +36,22 @@
             </div>
 
             <div class="columna2">
-                <h2>Café</h2>
-                <p>Lorem ipsum dolor sit amet elit.</p>
+                <h2>{{ card.titulo }}</h2>
+                <p>{{ card.descripcion }}</p>
                 <v-card-actions style="padding:2px">
-                    <div class="d-flex flex-column" style="width:100%">
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                            <button class="button">
-                                <h3 class="h3-button">45ml</h3>
+                    <div class="d-flex flex-row" style="width:60%">
+                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start" v-for="tamaños in card.tamaños" :key="tamaños.tamaño">
+                            <button class="button" >
+                                <h3 class="h3-button">{{tamaños.tamaño}}</h3>
                             </button>
-                            <button class="button">
-                                <h3 class="h3-button">75ml</h3>
-                            </button>
+
                         </div>
 
                     </div>
                 </v-card-actions>
             </div>
             <div class="precio">
-                <h3>$0.00</h3>
+                <h3>${{ card.precio }}</h3>
             </div>
             <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
         </div>
@@ -63,8 +61,8 @@
             </div>
 
             <div class="columna2">
-                <h2>Ñoquis</h2>
-                <p>Lorem ipsum dolor sit amet elit.</p>
+                <h2>{{ card.titulo }}</h2>
+                <p>{{ card.descripcion }}</p>
                 <v-card-actions style="padding:2px">
                     <div class="d-flex flex-column" style="width:100%">
                         <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
@@ -100,7 +98,9 @@
             </div>
             <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
         </div>
-        <div class="subtotal" style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;">
+        
+     </div>
+     <div class="subtotal" style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;">
             <h1 style="justify-content: flex-start; margin-left: 7%; font-size: 26px; font-weight:bolder;">SUBTOTAL</h1>
             <h1
                 style="justify-content: flex-end; margin-right: 15%; font-style: italic; font-size: 36px; font-weight: 702 ;">
@@ -108,7 +108,6 @@
 
         </div>
 
-     </div>
         <div class="iniciarCompra"
             style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 3%;">
             <button style="">
