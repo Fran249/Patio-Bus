@@ -7,40 +7,30 @@
             <button style="align-self: flex-start; " @click="closeCarrito()"><v-icon>mdi-close</v-icon></button>
         </v-container>
      <div v-for="(card, i) in cards" :key="i" >
-        <div class="grid-cont" v-if="card.titulo == 'sandwiche'">
+        <div class="grid-cont">
             <div class="imagen-plato" style="background-color: black; width: 100%; height: 100%">
 
             </div>
 
-            <div class="columna2">
+            <div class="columna2"  v-if="card.titulo == 'sandwiche'">
                 <h2>{{card.titulo}}</h2>
                 <p>{{ card.descripcion }}</p>
                 <div class="botonera">
                     <div class="contador">
-                        <h3>2</h3>
+                        <h3 v-if="card.cantidad >= 0">{{ card.cantidad }}</h3>
                     </div>
                     <div class="botones">
-                        <button class="sumador">+</button>
-                        <button class="restador">-</button>
+                        <button  class="sumador" @click="card.cantidad++">+</button>
+                        <button  :disabled="card.cantidad <= 0" class="restador" @click="card.cantidad--">-</button>
                     </div>
                 </div>
             </div>
-            <div class="precio">
-                <h3>${{ card.precio }}</h3>
-            </div>
-            <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
-        </div>
-        <div class="grid-cont" v-if="card.titulo == 'cafe'">
-            <div class="img-card-izquierda" style="background-color: black; width: 100%; height: 100%">
+            <div style="width: 100%; margin-left: 75px" v-if="card.titulo == 'cafe'">
+                <h2 class="ñoquis-h2">{{ card.titulo }}</h2>
+                <p class="ñoquis-p">{{ card.descripcion }}</p>
 
-            </div>
-
-            <div class="columna2">
-                <h2>{{ card.titulo }}</h2>
-                <p>{{ card.descripcion }}</p>
-                <v-card-actions style="padding:2px">
-                    <div class="d-flex flex-row" style="width:60%">
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start" v-for="tamaños in card.tamaños" :key="tamaños.tamaño">
+                    <div class="d-flex flex-row tamaños">
+                        <div style="width: 100%;  " class="d-flex flex-row justify-start" v-for="tamaños in card.tamaños" :key="tamaños.tamaño">
                             <button class="button" >
                                 <h3 class="h3-button">{{tamaños.tamaño}}</h3>
                             </button>
@@ -48,59 +38,51 @@
                         </div>
 
                     </div>
-                </v-card-actions>
             </div>
-            <div class="precio">
-                <h3>${{ card.precio }}</h3>
-            </div>
-            <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
-        </div>
-        <div class="grid-cont" v-if="card.titulo == 'ñoquis'">
-            <div class="imagen-plato1" style="background-color: black; width: 100%; height: 100%">
+            <v-row style="width: 100%"  v-if="card.titulo == 'ñoquis'">
+                <v-col cols="12" style=" margin-left: 23px;">
+                    <h2 class="ñoquis-h2" >{{ card.titulo }}</h2>
+                <p class="ñoquis-p">{{ card.descripcion }}</p>
 
-            </div>
-
-            <div class="columna2">
-                <h2>{{ card.titulo }}</h2>
-                <p>{{ card.descripcion }}</p>
-                <v-card-actions style="padding:2px">
-                    <div class="d-flex flex-column" style="width:100%">
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                            <button class="button">
-                                <h3 class="h3-button">Fileto</h3>
-                            </button>
-                            <button class="button">
-                                <h3 class="h3-button">Bolognesa</h3>
-                            </button>
-
-                            
-                        </div>
-                        <div class="mt-2 mb-2" >
-                                <v-menu offset-y left >
+            </v-col>
+            <v-col cols="12"  style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; width: 150px; gap: 10px; padding: 0;" >
+                <div style="width:100px; margin-left: 35px; " v-for="salsa in card.salsas" :key="salsa.nombre"  >
+                                <button class="button"   v-if=" salsa.nombre == 'filetto' || salsa.nombre == 'bolognesa'" >
+                                    <h3 class="h3-button">{{salsa.nombre}}</h3>
+                                </button>
+                                <v-menu offset-y left  v-if="salsa.nombre == 'tucos' || salsa.nombre == 'cremas'">
                                     <template v-slot:activator="{ on, attrs }" >
                                         <button class="button1" dark v-bind="attrs" v-on="on" >
-                                            <h3 class="h3-button1 ml-5" >Tuco </h3>  
+                                            <h3 class="h3-button1 ml-5" >{{ salsa.nombre}}</h3>  
                                             <v-icon class="icono-menu mt-1">mdi-menu-down </v-icon>                                          
                                         </button>
                                     </template>
                                     <v-list style="backdrop-filter: blur(15px); background-color: transparent;">
-                                        <v-list-item v-for="(item, index) in items" :key="index">
-                                            <v-list-item-title><p class="p-menu-tuco">{{ item.title }}</p></v-list-item-title>
+                                        <v-list-item v-for="(item, index) in salsa.cremas" :key="index">
+                                            <v-list-item-title><p class="p-menu-tuco">{{ item.nombre }}</p></v-list-item-title>
+                                        </v-list-item>
+                                        <v-list-item v-for="(item, index) in salsa.tucos" :key="index">
+                                            <v-list-item-title><p class="p-menu-tuco">{{ item.nombre }}</p></v-list-item-title>
                                         </v-list-item>
                                     </v-list>
                                 </v-menu>
-                            </div>
-                    </div>
-                </v-card-actions>
-            </div>
+                            </div>   
+            </v-col >
+
+
+                       
+            
+
+            </v-row>
+            <div class="botonx"><button @click="quitarArticulo(card)"><v-icon>mdi-close</v-icon></button></div>
             <div class="precio">
-                <h3>$0.00</h3>
+                <h3>${{ card.precio }}</h3>
             </div>
-            <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
         </div>
-        
-     </div>
-     <div class="subtotal" style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;">
+            
+        </div>
+
+    <div class="subtotal" style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;">
             <h1 style="justify-content: flex-start; margin-left: 7%; font-size: 26px; font-weight:bolder;">SUBTOTAL</h1>
             <h1
                 style="justify-content: flex-end; margin-right: 15%; font-style: italic; font-size: 36px; font-weight: 702 ;">
@@ -110,12 +92,12 @@
 
         <div class="iniciarCompra"
             style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 3%;">
-            <button style="">
+            <button style="" @click="iniciarCompra()">
                 <p>INICIAR MI COMPRA</p>
             </button>
         </div>
+     </div>
 
-    </div>
 </template>
 
 
@@ -123,7 +105,7 @@
 import store from '@/store';
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../firebase/index'
+import { auth, firebaseConfig } from '../firebase/index'
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -138,10 +120,31 @@ export default {
         ],
         list: true,
         cards: [],
+        salsas : [],
     }),
     methods: {
         closeCarrito() {
             store.commit("toggleCarrito", false)
+        },
+        iniciarCompra(){
+            console.log(this.cards)
+            const arrayNuevo = []
+            this.cards.forEach(element=>{
+                const nuevaCompra ={
+                    titulo : element.titulo,
+                    precio : element.precio,
+                }
+
+                arrayNuevo.push(nuevaCompra)
+            })
+           
+            localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(arrayNuevo))
+        },
+        quitarArticulo(card){
+            console.log()
+            const index = this.cards.indexOf(card)
+            this.cards.splice(index ,1)
+            console.log(this.cards)
         }
     },
     mounted(){
@@ -152,6 +155,7 @@ export default {
 
         this.cards = doc.data().cards
         console.log(this.cards)
+        console.log(this.salsas)
 
         });
     }
@@ -162,6 +166,10 @@ export default {
 
 <style lang="scss" scoped>
 
+.tamaños {
+    width:100% ;
+
+}
 .p-menu-tuco{
     font-family: 'red-hat';
     font-weight: 500;
@@ -203,6 +211,7 @@ export default {
 
 }
 
+
 .columna2 h2 {
     font-family: 'red-hat';
     font-size: 20px;
@@ -216,6 +225,21 @@ export default {
     color: grey;
     font-size: 15px;
     font-weight: lighter;
+
+}
+
+.ñoquis-p {
+    font-family: 'red-hat';
+    color: grey;
+    font-size: 15px;
+    font-weight: lighter;
+    margin-bottom: 0;
+}
+.ñoquis-h2 {
+    font-family: 'red-hat';
+    font-size: 20px;
+    font-weight: bolder;
+    color: black;
 
 }
 
@@ -386,4 +410,12 @@ export default {
     color: white;
     transition: .5s;
 } 
+
+
+@media screen and (min-width: 1500px) {
+    .tamaños {
+    width:60% ;
+
+}
+}
 </style>
