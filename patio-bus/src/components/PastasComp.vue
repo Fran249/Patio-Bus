@@ -73,14 +73,14 @@
                            
                     </div>
                 </v-card-actions>
-                            <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                                <button class=" comprar  mr-5 mb-1 ">
-                                    <h3 class="h3-comprar mt-1">AGREGAR</h3> 
-                                    <v-icon color="black" size="20" class="mt-1 ">
-                                        mdi-cart
-                                    </v-icon>
-                                </button>
-                            </div>
+                <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
+                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'">
+                                <h3 class="h3-comprar mt-1">AGREGAR</h3>
+                                <v-icon v-bind:style="{'color' : colorCart}" size="20" class="mt-1 ">
+                                    mdi-cart
+                                </v-icon>
+                            </button>
+                        </div>
                         
                     </v-card-actions>
                 </v-card>
@@ -168,6 +168,11 @@
 export default {
     name: 'PastasComp',
     data: () => ({
+        color: '#000',
+        color1 : '#fff',
+        color2: '#000',
+        color3 : '#fff',
+        colorCart: '#000',
         items: [
             { title: 'Carne' },
             { title: 'Pollo' },            
@@ -315,7 +320,9 @@ export default {
     transition: .5s;
 } 
 .button2{        
-    display: flex;   
+    display: flex; 
+    border-right: 1px solid black;    
+    border-left: 1px solid black;  
     border-bottom: 1px solid black;  
     height: 49px;
     width: 100px;

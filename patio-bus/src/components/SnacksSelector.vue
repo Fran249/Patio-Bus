@@ -34,13 +34,13 @@
                             </button>        
                         </div>
                         <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                        <button class="button comprar">
-                            <h3 class="h3-comprar mt-1">AGREGAR</h3>
-                            <v-icon color="black" size="20" class="mt-1">
-                                mdi-cart
-                            </v-icon>
-                        </button>
-                    </div>
+                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'">
+                                <h3 class="h3-comprar mt-1">AGREGAR</h3>
+                                <v-icon v-bind:style="{'color' : colorCart}" size="20" class="mt-1 ">
+                                    mdi-cart
+                                </v-icon>
+                            </button>
+                        </div>
                   </v-card-actions>
               </v-card>
               </v-col>
@@ -117,6 +117,11 @@
   export default {
         name: 'SnacksSelector',
       data: ()=>({
+        color: '#000',
+        color1 : '#fff',
+        color2: '#000',
+        color3 : '#fff',
+        colorCart: '#000',
   
       }),
       methods: {
@@ -227,15 +232,22 @@
       border: 1px solid black;
   }
   .comprar{
-      width: 150px;
-      color: black;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 6px;
-      padding: 3px;
-      margin-top: 20px;
+     width: 150px;
+    border: 1px solid black;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 6px;
+    padding: 3px;
+    margin-top: 20px;
   }
+  .comprar:hover {
+    background-color: black;
+    color: white;
+    transition: .5s;
+
+}
   .button:hover {
       background-color: black;
       color: white;

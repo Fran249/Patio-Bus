@@ -3,10 +3,11 @@
      <NavBar />
      <h3 class="coffe">COFFE</h3>
      <LinksInfuSnacks/>
-     <v-container>
-
+    <v-container style="display: flex;  flex-direction:row">
+     
     <v-row >
       <v-col cols="12" >
+        <div >
         <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active no-active" aria-current="true" aria-label="Slide 1"></button>
@@ -16,7 +17,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <v-img style="height: 300px;" contain src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="..." @click="carritoOpen()">
+      <v-img src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="...">
         
       </v-img>
     </div>      
@@ -30,6 +31,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+    </div>
       </v-col>
     </v-row>
   </v-container>

@@ -13,6 +13,7 @@
                     type="email" 
                     v-model="email"
                     filled
+                    color="grey"
                     full-width
                     append-icon="mdi-email"
                     placeholder="E-mail"
@@ -21,6 +22,7 @@
                     class="text-field"
                     v-model="pass1"
                     filled
+                    color="grey"
                     full-width
                     :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="() => (value = !value)"
@@ -31,6 +33,7 @@
                     class="text-field"
                     v-model="pass2"
                     filled
+                    color="grey"
                     full-width
                     :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="() => (value = !value)"
@@ -61,7 +64,9 @@ import {mapActions, mapState} from 'vuex'
 export default {
     name: 'RegistroComp',
     data: ()=>({
-
+        email: '',
+            pass: '',
+            value: String,
     }),
     methods:{
         closeRegistro(){

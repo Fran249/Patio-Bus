@@ -2,8 +2,6 @@
 import Vue from 'vue'
 
 import HomeView from '../views/HomeView.vue'
-
-
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig} from '../firebase/index'
 
@@ -11,6 +9,8 @@ import {auth} from '../firebase/index'
 
 
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+
 const firestore = getFirestore();
 
 initializeApp(firebaseConfig);
