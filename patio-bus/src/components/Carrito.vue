@@ -6,14 +6,14 @@
             </div>
             <button style="align-self: flex-start; " @click="closeCarrito()"><v-icon>mdi-close</v-icon></button>
         </v-container>
-        <!--
-        <div class="grid-cont">
+     <div v-for="(card, i) in cards" :key="i" >
+        <div class="grid-cont" v-if="card.titulo == 'sandwiche'">
             <div class="imagen-plato" style="background-color: black; width: 100%; height: 100%">
 
             </div>
 
             <div class="columna2">
-                <h2>Sandwiche</h2>
+                <h2>{{card.titulo}}</h2>
                 <p>Lorem ipsum dolor sit amet elit.</p>
                 <div class="botonera">
                     <div class="contador">
@@ -30,7 +30,7 @@
             </div>
             <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
         </div>
-        <div class="grid-cont">
+        <div class="grid-cont" v-if="card.titulo == 'cafe'">
             <div class="img-card-izquierda" style="background-color: black; width: 100%; height: 100%">
 
             </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
         </div>
-        <div class="grid-cont">
+        <div class="grid-cont" v-if="card.titulo == 'ñoquis'">
             <div class="imagen-plato1" style="background-color: black; width: 100%; height: 100%">
 
             </div>
@@ -106,66 +106,9 @@
                 style="justify-content: flex-end; margin-right: 15%; font-style: italic; font-size: 36px; font-weight: 702 ;">
                 $0.00 </h1>
 
-        </div>-->
-        <div class="grid-cont" v-for="card in cards" :key="card.title">
-            <div class="imagen-plato" style="background-color: black; width: 100%; height: 100%">
-
-            </div>
-
-            <div class="columna2" >
-                <div v-if="card.titulo == 'sandwiche'" style="width: 100%; height: 100%;">
-                    <h2>{{card.titulo}}</h2>
-                    <p>{{card.descripcion}}</p>
-                    <div class="botonera" >
-                        <div class="contador">
-                            <h3>2</h3>
-                        </div>
-                        <div class="botones">
-                            <button class="sumador">+</button>
-                            <button class="restador">-</button>
-                        </div>
-                    </div>
-                </div>
-                <div v-if="card.titulo == 'cafe'">
-                    <h2>{{card.titulo}}</h2>
-                <p>{{card.descripcion}}</p>
-                <v-card-actions style="padding:2px">
-                    <div class="d-flex flex-column" style="width:100%">
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                            <button class="button">
-                                <h3 class="h3-button">45ml</h3>
-                            </button>
-                            <button class="button">
-                                <h3 class="h3-button">75ml</h3>
-                            </button>
-                        </div>
-
-                    </div>
-                    </v-card-actions>
-                </div>
-                <div v-if="card.titulo == 'ñoquis'">
-                    <h2>{{ card.titulo }}</h2>
-                <p>{{ card.descripcion }}</p>
-                <v-card-actions style="padding:2px">
-                    <div  class="d-flex flex-column" style="width:100%" v-for="salsa in card.Salsas" :key="salsa.nombreSalsa">
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                            <button class="button">
-                                <h3 class="h3-button">{{ salsa.nombreSalsa }}</h3>
-                            </button>
-                           
-
-                            
-                        </div>
-               
-                    </div>
-                </v-card-actions>
-                </div>
-            </div>
-            <div class="precio">
-                <h3>${{ card.precio }}</h3>
-            </div>
-            <div class="botonx"><button><v-icon>mdi-close</v-icon></button></div>
         </div>
+
+     </div>
         <div class="iniciarCompra"
             style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 3%;">
             <button style="">
