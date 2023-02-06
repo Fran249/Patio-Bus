@@ -2,14 +2,14 @@
   <v-container class="card-container" >
 
             <v-row>
-                <v-col cols="6">
+                <v-col cols="6" v-for="(select,i) in selected" :key="i">
                             <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;" >
-                                <v-img src="../assets/ImagenesCards/InfusionesSelector.jpg" style="height: 250px">
+                                <v-img :src="select.url" style="height: 250px">
                                     
                                 </v-img>           
                 <div style="width: 100%;">
                     <h3 class="title-cafe">
-                        Café
+                        {{select.nombre}}
                     </h3>
                 </div>
                 <v-card-text>
@@ -22,15 +22,12 @@
                 <v-card-actions >
                     <div class="d-flex flex-column" style="width:100%">
                         <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                        <button class="button">
-                            <h3 class="h3-button">45ml</h3>
-                        </button>
-                        <button class="button">
-                            <h3 class="h3-button">75ml</h3>
+                        <button class="button" v-for="tamaño in select.tamaños" :key="tamaño.tamaño" >
+                            <h3 class="h3-button">{{tamaño.tamaño}}</h3>
                         </button>
                         </div>
                         <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'">
+                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'" @click="agregarCart(select)">
                                 <h3 class="h3-comprar mt-1">AGREGAR</h3>
                                 <v-icon v-bind:style="{'color' : colorCart}" size="20" class="mt-1 ">
                                     mdi-cart
@@ -43,66 +40,26 @@
             </v-col>
             <v-col cols="6">
                 <v-row>
-                    <v-col cols="6">
-                    <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                <v-img src="../assets/ImagenesCards/InfusionesSelector.jpg">
-
-                </v-img>
-                <v-card-title>
-                    <h3 class="title-cafe">
-                        Café
-                    </h3>
-                </v-card-title>
-            </v-card>
-                </v-col>
-                <v-col cols="6">
-                    <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                <v-img src="../assets/ImagenesCards/CafeDoble.jpg">
-
-                </v-img>
-                <v-card-title>
-                    <h3 class="title-cafe">
-                        Café doble
-                    </h3>
-                </v-card-title>
-            </v-card>
-                </v-col>
-                <v-col cols="6">
-                    <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                <v-img src="../assets/ImagenesCards/CafeConLeche.jpg">
-
-                </v-img>
-                <v-card-title>
-                    <h3 class="title-cafe">
-                        Café con leche
-                    </h3>
-                </v-card-title>
-            </v-card>
-                </v-col>
-                <v-col cols="6">
-                    <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                <v-img src="../assets/ImagenesCards/CafeConLeche.jpg">
-
-                </v-img>
-                <v-card-title>
-                    <h3 class="title-cafe">
-                        Cortado
-                    </h3>
-                </v-card-title>
-            </v-card>
-                </v-col>
+                    <v-col cols="6" v-for="(cafe, i) in cafes" :key="i">
+                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectCafe(cafe)">
+                            <v-img :src="cafe.url">
+                            </v-img>
+                            <v-card-title>
+                                <h3 class="title-cafe">
+                                    {{cafe.nombre}}
+                                </h3>
+                            </v-card-title>
+                        </v-card>
+                    </v-col>
                 </v-row>
             </v-col>
             </v-row>
             <div class="container-selectors-up">
         <div class="select-container">
-        <div class="selectores">
-            <div class="selector1"></div>
-            <div class="selector2"></div>
-            <div class="selector3"></div>
-            <div class="selector4"></div>
+        <div class="selectores" >
+            <div class="selector"  v-for="cafe in cafes" :key="cafe.id"  @click="selectorShow(cafe)"></div>
         </div>
-        <h3 class="mt-2">1 de 4</h3>
+        <h3 class="mt-2" v-for="select in selected" :key="select.id">{{ select.id }} de {{cafes.length}}</h3>
     </div>
     </div>
 
@@ -111,6 +68,14 @@
 
 
 <script>
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import {  auth, firebaseConfig } from '../firebase/index';
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+const storage = getStorage();
+
 export default {
     data: ()=>({
         color: '#000',
@@ -118,9 +83,71 @@ export default {
         color2: '#000',
         color3 : '#fff',
         colorCart: '#000',
+        cafes: [],
+        newCafes : [],
+        selected : [],
     }),
     methods: {
+        selectCafe(cafe){
+            this.selected = [cafe]
+            console.log(this.selected)
+        },
+        selectorShow(cafe){
+           this.selected = [cafe]
+        },
+        agregarCart(select){
 
+            const cart = localStorage.getItem( `cart/${auth.currentUser.uid}`)
+            const parseCart = JSON.parse(cart)
+            parseCart.push(select)
+            console.log(parseCart)
+        }
+    },
+    beforeMount(){
+        onSnapshot(doc(db, "Productos/infusiones"), (doc) => {
+
+                this.cafes = doc.data().cafe
+
+
+                this.cafes.forEach(item =>{
+        getDownloadURL(ref(storage, `Productos/infusiones/${item.id}.jpg`))
+            .then((url) => {
+                const newCafe= {
+                    nombre : item.nombre,
+                    id : item.id,
+                    url: url,
+                    tamaños : item.tamaños
+                }
+  
+                this.newCafes.push(newCafe)
+                if(item.nombre == 'Café'){
+                    const newSelected = {
+                        nombre: item.nombre,
+                        id: item.id,
+                        tamaños: item.tamaños,
+                        url: url
+                    }
+                    this.selected.push(newSelected)
+                }else {
+                    return 
+                }
+    
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+
+
+            })
+            this.cafes = this.newCafes
+            
+
+            })
+            
+       
+    },
+    mounted(){
+        
     }
 
 }
@@ -150,17 +177,18 @@ export default {
         gap: 20px;
         justify-content: center;
         margin-top: 20px;
-        .selector1, .selector2, .selector3, .selector4{
+        .selector{
         width: 101px;
         background-color: #D9D9D9;
         transition: .5s;
         height: 5px;
     }
-        .selector1:hover, .selector2:hover, .selector3:hover, .selector4:hover{
+        .selector:hover{
             background-color: #B9B1B1;
             transition: .5s;
             cursor: pointer;
         }
+    
     }
   }
   .select-container h3{

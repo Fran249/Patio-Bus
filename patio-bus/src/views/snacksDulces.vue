@@ -85,13 +85,14 @@ export default {
   right: -6%;
 }
 .carousel-control-next-icon{
-background-image: url('../assets/Icono-FlechaRight.png');
+background-image: url('../assets/IconosNew/Iconos/Icono-Flecha.png');
 width: 25px;
 height: 40px;
 }
 
 .carousel-control-prev-icon{
-  background-image: url('../assets/Icono-FlechaLeft.png');
+  background-image: url('../assets/IconosNew/Iconos/Icono-Flecha.png');
+  transform: rotate(180deg);
   width: 25px;
 height: 40px;
 }

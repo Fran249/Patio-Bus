@@ -124,16 +124,28 @@
 <script>
 import {mapActions, mapState , mapGetters} from 'vuex'
 import store from '@/store';
+
+import { auth } from '@/firebase';
+
 export default {
     name: "NavBar",
     data: () => ({
         percentage: "600",
         carrito: store.state.carrito,
         menuOn: false,
-        notif: 3,
+        notif: 0,
     }),
+    beforeCreate(){
+        auth.onAuthStateChanged(user => {
+            const carritoLocal = localStorage.getItem(`cart/${user.uid}`)
+        const carritoLocalParsed = JSON.parse(carritoLocal)
+        const totalArray = carritoLocalParsed.length
+        this.notif = totalArray
+        })
 
+    },
     mounted(){
+
     window.addEventListener( "scroll", () => {
 
                    if ( window.scrollY > 0) {
@@ -192,6 +204,7 @@ export default {
     updated() {
         this.carrito = store.state.carrito;
     },
+
     computed: {
         carritoCompra: {
             get() {

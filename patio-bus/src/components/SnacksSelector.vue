@@ -2,14 +2,14 @@
     <v-container class="card-container" >
   
               <v-row>
-                  <v-col cols="6">
+                  <v-col cols="6" v-for="(select,i) in selected" :key="i">
                               <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;" >
-                                <v-img src="../assets/ImagenesCards/Cereales.jpg" style="height: 250px">
+                                <v-img :src="select.url" style="height: 250px">
                                     
                                 </v-img>
                   <div style="width: 100%;">
                       <h3 class="title-cafe">
-                          Café
+                        {{ select.nombre }}
                       </h3>
                   </div>
                   <v-card-text class="v-text">
@@ -21,13 +21,13 @@
                   </v-card-text>
                   <v-card-actions >
                         <div class="grid-botonera">
-                            <div class="number">2</div>
-                            <button class="plus">
+                            <div class="number">{{ select.buyNumber }}</div>
+                            <button class="plus" @click="select.buyNumber++">
                                 <v-icon>
                                     mdi-plus
                                 </v-icon>
                             </button>
-                            <button class="minus">
+                            <button class="minus" @click="select.buyNumber--" :disabled="select.buyNumber == 0">
                                 <v-icon>
                                     mdi-minus
                                 </v-icon>
@@ -45,68 +45,28 @@
               </v-card>
               </v-col>
               <v-col cols="6">
-                  <v-row>
-                      <v-col cols="6">
-                      <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                  <v-img src="../assets/ImagenesCards/Cereales.jpg">
-  
-                  </v-img>
-                  <v-card-title>
-                      <h3 class="title-cafe">   
-                         Mix de cereales
-                      </h3>
-                  </v-card-title>
-              </v-card>
-                  </v-col>
-                  <v-col cols="6">
-                      <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                  <v-img src="../assets/ImagenesCards/Cereales.jpg">
-  
-                  </v-img>
-                  <v-card-title>
-                      <h3 class="title-cafe">
-                        Medialunas
-                      </h3>
-                  </v-card-title>
-              </v-card>
-                  </v-col>
-                  <v-col cols="6">
-                      <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                  <v-img src="../assets/ImagenesCards/Cereales.jpg">
-  
-                  </v-img>
-                  <v-card-title>
-                      <h3 class="title-cafe">
-                          Torta de Crema y Frutilla
-                      </h3>
-                  </v-card-title>
-              </v-card>
-                  </v-col>
-                  <v-col cols="6">
-                      <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                  <v-img src="../assets/ImagenesCards/Cereales.jpg">
-  
-                  </v-img>
-                  <v-card-title>
-                      <h3 class="title-cafe">
-                          Tostados
-                      </h3>
-                  </v-card-title>
-              </v-card>
-                  </v-col>
-                  </v-row>
-              </v-col>
+                <v-row>
+                    <v-col cols="6" v-for="(cereal, i) in cereales" :key="i">
+                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectCereal(cereal)">
+                            <v-img :src="cereal.url">
+                            </v-img>
+                            <v-card-title>
+                                <h3 class="title-cafe">
+                                    {{cereal.nombre}}
+                                </h3>
+                            </v-card-title>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </v-col>
               </v-row>
           
-    <div class="container-selectors-up">
+              <div class="container-selectors-up">
         <div class="select-container">
-        <div class="selectores">
-            <div class="selector1"></div>
-            <div class="selector2"></div>
-            <div class="selector3"></div>
-            <div class="selector4"></div>
+        <div class="selectores" >
+            <div class="selector"  v-for="cereal in cereales" :key="cereal.id"></div>
         </div>
-        <h3 class="mt-2">1 de 4</h3>
+        <h3 class="mt-2" v-for="select in selected" :key="select.id">{{ select.id }} de {{cereales.length}}</h3>
     </div>
     </div>
     </v-container>
@@ -114,6 +74,15 @@
   
   
   <script>
+
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import {  firebaseConfig } from '../firebase/index';
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+const storage = getStorage();
+
   export default {
         name: 'SnacksSelector',
       data: ()=>({
@@ -122,12 +91,63 @@
         color2: '#000',
         color3 : '#fff',
         colorCart: '#000',
+        cereales: [],
+        selected: [],
+        newCereales : [],
+        
   
       }),
       methods: {
+        selectCereal(cereal){
+            this.selected = [cereal]
+            console.log(this.selected)
+        }
+    },
+    beforeMount(){
+        onSnapshot(doc(db, "Productos/snacks"), (doc) => {
+
+                this.cereales = doc.data().snacks
+
+
+                this.cereales.forEach(item =>{
+        getDownloadURL(ref(storage, `Productos/snacks/${item.id}.jpg`))
+            .then((url) => {
+                const newCereal= {
+                    nombre : item.nombre,
+                    id : item.id,
+                    url: url,
+                    buyNumber : item.buyNumber,
+                }
   
-      }
-  
+                this.newCereales.push(newCereal)
+                if(item.nombre == 'Mix de cereales'){
+                    const newSelected = {
+                        nombre: item.nombre,
+                        id: item.id,
+                        url: url,
+                        buyNumber : item.buyNumber,
+                    }
+                    this.selected.push(newSelected)
+                    console.log(this.selected)
+
+                }else {
+                    return 
+                }
+    
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+
+
+            })
+            this.cereales = this.newCereales
+            
+
+            })
+            
+       
+    },
   }
   
   
@@ -155,13 +175,13 @@
         gap: 20px;
         justify-content: center;
         margin-top: 20px;
-        .selector1, .selector2, .selector3, .selector4{
+        .selector{
         width: 101px;
         background-color: #D9D9D9;
         transition: .5s;
         height: 5px;
     }
-        .selector1:hover, .selector2:hover, .selector3:hover, .selector4:hover{
+        .selector:hover{
             background-color: #B9B1B1;
             transition: .5s;
             cursor: pointer;
