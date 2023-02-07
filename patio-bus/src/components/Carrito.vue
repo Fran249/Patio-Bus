@@ -1,36 +1,45 @@
 <template>
     <div class="dialog">
+        <v-col cols="12" v-for="car in cart" :key="car.nombre" >
+            <div v-if="car.category = 'combos'" >
+                <v-img :src="car.src" width="80%" >
+
+                </v-img>
+                <div v-for="name in car.items" :key="name.nombre">
+                    <h3>{{ name.nombre }}</h3 >
+                </div>
+            </div>
+            </v-col>
         <v-container style="display: flex; flex-direction: row; justify-content: space-between;">
             <div style=" text-align: center; width: 100%; padding:25px;">
                 <h2 class="title-compras">MIS COMPRAS</h2>
             </div>
             <button style="align-self: flex-start; " @click="closeCarrito()"><v-icon>mdi-close</v-icon></button>
         </v-container>
-     <div v-for="(card, i) in cards" :key="i" >
+     <div v-for="(car, i) in cart" :key="i" >
         <div class="grid-cont">
-            <div class="imagen-plato" style="background-color: black; width: 100%; height: 100%">
+            <v-img class="imagen-plato" :src="car.url" style=" width: 100%; height: 100%">
 
-            </div>
+            </v-img>
 
-            <div class="columna2"  v-if="card.titulo == 'sandwiche'">
-                <h2>{{card.titulo}}</h2>
-                <p>{{ card.descripcion }}</p>
-                <div class="botonera">
-                    <div class="contador">
-                        <h3 v-if="card.cantidad >= 0">{{ card.cantidad }}</h3>
+            <div class="columna2"  >
+                <h2>{{car.nombre}}</h2>
+                <div class="botonera" v-if="car.nombre == 'cafe'">
+                    <div class="contador" >
+                        <h3 v-if="car.cantidad >= 0">{{ car.cantidad }}</h3>
                     </div>
                     <div class="botones">
-                        <button  class="sumador" @click="card.cantidad++">+</button>
-                        <button  :disabled="card.cantidad <= 0" class="restador" @click="card.cantidad--">-</button>
+                        <button  class="sumador" @click="car.cantidad++">+</button>
+                        <button  :disabled="car.cantidad <= 0" class="restador" @click="car.cantidad--">-</button>
                     </div>
                 </div>
             </div>
-            <div style="width: 100%; margin-left: 75px" v-if="card.titulo == 'cafe'">
-                <h2 class="ñoquis-h2">{{ card.titulo }}</h2>
-                <p class="ñoquis-p">{{ card.descripcion }}</p>
+            <div style="width: 100%; margin-left: 75px" v-if="car.titulo == 'cafe'">
+                <h2 class="ñoquis-h2">{{ car.titulo }}</h2>
+                <p class="ñoquis-p">{{ car.descripcion }}</p>
 
                     <div class="d-flex flex-row tamaños">
-                        <div style="width: 100%;  " class="d-flex flex-row justify-start" v-for="tamaños in card.tamaños" :key="tamaños.tamaño">
+                        <div style="width: 100%;  " class="d-flex flex-row justify-start" v-for="tamaños in car.tamaños" :key="tamaños.tamaño">
                             <button class="button" >
                                 <h3 class="h3-button">{{tamaños.tamaño}}</h3>
                             </button>
@@ -39,14 +48,14 @@
 
                     </div>
             </div>
-            <v-row style="width: 100%"  v-if="card.titulo == 'ñoquis'">
+            <v-row style="width: 100%"  v-if="car.titulo == 'ñoquis'">
                 <v-col cols="12" style=" margin-left: 23px;">
-                    <h2 class="ñoquis-h2" >{{ card.titulo }}</h2>
-                <p class="ñoquis-p">{{ card.descripcion }}</p>
+                    <h2 class="ñoquis-h2" >{{ car.titulo }}</h2>
+                <p class="ñoquis-p">{{ car.descripcion }}</p>
 
             </v-col>
             <v-col cols="12"  style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; width: 150px; gap: 10px; padding: 0;" >
-                <div style="width:100px; margin-left: 35px; " v-for="salsa in card.salsas" :key="salsa.nombre"  >
+                <div style="width:100px; margin-left: 35px; " v-for="salsa in car.salsas" :key="salsa.nombre"  >
                                 <button class="button"   v-if=" salsa.nombre == 'filetto' || salsa.nombre == 'bolognesa'" >
                                     <h3 class="h3-button">{{salsa.nombre}}</h3>
                                 </button>
@@ -70,13 +79,16 @@
             </v-col >
 
 
+
+
+
                        
             
 
             </v-row>
-            <div class="botonx"><button @click="quitarArticulo(card)"><v-icon>mdi-close</v-icon></button></div>
+            <div class="botonx"><button @click="quitarArticulo(car)"><v-icon>mdi-close</v-icon></button></div>
             <div class="precio">
-                <h3>${{ card.precio }}</h3>
+                <h3>${{ car.precio }}</h3>
             </div>
         </div>
             
@@ -102,62 +114,50 @@
 
 
 <script>
+import { auth } from '@/firebase';
 import store from '@/store';
-import { getFirestore, doc, onSnapshot } from "firebase/firestore";
-import { initializeApp } from 'firebase/app';
-import { auth, firebaseConfig } from '../firebase/index'
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+//import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+//import { initializeApp } from 'firebase/app';
+//import { firebaseConfig } from '../firebase/index'
+
+//const app = initializeApp(firebaseConfig);
+//const db = getFirestore(app);
 export default {
     name: 'CarritoVue',
     data: () => ({
-        items: [
-            { title: 'Estofado de pollo' },
-            { title: 'Estofado de ternera' },
-            { title: 'Estofado de cordero' },
-            { title: 'Crema' },
-        ],
         list: true,
-        cards: [],
-        salsas : [],
+        cart: []
+
     }),
     methods: {
         closeCarrito() {
             store.commit("toggleCarrito", false)
         },
         iniciarCompra(){
-            console.log(this.cards)
-            const arrayNuevo = []
-            this.cards.forEach(element=>{
-                const nuevaCompra ={
-                    titulo : element.titulo,
-                    precio : element.precio,
-                }
-
-                arrayNuevo.push(nuevaCompra)
-            })
+            
            
-            localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(arrayNuevo))
         },
-        quitarArticulo(card){
+        quitarArticulo(car){
             console.log()
-            const index = this.cards.indexOf(card)
-            this.cards.splice(index ,1)
-            console.log(this.cards)
+            const index = this.cart.indexOf(car)
+            this.cart.splice(index ,1)
+            console.log(this.cart)
         }
     },
     mounted(){
 
     },
     beforeMount(){
-        onSnapshot(doc(db, "Productos/cards"), (doc) => {
 
-        this.cards = doc.data().cards
-        console.log(this.cards)
-        console.log(this.salsas)
-
-        });
+    },
+    beforeCreate(){
+        auth.onAuthStateChanged(user =>{
+            const cart =  localStorage.getItem(`cart/${user.uid}`)
+        const cartJsoned = JSON.parse(cart)
+            this.cart = cartJsoned
+        console.log(cartJsoned)
+        })
     }
 }
 
@@ -189,7 +189,6 @@ export default {
 }
 
 .grid-cont .imagen-plato {
-    background-image: url("../assets/ImagenesCards/SandwichJyQ.jpg");
     background-size: cover;
     background-position: center;
     grid-column: 1/2;

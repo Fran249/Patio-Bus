@@ -11,43 +11,10 @@
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" class="no-active" aria-label="Slide 4"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <v-img src="../assets/Combo1.png" contain alt="...">
+    <div class="carousel-item active" v-for="img in images" :key="img.src">
+      <v-img :src="img.src"  alt="...">
         <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
-            <v-icon>
-              mdi-cart
-            </v-icon>
-          </v-btn>
-        </div>
-      </v-img>
-    </div>
-    <div class="carousel-item">
-      <v-img src="../assets/Combo2.png"  alt="...">
-        <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
-            <v-icon>
-              mdi-cart
-            </v-icon>
-          </v-btn>
-        </div>
-      </v-img>
-    </div>
-    <div class="carousel-item">
-      <v-img src="../assets/Combo3.png"  alt="...">
-        <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
-            <v-icon>
-              mdi-cart
-            </v-icon>
-          </v-btn>
-        </div>
-      </v-img>
-    </div>
-    <div class="carousel-item">
-      <v-img src="../assets/Combo4.png"  alt="...">
-        <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="carritoOpen()">
+          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="sendComboToCart(img)">
             <v-icon>
               mdi-cart
             </v-icon>
@@ -73,32 +40,107 @@
 
 
 <script>
+import { auth } from '@/firebase';
+import { onAuthStateChanged } from '@firebase/auth';
 import store from '@/store';
 
 export default {
     name: 'CarouselsVue',
     data: ()=>({
-        items:[
-                {   
-                    identifier: false,
-                    src: 'https://i.imgur.com/H55mDqI.jpg'
+        carrito: [],
+        images:[{   
+                    items: [
+                      {
+                        nombre: 'Combo café con leche + 2 Medialunas',
+                        precio: 123,
+                      },
+                    ],
+                    src: require('../assets/Combo1.png'),
+                    category: 'combos',
                 },
                 {   
-                    identifier: true,
-                    src: 'https://i.imgur.com/KRebmZm.jpg'
+                  items: [
+                      {
+                        nombre: 'Combo café con leche + Kit desayuno',
+                        precio: 123,
+
+                      },
+                    ],
+                    src: require('../assets/Combo2.png'),
+                    category: 'combos',
                 },
-                {   index: 3,
-                    identifier: false,
-                    src: 'https://i.imgur.com/mlC0zPx.jpg'
+                {   
+                  items: [
+                      {
+                        nombre: 'Jugo de naranja + tostado',
+                        precio: 123,
+                     
+                      },
+
+                    ],
+                    src: require('../assets/Combo3.png'),
+                    category: 'combos',
+                },
+                {   
+                  items: [
+                      {
+                        nombre: 'Mate + Kit desayuno',
+                        precio: 123,
+                      
+                      },
+                    ],
+                    src: require('../assets/Combo4.png'),
+                    category: 'combos',
                 },
 
             ],
             
     }),
     methods: {
-      carritoOpen(){
-        store.commit("toggleCarrito" , true)
+      sendComboToCart(img){
+        const index = this.carrito.findIndex(object => {
+                return object.src === img.src;
+            });
+            if (auth.currentUser == null) {
+                return
+
+            } else {
+                if (index == -1) {
+                   // const cardItems = {
+                   //   nombre : img.nombre,
+                   //   id: img.id,
+                   //   tamaños: img.tamaños
+                   // }
+                    this.carrito.push(img)
+
+                    localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
+
+                } else {
+                    return
+
+                }
+                this.dialogCarrito = true
+                setTimeout(this.notificacionCarrito, 1200)
+
+                store.commit("sendNotif", this.carrito.length)
+            }
       }
+    },
+    beforeCreate(){
+      onAuthStateChanged(auth, (user) => {
+            if (user) {
+                let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                if (datosLocalStorage === null) {
+                    this.carrito = [];
+                } else {
+                    this.carrito = datosLocalStorage;
+                }
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
+
     }
 
 

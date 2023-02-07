@@ -69,12 +69,14 @@
 
 <script>
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
-import { initializeApp } from 'firebase/app';
-import {  auth, firebaseConfig } from '../firebase/index';
+import { initializeApp  } from 'firebase/app';
+import { auth, firebaseConfig } from '../firebase/index';
+import { onAuthStateChanged } from "@firebase/auth";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 const storage = getStorage();
+import store from '@/store'
 
 export default {
     data: ()=>({
@@ -86,6 +88,7 @@ export default {
         cafes: [],
         newCafes : [],
         selected : [],
+        carrito : []
     }),
     methods: {
         selectCafe(cafe){
@@ -95,13 +98,39 @@ export default {
         selectorShow(cafe){
            this.selected = [cafe]
         },
-        agregarCart(select){
 
-            const cart = localStorage.getItem( `cart/${auth.currentUser.uid}`)
-            const parseCart = JSON.parse(cart)
-            parseCart.push(select)
-            console.log(parseCart)
+        agregarCart(select){
+            const index = this.carrito.findIndex(object => {
+                return object.id === select.id;
+            });
+            if (auth.currentUser == null) {
+                return
+
+            } else {
+                if (index == -1) {
+                   // const cardItems = {
+                   //   nombre : img.nombre,
+                   //   id: img.id,
+                   //   tamaños: img.tamaños
+                   // }
+                    this.carrito.push(select)
+
+                    localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
+
+                } else {
+                    return
+
+                }
+                this.dialogCarrito = true
+                setTimeout(this.notificacionCarrito, 1200)
+
+                store.commit("sendNotif", this.carrito.length)
+            }
+
+           
+
         }
+
     },
     beforeMount(){
         onSnapshot(doc(db, "Productos/infusiones"), (doc) => {
@@ -110,6 +139,7 @@ export default {
 
 
                 this.cafes.forEach(item =>{
+
         getDownloadURL(ref(storage, `Productos/infusiones/${item.id}.jpg`))
             .then((url) => {
                 const newCafe= {
@@ -120,6 +150,7 @@ export default {
                 }
   
                 this.newCafes.push(newCafe)
+
                 if(item.nombre == 'Café'){
                     const newSelected = {
                         nombre: item.nombre,
@@ -148,6 +179,21 @@ export default {
     },
     mounted(){
         
+    },
+    beforeCreate(){
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                if (datosLocalStorage === null) {
+                    this.carrito = [];
+                } else {
+                    this.carrito = datosLocalStorage;
+                }
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
     }
 
 }

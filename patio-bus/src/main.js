@@ -26,8 +26,9 @@ import {auth} from './firebase'
 
 
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-const firestore = getFirestore();
 
+
+const firestore = getFirestore();
 
 async function getRol(uid){
 

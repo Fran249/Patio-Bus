@@ -133,14 +133,15 @@ export default {
         percentage: "600",
         carrito: store.state.carrito,
         menuOn: false,
-        notif: 0,
+
     }),
     beforeCreate(){
         auth.onAuthStateChanged(user => {
             const carritoLocal = localStorage.getItem(`cart/${user.uid}`)
-        const carritoLocalParsed = JSON.parse(carritoLocal)
-        const totalArray = carritoLocalParsed.length
-        this.notif = totalArray
+const carritoLocalParsed = JSON.parse(carritoLocal)
+const totalArray = carritoLocalParsed.length
+
+  store.commit('sendNotif', totalArray)
         })
 
     },
@@ -230,9 +231,18 @@ export default {
                 store.commit("toggleRegistro", value);
             },
         },
+        notif : {
+            get(){
+                return store.state.notif
+            },
+            set(value){
+               store.commit("sendNotif", value)
+            }
+        },
         ...mapGetters(['existeUsuario']),
         ...mapState(['usuario']),
     },
+
 }
 
 

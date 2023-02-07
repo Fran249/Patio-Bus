@@ -34,7 +34,7 @@
                             </button>        
                         </div>
                         <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'">
+                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'" @click="agregarCart(select)">
                                 <h3 class="h3-comprar mt-1">AGREGAR</h3>
                                 <v-icon v-bind:style="{'color' : colorCart}" size="20" class="mt-1 ">
                                     mdi-cart
@@ -82,6 +82,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 const storage = getStorage();
+import { onAuthStateChanged } from "@firebase/auth";
+import { auth } from "../firebase/index";
+
+import store from '@/store'
 
   export default {
         name: 'SnacksSelector',
@@ -94,6 +98,7 @@ const storage = getStorage();
         cereales: [],
         selected: [],
         newCereales : [],
+        carrito : [],
         
   
       }),
@@ -101,7 +106,39 @@ const storage = getStorage();
         selectCereal(cereal){
             this.selected = [cereal]
             console.log(this.selected)
+        },
+        agregarCart(select){
+            const index = this.carrito.findIndex(object => {
+                return object.nombre === select.nombre;
+            });
+            if (auth.currentUser == null) {
+                return
+
+            } else {
+                if (index == -1) {
+                   // const cardItems = {
+                   //   nombre : img.nombre,
+                   //   id: img.id,
+                   //   tamaños: img.tamaños
+                   // }
+                    this.carrito.push(select)
+
+                    localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
+
+                } else {
+                    return
+
+                }
+                this.dialogCarrito = true
+                setTimeout(this.notificacionCarrito, 1200)
+
+                store.commit("sendNotif", this.carrito.length)
+            }
+
+           
+
         }
+
     },
     beforeMount(){
         onSnapshot(doc(db, "Productos/snacks"), (doc) => {
@@ -148,6 +185,21 @@ const storage = getStorage();
             
        
     },
+    beforeCreate(){
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                if (datosLocalStorage === null) {
+                    this.carrito = [];
+                } else {
+                    this.carrito = datosLocalStorage;
+                }
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
+    }
   }
   
   
