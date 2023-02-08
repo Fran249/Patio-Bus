@@ -133,15 +133,9 @@ export default {
         percentage: "600",
         carrito: store.state.carrito,
         menuOn: false,
-        componentKey: store.state.forceRenderCarrito,
 
     }),
-    watch:{
-  componentKey(){
-    this.componentKey = store.state.forceRenderCarrito
-    
-  }
- },
+
     beforeCreate(){
         auth.onAuthStateChanged(user => {
             const carritoLocal = localStorage.getItem(`cart/${user.uid}`)
@@ -214,6 +208,14 @@ const totalArray = carritoLocalParsed.length
     },
 
     computed: {
+        componentKey: {
+            get(){
+                return store.state.forceRenderCarrito
+            },
+            set(){
+                store.commit('forceRenderCarrito', +1)
+            }
+        },
         carritoCompra: {
             get() {
                 return store.state.carrito;
