@@ -26,6 +26,7 @@ export default new Vuex.Store({
     ingreso: false,
     registro: false,
     notif: '',
+    forceRenderCarrito: 0,
 
   },
   getters: {
@@ -48,8 +49,12 @@ export default new Vuex.Store({
     toggleIngreso: (state, value) => (state.ingreso = value),
     toggleRegistro: (state, value) => (state.registro = value),
     sendNotif: (state, value) => (state.notif = value),
+    forceRenderCarrito: (state, value) => (state.forceRenderCarrito = value),
   },
   actions: {
+    forceRenderCarrito({commit},value){
+      commit("forceRenderCarrito", value);
+    },
     sendNotif({ commit }, value) {
       commit("sendNotif", value);
     },

@@ -109,7 +109,7 @@
                             </v-img>                                  
                         </div>
                         <v-dialog v-model="carritoCompra" hide-overlay >
-                            <CarritoVue />
+                            <CarritoVue :key="componentKey"/>
 
                     </v-dialog>
                     <v-dialog v-model="ingreso" >
@@ -133,8 +133,15 @@ export default {
         percentage: "600",
         carrito: store.state.carrito,
         menuOn: false,
+        componentKey: store.state.forceRenderCarrito,
 
     }),
+    watch:{
+  componentKey(){
+    this.componentKey = store.state.forceRenderCarrito
+    
+  }
+ },
     beforeCreate(){
         auth.onAuthStateChanged(user => {
             const carritoLocal = localStorage.getItem(`cart/${user.uid}`)
