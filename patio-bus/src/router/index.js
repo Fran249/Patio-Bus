@@ -205,12 +205,12 @@ const routes = [
     },
   },
   {
-    path: '/StockView',
-    name: 'StockView',
+    path: '/PerfilAdminView',
+    name: 'PerfilAdminView',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "MiPefil" */ '../views/StockView.vue'),
+    component: () => import(/* webpackChunkName: "PerfilAdminView" */ '../views/PerfilAdminView.vue'),
     beforeEnter: (to,from, next) => {
       auth.onAuthStateChanged(user => {
         getRol(user.uid).then((rol)=>{

@@ -9,6 +9,7 @@ import LinksMenus from '@/components/LinksMenus.vue';
 import IngresoComp from '@/components/IngresoComp.vue'
 import RegistroComp from '@/components/RegistroComp.vue'
 import LinksPerfilCompra from '@/components/LinksPerfilCompra'
+import LinksPerfilAdmin from '@/components/LinksPerfilAdmin'
 
 Vue.config.productionTip = false
 
@@ -19,6 +20,7 @@ Vue.component('RegistroComp', RegistroComp)
 Vue.component('LinksMenus', LinksMenus)
 Vue.component('FooterVue', FooterVue)
 Vue.component('CarritoVue', CarritoVue)
+Vue.component('LinksPerfilAdmin', LinksPerfilAdmin)
 
 Vue.config.productionTip = false
 
