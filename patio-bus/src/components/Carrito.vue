@@ -1,6 +1,6 @@
 <template>
     <div class="dialog">
-        <v-col cols="12" v-for="car in cart" :key="car.nombre" >
+        <v-col cols="12" v-for="car in carrito" :key="car.nombre" >
             <div v-if="car.category = 'combos'" >
                 <v-img :src="car.src" width="80%" >
 
@@ -16,7 +16,7 @@
             </div>
             <button style="align-self: flex-start; " @click="closeCarrito()"><v-icon>mdi-close</v-icon></button>
         </v-container>
-     <div v-for="(car, i) in cart" :key="i" >
+     <div v-for="(car, i) in carrito" :key="i" >
         <div class="grid-cont">
             <v-img class="imagen-plato" :src="car.url" style=" width: 100%; height: 100%">
 
@@ -115,6 +115,7 @@
 
 <script>
 import { auth } from '@/firebase';
+import { onAuthStateChanged } from '@firebase/auth';
 import store from '@/store';
 
 //import { getFirestore, doc, onSnapshot } from "firebase/firestore";
@@ -127,7 +128,7 @@ export default {
     name: 'CarritoVue',
     data: () => ({
         list: true,
-        cart: []
+        carrito: store.state.carritoCompras
 
     }),
     methods: {
@@ -140,9 +141,9 @@ export default {
         },
         quitarArticulo(car){
             console.log()
-            const index = this.cart.indexOf(car)
-            this.cart.splice(index ,1)
-            console.log(this.cart)
+            const index = this.carrito.indexOf(car)
+            this.carrito.splice(index ,1)
+            console.log(this.carrito)
         }
     },
     mounted(){
@@ -151,13 +152,34 @@ export default {
     beforeMount(){
 
     },
+    updated(){
+        this.carrito = store.state.carritoCompras
+    },
+    watch: {
+        cart(){
+            store.commit('carritoCompras', this.carrito)
+            console.log(store.state.carritoCompras)
+            this.carrito = store.state.carritoCompras
+            
+        }
+    },
     beforeCreate(){
-        auth.onAuthStateChanged(user =>{
-            const cart =  localStorage.getItem(`cart/${user.uid}`)
-        const cartJsoned = JSON.parse(cart)
-            this.cart = cartJsoned
-        console.log(cartJsoned)
-        })
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                    let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                    if(datosLocalStorage === null){
+                        this.carrito = [];
+                    }else{
+                        this.carrito = datosLocalStorage;
+                        store.commit("sendNotif", this.carrito.length)
+                    } 
+                } else {
+                    // User is signed out
+                    // ...
+                }
+                });
+
+
     }
 }
 

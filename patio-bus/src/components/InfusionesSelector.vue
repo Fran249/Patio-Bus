@@ -71,7 +71,7 @@
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { initializeApp  } from 'firebase/app';
 import { auth, firebaseConfig } from '../firebase/index';
-import { onAuthStateChanged } from "@firebase/auth";
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -181,7 +181,7 @@ export default {
         
     },
     beforeCreate(){
-        onAuthStateChanged(auth, (user) => {
+        auth.onAuthStateChanged(auth, (user) => {
             if (user) {
                 let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
                 if (datosLocalStorage === null) {

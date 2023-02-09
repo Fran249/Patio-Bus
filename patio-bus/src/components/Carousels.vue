@@ -114,6 +114,7 @@ export default {
                     this.carrito.push(img)
 
                     localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
+
                     store.commit('forceRenderCarrito', + 1)
                 } else {
                     return
@@ -127,20 +128,27 @@ export default {
             }
       }
     },
+    watch:{
+      carrito(){
+        store.commit('carritoCompras', this.carrito)
+            console.log(store.state.carritoCompras)
+      }
+    },
     beforeCreate(){
       onAuthStateChanged(auth, (user) => {
-            if (user) {
-                let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
-                if (datosLocalStorage === null) {
-                    this.carrito = [];
-                } else {
-                    this.carrito = datosLocalStorage;
-                }
-            } else {
-                // User is signed out
-                // ...
-            }
-        });
+                    if (user) {
+                        let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                        if(datosLocalStorage === null){
+                            this.carrito = [];
+                        }else{
+                            this.carrito = datosLocalStorage;
+                            store.commit("sendNotif", this.carrito.length)
+                        } 
+                    } else {
+                        // User is signed out
+                        // ...
+                    }
+                    });
 
     }
 

@@ -25,6 +25,7 @@ export default new Vuex.Store({
     carrito: false,
     ingreso: false,
     registro: false,
+    carritoCompras: [],
     notif: '',
     forceRenderCarrito: 0,
 
@@ -37,6 +38,9 @@ export default new Vuex.Store({
           return true
       }
     },
+    array: (state) => {
+      return state.carritoCompras;
+    }
   },
   mutations: {
     setUsuario(state, payload){
@@ -45,6 +49,7 @@ export default new Vuex.Store({
     setError(state, payload){
       state.error = payload
     },
+    carritoCompras: (state, value) => (state.carritoCompras = value),
     toggleCarrito: (state, value) => (state.carrito = value),
     toggleIngreso: (state, value) => (state.ingreso = value),
     toggleRegistro: (state, value) => (state.registro = value),
@@ -52,6 +57,9 @@ export default new Vuex.Store({
     forceRenderCarrito: (state, value) => (state.forceRenderCarrito = value),
   },
   actions: {
+    carritoCompras({commit},value){
+      commit("carritoCompras", value);
+    },
     forceRenderCarrito({commit},value){
       commit("forceRenderCarrito", value);
     },
