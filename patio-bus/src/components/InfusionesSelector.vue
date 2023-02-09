@@ -4,7 +4,7 @@
             <v-row>
                 <v-col cols="6" v-for="(select,i) in selected" :key="i">
                             <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;" >
-                                <v-img :src="select.url" style="height: 250px">
+                                <v-img :src="select.src" style="height: 250px">
                                     
                                 </v-img>           
                 <div style="width: 100%;">
@@ -42,7 +42,7 @@
                 <v-row>
                     <v-col cols="6" v-for="(cafe, i) in cafes" :key="i">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectCafe(cafe)">
-                            <v-img :src="cafe.url">
+                            <v-img :src="cafe.src">
                             </v-img>
                             <v-card-title>
                                 <h3 class="title-cafe">
@@ -71,7 +71,7 @@
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { initializeApp  } from 'firebase/app';
 import { auth, firebaseConfig } from '../firebase/index';
-
+import { onAuthStateChanged } from "@firebase/auth";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -114,8 +114,9 @@ export default {
                    //   tamaños: img.tamaños
                    // }
                     this.carrito.push(select)
-
+                    
                     localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
+                    store.commit('forceRenderCarrito', +1)
 
                 } else {
                     return
@@ -132,6 +133,12 @@ export default {
         }
 
     },
+    watch: {
+        carrito(){
+        store.commit('carritoCompras', this.carrito)
+            console.log(store.state.carritoCompras)
+      }
+    },
     beforeMount(){
         onSnapshot(doc(db, "Productos/infusiones"), (doc) => {
 
@@ -145,8 +152,9 @@ export default {
                 const newCafe= {
                     nombre : item.nombre,
                     id : item.id,
-                    url: url,
-                    tamaños : item.tamaños
+                    src: url,
+                    tamaños : item.tamaños,
+                    category: item.category
                 }
   
                 this.newCafes.push(newCafe)
@@ -156,7 +164,8 @@ export default {
                         nombre: item.nombre,
                         id: item.id,
                         tamaños: item.tamaños,
-                        url: url
+                        src: url,
+                        category: item.category
                     }
                     this.selected.push(newSelected)
                 }else {
@@ -181,19 +190,21 @@ export default {
         
     },
     beforeCreate(){
-        auth.onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, (user) => {
             if (user) {
-                let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
-                if (datosLocalStorage === null) {
-                    this.carrito = [];
-                } else {
-                    this.carrito = datosLocalStorage;
-                }
-            } else {
-                // User is signed out
-                // ...
-            }
-        });
+                        let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                        if(datosLocalStorage === null){
+                            this.carrito = [];
+                        }else{
+                            this.carrito = datosLocalStorage;
+                            store.commit("sendNotif", this.carrito.length)
+                        } 
+                    } else {
+                        // User is signed out
+                        // ...
+                    }
+                    });
+        
     }
 
 }

@@ -11,7 +11,7 @@
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" class="no-active" aria-label="Slide 4"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active"  v-for="img in images" :key="img.src">
+    <div class="carousel-item "   v-for="img in images" :key="img.src" v-bind:class="{active: img.ind == 1}">
       <v-img :src="img.src"  alt="...">
         <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
           <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="sendComboToCart(img)">
@@ -57,6 +57,7 @@ export default {
                     ],
                     src: require('../assets/Combo1.png'),
                     category: 'combos',
+                    ind: 1,
                 },
                 {   
                   items: [

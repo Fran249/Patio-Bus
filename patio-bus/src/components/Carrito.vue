@@ -1,40 +1,31 @@
 <template>
     <div class="dialog">
-        <v-col cols="12" v-for="car in carrito" :key="car.nombre" >
-            <div v-if="car.category = 'combos'" >
-                <v-img :src="car.src" width="80%" >
-
-                </v-img>
-                <div v-for="name in car.items" :key="name.nombre">
-                    <h3>{{ name.nombre }}</h3 >
-                </div>
-            </div>
-            </v-col>
-        <v-container style="display: flex; flex-direction: row; justify-content: space-between;">
+       
+        <v-container style="display: flex; flex-direction: row; justify-content: space-between;"  v-if="cantidades >= 1">
             <div style=" text-align: center; width: 100%; padding:25px;">
                 <h2 class="title-compras">MIS COMPRAS</h2>
             </div>
             <button style="align-self: flex-start; " @click="closeCarrito()"><v-icon>mdi-close</v-icon></button>
         </v-container>
      <div v-for="(car, i) in carrito" :key="i" >
-        <div class="grid-cont">
-            <v-img class="imagen-plato" :src="car.url" style=" width: 100%; height: 100%">
+        <div class="grid-cont" v-if="car.category != 'combos'">
+            <v-img class="imagen-plato" :src="car.src" style=" width: 100%; height: 100%">
 
             </v-img>
 
             <div class="columna2"  >
                 <h2>{{car.nombre}}</h2>
-                <div class="botonera" v-if="car.nombre == 'cafe'">
+                <div class="botonera" v-if="car.category != 'cafe'">
                     <div class="contador" >
                         <h3 v-if="car.cantidad >= 0">{{ car.cantidad }}</h3>
                     </div>
-                    <div class="botones">
+                    <div class="botones" >
                         <button  class="sumador" @click="car.cantidad++">+</button>
                         <button  :disabled="car.cantidad <= 0" class="restador" @click="car.cantidad--">-</button>
                     </div>
                 </div>
             </div>
-            <div style="width: 100%; margin-left: 75px" v-if="car.titulo == 'cafe'">
+            <div style="width: 100%; margin-left: 75px" v-if="car.category == 'cafe'" class="tamaños">
                 <h2 class="ñoquis-h2">{{ car.titulo }}</h2>
                 <p class="ñoquis-p">{{ car.descripcion }}</p>
 
@@ -48,7 +39,7 @@
 
                     </div>
             </div>
-            <v-row style="width: 100%"  v-if="car.titulo == 'ñoquis'">
+            <v-row style="width: 100%"  v-if="car.titulo == 'ñoquis'  && car.category != 'combos'">
                 <v-col cols="12" style=" margin-left: 23px;">
                     <h2 class="ñoquis-h2" >{{ car.titulo }}</h2>
                 <p class="ñoquis-p">{{ car.descripcion }}</p>
@@ -80,21 +71,34 @@
 
 
 
-
-
                        
             
 
             </v-row>
-            <div class="botonx"><button @click="quitarArticulo(car)"><v-icon>mdi-close</v-icon></button></div>
-            <div class="precio">
-                <h3>${{ car.precio }}</h3>
+                <div class="botonx" v-if="car.category != 'combos'">
+                    <button @click="quitarArticulo(car)">
+                        <v-icon>mdi-close</v-icon>
+                    </button>
+                </div>
+                <div class="precio" v-if="car.category != 'combos'">
+                    <h3>${{ car.precio }}</h3>
+                </div>
+            </div>
+            
+            <div  class="d-flex flex-row mt-10 mb-10 ml-3 " v-if="car.category == 'combos'">
+                <v-img :src="car.src" width="90%" >
+
+                </v-img>
+
+                <div class="botonx"><button @click="quitarArticulo(car)">
+                    <v-icon>mdi-close</v-icon>
+                </button>
+                </div>
+
             </div>
         </div>
-            
-        </div>
 
-    <div class="subtotal" style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;">
+    <div class="subtotal" style="width: 100%; display: flex; flex-direction: row; justify-content: space-around;" v-if="cantidades >= 1">
             <h1 style="justify-content: flex-start; margin-left: 7%; font-size: 26px; font-weight:bolder;">SUBTOTAL</h1>
             <h1
                 style="justify-content: flex-end; margin-right: 15%; font-style: italic; font-size: 36px; font-weight: 702 ;">
@@ -103,10 +107,15 @@
         </div>
 
         <div class="iniciarCompra"
+        v-if="cantidades >= 1"
             style="display: flex; flex-direction: row;justify-content: flex-end; margin-right: 3%;">
             <button style="" @click="iniciarCompra()">
                 <p>INICIAR MI COMPRA</p>
             </button>
+        </div>
+
+        <div class="sin_compras" v-if="cantidades == 0">
+            <h3>NO TIENES ARTICULOS</h3>
         </div>
      </div>
 
@@ -128,7 +137,8 @@ export default {
     name: 'CarritoVue',
     data: () => ({
         list: true,
-        carrito: store.state.carritoCompras
+        carrito: store.state.carritoCompras,
+        cantidades : store.state.notif,
 
     }),
     methods: {
@@ -143,6 +153,14 @@ export default {
             console.log()
             const index = this.carrito.indexOf(car)
             this.carrito.splice(index ,1)
+            store.commit('sendNotif', this.carrito.length)
+            const cantidad = store.state.notif
+            if( cantidad == 0){
+                this.cantidades = 0
+            }else if(cantidad > 0){
+                this.cantidades = store.state.notif
+            }
+            localStorage.setItem(`cart/${auth.currentUser.uid}`, this.carrito)
             console.log(this.carrito)
         }
     },
@@ -161,17 +179,22 @@ export default {
             console.log(store.state.carritoCompras)
             this.carrito = store.state.carritoCompras
             
+        },
+        cantidades(){
+            this.cantidades = store.state.notif
         }
     },
     beforeCreate(){
         onAuthStateChanged(auth, (user) => {
             if (user) {
                     let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                
                     if(datosLocalStorage === null){
                         this.carrito = [];
                     }else{
                         this.carrito = datosLocalStorage;
                         store.commit("sendNotif", this.carrito.length)
+                        console.log(this.carrito)
                     } 
                 } else {
                     // User is signed out
@@ -188,9 +211,20 @@ export default {
 
 <style lang="scss" scoped>
 
+.sin_compras{
+    width: 100%;
+    height: 500px;
+    display: grid;
+    place-items: center;
+    h3{
+        font-family: 'red-hat';
+        font-size: 20px;
+    }
+}
 .tamaños {
     width:100% ;
-
+    grid-column: 2/3;
+    grid-row: 1/2;
 }
 .p-menu-tuco{
     font-family: 'red-hat';
