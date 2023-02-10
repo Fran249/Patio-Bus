@@ -102,11 +102,18 @@ import store from '@/store'
         
   
       }),
+      watch: {
+        carrito(){
+        store.commit('carritoCompras', this.carrito)
+            console.log(store.state.carritoCompras)
+      }
+    },
       methods: {
         selectCereal(cereal){
             this.selected = [cereal]
             console.log(this.selected)
         },
+        
         agregarCart(select){
             const index = this.carrito.findIndex(object => {
                 return object.nombre === select.nombre;
@@ -116,14 +123,16 @@ import store from '@/store'
 
             } else {
                 if (index == -1) {
-                   // const cardItems = {
-                   //   nombre : img.nombre,
-                   //   id: img.id,
-                   //   tamaños: img.tamaños
-                   // }
-                    this.carrito.push(select)
+                    const cardItem = {
+                     nombre : select.nombre,
+                     id: select.id,
+                     cantidad : select.buyNumber,
+                     src: select.url
+                    }
+                    this.carrito.push(cardItem)
 
                     localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
+                    store.commit('forceRenderCarrito', +1)
 
                 } else {
                     return
@@ -157,6 +166,7 @@ import store from '@/store'
                 }
   
                 this.newCereales.push(newCereal)
+                console.log(this.newCereales)
                 if(item.nombre == 'Mix de cereales'){
                     const newSelected = {
                         nombre: item.nombre,
@@ -188,17 +198,19 @@ import store from '@/store'
     beforeCreate(){
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
-                if (datosLocalStorage === null) {
-                    this.carrito = [];
-                } else {
-                    this.carrito = datosLocalStorage;
-                }
-            } else {
-                // User is signed out
-                // ...
-            }
-        });
+                        let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                        if(datosLocalStorage === null){
+                            this.carrito = [];
+                        }else{
+                            this.carrito = datosLocalStorage;
+                            store.commit("sendNotif", this.carrito.length)
+                        } 
+                    } else {
+                        // User is signed out
+                        // ...
+                    }
+                    });
+        
     }
   }
   
