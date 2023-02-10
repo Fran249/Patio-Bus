@@ -226,6 +226,28 @@ const routes = [
       })
     },
   },
+{
+  path: '/PerfilAdminAgregarView',
+  name: 'PerfilAdminAgregarView',
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () => import(/* webpackChunkName: "PerfilAdminAgregarView" */ '../views/PerfilAdminAgregarView.vue'),
+  beforeEnter: (to,from, next) => {
+    auth.onAuthStateChanged(user => {
+      getRol(user.uid).then((rol)=>{
+        if( rol == 'admin'){
+          next()
+        }else if ( rol == null){
+          next('/error')
+        }else if (rol == 'user'){
+          next('/error')
+        }
+          next();
+      })     
+    })
+  },
+},
 ]
 
 const router = new VueRouter({
