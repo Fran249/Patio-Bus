@@ -1,14 +1,14 @@
 <template>
     <v-container class="card-container">
         <v-row>
-            <v-col cols="6">
+            <v-col cols="6" v-for="select in selected" :key="select.nombre">
                 <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;">
                     <v-img src="../assets/ImagenesCards/ñoquis.jpg" style="height: 250px">
 
                     </v-img>
                     <div style="width: 100%;" class="d-flex flex-row">
                         <h3 class="title-cafe">
-                            Ñoquis
+                            {{select.nombre}}
                         </h3>
                         
                     </div>
@@ -23,42 +23,35 @@
                     <v-card-actions>
                         <v-card-actions style="padding:2px">
                     <div class="d-flex flex-column" style="width:100%">
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                            <button class="button">
-                                <h3 class="h3-button">Fileto</h3>
+                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row flex-wrap justify-start" >
+                            <div v-for="salsas in select.salsas" :key="salsas.nombre">
+                                <button class="button" v-if="salsas.nombre != 'Tuco' && salsas.nombre != 'Crema'">
+                                <h3 class="h3-button">{{salsas.nombre}}</h3>
                             </button>
-                            <button class="button">
-                                <h3 class="h3-button">Bolognesa</h3>
-                            </button>
-
-                            
-                        </div>
-                        
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start mt-5">
-                                <v-menu offset-y  >
+                                <v-menu offset-y  v-if="salsas.nombre == 'Tuco' " >
                                     <template v-slot:activator="{ on, attrs }" >
                                         <button class="button1" dark v-bind="attrs" v-on="on" >
-                                            <h3 class="h3-button1 ml-5" >Tuco </h3>  
+                                            <h3 class="h3-button1 ml-5" >{{ salsas.nombre }}</h3>  
                                             <v-icon class="icono-menu mt-1">mdi-menu-down </v-icon>                                          
                                         </button>
                                     </template>
-                                    <div v-for="(item, index) in items" :key="index">
+                                    <div v-for="tuco in salsas.tucos" :key="tuco.nombre">
                                         <button class="button2">
-                                            <h3> {{ item.title }}</h3>
+                                            <h3> {{ tuco.nombre }}</h3>
                                         </button>
 
                                     </div>
-                                </v-menu>                                
-                                <v-menu offset-y >
+                                </v-menu>                               
+                                <v-menu offset-y  v-if="salsas.nombre == 'Crema'">
                                     <template v-slot:activator="{ on, attrs }" >
                                         <button class="button1 " dark v-bind="attrs" v-on="on" >
-                                            <h3 class="h3-button1 ml-5" >Crema </h3>  
+                                            <h3 class="h3-button1 ml-5" >{{salsas.nombre}} </h3>  
                                             <v-icon class="icono-menu mt-1">mdi-menu-down </v-icon>                                          
                                         </button>
                                     </template>
-                                    <div v-for="(item, index2) in items2" :key="index2">
+                                    <div v-for="crema in salsas.cremas" :key="crema.nombre">
                                         <button class="button2">
-                                            <h3> {{ item.title }}</h3>
+                                            <h3> {{ crema.nombre }}</h3>
                                         </button>
 
                                     </div>
@@ -69,12 +62,12 @@
                                     </v-list>-->
                                 </v-menu>
                             
+                            </div>  
                             </div>
-                           
-                    </div>
+                        </div>
                 </v-card-actions>
                 <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'">
+                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'" @click="agregarCart(select)">
                                 <h3 class="h3-comprar mt-1">AGREGAR</h3>
                                 <v-icon v-bind:style="{'color' : colorCart}" size="20" class="mt-1 ">
                                     mdi-cart
@@ -87,65 +80,22 @@
             </v-col>
             <v-col cols="6">
                 <v-row>
-                    <v-col cols="6">
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg">
+                    <v-col cols="6" v-for="pasta in pastas" :key="pasta.nombre">
+                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectPasta(pasta)">
+                            <v-img :src="pasta.src">
 
                             </v-img>
                             <v-card-title>
                                 <div style="width: 100%;" class="d-flex flex-row">
                                     <h3 class="title-cafe">
-                                        Ñoquis
+                                        {{pasta.nombre}}
                                     </h3>
                                     
                                 </div>
                             </v-card-title>
                         </v-card>
                     </v-col>
-                    <v-col cols="6">
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg">
-
-                            </v-img>
-                            <v-card-title>
-                                <div style="width: 100%;" class="d-flex flex-row">
-                                    <h3 class="title-cafe">
-                                        Tallarines
-                                    </h3>
-                                    
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="6">
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg">
-
-                            </v-img>
-                            <v-card-title>
-                                <div style="width: 100%;" class="d-flex flex-row">
-                                    <h3 class="title-cafe">
-                                        Sorrentinos
-                                    </h3>
-                                    
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="6">
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Tallarines.jpg">
-
-                            </v-img>
-                            <v-card-title>
-                                <div style="width: 100%;" class="d-flex flex-row">
-                                    <h3 class="title-cafe">
-                                        Ravioles
-                                    </h3>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
+                    
                 </v-row>
             </v-col>
         </v-row>
@@ -165,6 +115,18 @@
 </template>
 
 <script>
+
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import {  firebaseConfig } from '../firebase/index';
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+const storage = getStorage();
+import { onAuthStateChanged } from "@firebase/auth";
+import { auth } from "../firebase/index";
+
+import store from '@/store'
 export default {
     name: 'PastasComp',
     data: () => ({
@@ -181,9 +143,119 @@ export default {
             { title: 'Verdeo' },
             { title: 'Cuatro Quesos' },            
         ],
+        pastas: [],
+        selected: [],
+        newPastas : [],
+        carrito : [],
+
     }),
     methods: {
+        selectPasta(pasta){
+            this.selected = [pasta]
+            console.log(this.selected)
+        },
+        
+        agregarCart(select){
+            const index = this.carrito.findIndex(object => {
+                return object.nombre === select.nombre;
+            });
+            if (auth.currentUser == null) {
+                return
 
+            } else {
+                if (index == -1) {
+                    const cardItem = {
+                     nombre : select.nombre,
+                     id: select.id,
+                     src: select.src,
+                     salsas: select.salsas,
+                     category : select.category,
+                    }
+                    this.carrito.push(cardItem)
+                    console.log(this.carrito)
+                    localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
+                    store.commit('forceRenderCarrito', +1)
+
+                } else {
+                    return
+
+                }
+                this.dialogCarrito = true
+                setTimeout(this.notificacionCarrito, 1200)
+
+                store.commit("sendNotif", this.carrito.length)
+
+            }
+
+           
+
+        }
+
+    },
+    beforeMount(){
+        onSnapshot(doc(db, "Productos/pastas"), (doc) => {
+
+                this.pastas = doc.data().pastas
+
+                console.log(this.pastas)
+                this.pastas.forEach(item =>{
+        getDownloadURL(ref(storage, `Productos/pastas/${item.id}.jpg`))
+            .then((url) => {
+                const newPasta= {
+                    nombre : item.nombre,
+                    id : item.id,
+                    src: url,
+                    salsas: item.salsas,
+                    category: item.category,
+                }
+                
+                this.newPastas.push(newPasta)
+                console.log(this.newPastas)
+                if(item.nombre == 'Ñoquis'){
+                    const newSelected = {
+                        nombre: item.nombre,
+                        id: item.id,
+                        src: url,
+                        salsas: item.salsas,
+                        category: item.category,
+                    }
+                    this.selected.push(newSelected)
+                    console.log(this.selected)
+
+                }else {
+                    return 
+                }
+    
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+
+
+            })
+            this.pastas = this.newPastas
+            
+
+            })
+            
+       
+    },
+    beforeCreate(){
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                        let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                        if(datosLocalStorage === null){
+                            this.carrito = [];
+                        }else{
+                            this.carrito = datosLocalStorage;
+                            store.commit("sendNotif", this.carrito.length)
+                        } 
+                    } else {
+                        // User is signed out
+                        // ...
+                    }
+                    });
+        
     }
 
 }
