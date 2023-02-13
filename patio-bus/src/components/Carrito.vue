@@ -8,12 +8,19 @@
             <button style="align-self: flex-start; " @click="closeCarrito()"><v-icon>mdi-close</v-icon></button>
         </v-container>
      <div v-for="(car, i) in carrito" :key="i" >
-        <div class="grid-cont" v-if="car.category != 'combos' && car.category != 'pastas'">
+        <div class="grid-cont" v-if="car.category != 'combos' && car.category != 'pastas' ">
             <v-img class="imagen-plato" :src="car.src" style=" width: 100%; height: 100%">
 
             </v-img>
-
-            <div class="columna2"  >
+            <div class="columna2">
+                <h3 class="h3-ensalada">
+                    {{ car.nombre }}
+                </h3>
+                <p class="ml-1">
+                    {{ car.descripcion }}
+                </p>
+            </div>
+            <div class="columna2"  v-if="car.category != 'ensaladas'" >
                 <h2>{{car.nombre}}</h2>
                 <div class="botonera" v-if="car.category != 'cafe'">
                     <div class="contador" >
@@ -216,6 +223,11 @@ export default {
 
 <style lang="scss" scoped>
 
+.h3-ensalada{
+    font-family: 'red-hat';
+    font-size: 25px;
+    font-weight: bolder;
+}
 .sin_compras{
     width: 100%;
     height: 500px;

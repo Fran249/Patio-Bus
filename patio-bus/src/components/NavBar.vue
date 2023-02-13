@@ -67,8 +67,8 @@
                             <button v-if="existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 52%; height: 7%;" @click="openCarrito()">
                                    <v-icon  color="#000">mdi-cart</v-icon>
                             </button>
-                            <div  v-if="existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 52%; height: 4%;" >
-                                   <p class="notif">{{ notif }}</p>
+                            <div  v-if="existeUsuario"  style="display: flex; justify-content: center; align-items: center; background-color : rgb(255,255,255 ,.8) ;  width: 52%; height: 7%;" >
+                                   <h3 class="notif">{{ notif }}</h3>
                             </div>
 
 
@@ -264,7 +264,11 @@ const totalArray = carritoLocalParsed.length
     font-family: 'red-hat';
     font-size: 15px;
     font-weight: bold;
+
+    
 }
+
+
 .v-menu__content{
     border-radius: 1px;
     box-shadow: none;

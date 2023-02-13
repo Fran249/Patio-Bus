@@ -26,7 +26,7 @@ export default new Vuex.Store({
     ingreso: false,
     registro: false,
     carritoCompras: [],
-    notif: '',
+    notif: 0,
     forceRenderCarrito: 0,
 
   },

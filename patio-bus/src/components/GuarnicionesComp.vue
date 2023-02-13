@@ -1,48 +1,31 @@
 <template>
     <v-container class="card-container">
         <v-row>
-            <v-col cols="6">
+            <v-col cols="6" v-for="select in selected" :key="select.nombre">
                 <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;">
                     <v-img src="../assets/ImagenesCards/Ensalada1.jpg" style="height: 250px">
 
                     </v-img>
                     <div style="width: 100%;" class="d-flex flex-row">
                         <h3 class="title-cafe">
-                            Ensalada
+                            {{select.nombre}}
                         </h3>
-                        <p class="parentesis" style="padding-top:8px"> (Tres ingredientes)</p>
+                        <p class="parentesis" style="padding-top:8px">{{ select.cantidad }}</p>
                     </div>
                     <v-card-text>
                         <p class="text-p">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto ipsum officiis facilis velit
-                            itaque
-                            vel quam quod, placeat doloribus minus modi aliquam, officia nesciunt laudantium.
-                            Expedita sit debitis distinctio corrupti.
+                            {{ select.descripcion }}
                         </p>
                     </v-card-text>
                     <v-card-actions>
                         <div class="d-flex flex-column" style="width:100%">
-                            <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                                <button class="button">
-                                    <h3 class="h3-button">Lechuga</h3>
-                                </button>
-                                <button class="button">
-                                    <h3 class="h3-button">Tomate</h3>
-                                </button>
-                                <button class="button">
-                                    <h3 class="h3-button">Cebolla</h3>
-                                </button>
-                            </div>
-                            <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start mt-5">
-                                <button class="button">
-                                    <h3 class="h3-button">Zanahoria</h3>
-                                </button>
-                                <button class="button">
-                                    <h3 class="h3-button">Remolacha</h3>
+                            <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start flex-wrap">
+                                <button class="button" v-for="sele in select.seleccion" :key="sele.nombre">
+                                    <h3 class="h3-button">{{ sele.nombre }}</h3>
                                 </button>
                             </div>
                             <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'">
+                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'" @click="agregarCart(select)">
                                 <h3 class="h3-comprar mt-1">AGREGAR</h3>
                                 <v-icon v-bind:style="{'color' : colorCart}" size="20" class="mt-1 ">
                                     mdi-cart
@@ -53,63 +36,19 @@
                     </v-card-actions>
                 </v-card>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="6" >
                 <v-row>
-                    <v-col cols="6">
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
+                    <v-col cols="6" v-for="ensalada in ensaladas" :key="ensalada.nombre" >
+                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectEnsalada(ensalada)">
                             <v-img src="../assets/ImagenesCards/Ensalada3.jpg">
 
                             </v-img>
                             <v-card-title>
                                 <div style="width: 100%;" class="d-flex flex-row">
                                     <h3 class="title-cafe">
-                                        Ensalada
+                                        {{ensalada.nombre}}
                                     </h3>
-                                    <p class="parentesis">(Dos ingredientes)</p>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="6">
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Ensalada3.jpg">
-
-                            </v-img>
-                            <v-card-title>
-                                <div style="width: 100%;" class="d-flex flex-row">
-                                    <h3 class="title-cafe">
-                                        Ensalada
-                                    </h3>
-                                    <p class="parentesis">(Tres ingredientes)</p>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="6">
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Ensalada3.jpg">
-
-                            </v-img>
-                            <v-card-title>
-                                <div style="width: 100%;" class="d-flex flex-row">
-                                    <h3 class="title-cafe">
-                                        Ensalada
-                                    </h3>
-                                    <p class="parentesis">(4 ingredientes)</p>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="6">
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone">
-                            <v-img src="../assets/ImagenesCards/Ensalada3.jpg">
-
-                            </v-img>
-                            <v-card-title>
-                                <div style="width: 100%;" class="d-flex flex-row">
-                                    <h3 class="title-cafe1">
-                                        Ensalada Cesar
-                                    </h3>
+                                    <p class="parentesis">{{ensalada.cantidad}}</p>
                                 </div>
                             </v-card-title>
                         </v-card>
@@ -118,21 +57,29 @@
             </v-col>
         </v-row>
         <div class="container-selectors-up">
-            <div class="select-container">
-                <div class="selectores">
-                    <div class="selector1"></div>
-                    <div class="selector2"></div>
-                    <div class="selector3"></div>
-                    <div class="selector4"></div>
-                </div>
-                <h3 class="mt-2">1 de 4</h3>
-            </div>
+        <div class="select-container">
+        <div class="selectores" >
+            <div class="selector"  v-for="ensalada in ensaladas" :key="ensalada.id"></div>
         </div>
+        <h3 class="mt-2" v-for="select in selected" :key="select.id">{{ select.id }} de {{ensaladas.length}}</h3>
+    </div>
+    </div>
 
     </v-container>
 </template>
 
 <script>
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import {  firebaseConfig } from '../firebase/index';
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+const storage = getStorage();
+import { onAuthStateChanged } from "@firebase/auth";
+import { auth } from "../firebase/index";
+
+import store from '@/store'
 export default {
     name: 'GuarnicionesComp',
     data: () => ({
@@ -140,10 +87,130 @@ export default {
         color1 : '#fff',
         color2: '#000',
         color3 : '#fff',
-        colorCart: '#000'
+        colorCart: '#000',
+        ensaladas: [],
+        selected: [],
+        newEnsaladas : [],
+        carrito : [],
     }),
+    watch: {
+        carrito(){
+        store.commit('carritoCompras', this.carrito)
+            console.log(store.state.carritoCompras)
+      }
+    },
     methods: {
+        selectEnsalada(ensalada){
+            this.selected = [ensalada]
+            console.log(this.selected)
+        },
+        
+        agregarCart(select){
+            const index = this.carrito.findIndex(object => {
+                return object.nombre === select.nombre;
+            });
+            if (auth.currentUser == null) {
+                return
 
+            } else {
+                if (index == -1) {
+                    const cardItem = {
+                     nombre : select.nombre,
+                     id: select.id,
+                     seleccion: select.seleccion,
+                     descripcion: select.descripcion,
+                     cantidad: select.cantidad,
+                     src: select.url,
+                     category: select.category,
+                    }
+                    this.carrito.push(cardItem)
+
+                    localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
+                    store.commit('forceRenderCarrito', +1)
+
+                } else {
+                    return
+
+                }
+                this.dialogCarrito = true
+                setTimeout(this.notificacionCarrito, 1200)
+
+                store.commit("sendNotif", this.carrito.length)
+            }
+
+           
+
+        }
+
+    },
+    beforeMount(){
+        onSnapshot(doc(db, "Productos/ensaladas"), (doc) => {
+
+                this.ensaladas = doc.data().ensaladas
+
+
+                this.ensaladas.forEach(item =>{
+        getDownloadURL(ref(storage, `Productos/ensaladas/${item.id}.jpg`))
+            .then((url) => {
+                const newEnsalada= {
+                    nombre : item.nombre,
+                    id : item.id,
+                    url: url,
+                    seleccion: item.seleccion ,
+                    cantidad: item.cantidad, 
+                    descripcion: item.descripcion,
+                    category: item.category,       
+                }
+  
+                this.newEnsaladas.push(newEnsalada)
+                console.log(this.newEnsaladas)
+                if(item.id == 4){
+                    const newSelected = {
+                        nombre: item.nombre,
+                        id: item.id,
+                        url: url,
+                        seleccion: item.seleccion,
+                        cantidad: item.cantidad, 
+                        descripcion: item.descripcion, 
+                        category: item.category, 
+                    }
+                    this.selected.push(newSelected)
+                    console.log(this.selected)
+
+                }else {
+                    return 
+                }
+    
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+
+
+            })
+            this.ensaladas = this.newEnsaladas
+            
+
+            })
+            
+       
+    },
+    beforeCreate(){
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                        let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
+                        if(datosLocalStorage === null){
+                            this.carrito = [];
+                        }else{
+                            this.carrito = datosLocalStorage;
+                            store.commit("sendNotif", this.carrito.length)
+                        } 
+                    } else {
+                        // User is signed out
+                        // ...
+                    }
+                    });
+        
     }
 
 }
@@ -151,6 +218,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.height{
+    padding-bottom: 40px;
+}
 .container-selectors-up {
     width: 100%;
     display: flex;
@@ -173,21 +244,13 @@ export default {
         gap: 20px;
         justify-content: center;
         margin-top: 20px;
-
-        .selector1,
-        .selector2,
-        .selector3,
-        .selector4 {
-            width: 101px;
-            background-color: #D9D9D9;
-            transition: .5s;
-            height: 5px;
-        }
-
-        .selector1:hover,
-        .selector2:hover,
-        .selector3:hover,
-        .selector4:hover {
+        .selector{
+        width: 101px;
+        background-color: #D9D9D9;
+        transition: .5s;
+        height: 5px;
+    }
+        .selector:hover {
             background-color: #B9B1B1;
             transition: .5s;
             cursor: pointer;
@@ -249,7 +312,7 @@ export default {
 }
 
 .button {
-    width: 100px;
+    width: 150px;
     border: 1px solid black;
 }
 

@@ -8,7 +8,7 @@
                 <v-breadcrumbs-item :href="item.route">
                     <div style="width: 100%" class="d-flex flex-row ">
                         <h5 class="mt-3"
-                            v-bind:class="{ exact_active: $route.path == item.route, registroCompra: item.title == 'REGISTRO DE COMPRAS', registroCompra2: $route.path == '/RegistroComprasUser' && item.title == 'REGISTRO DE COMPRAS' }">
+                            v-bind:class="{ exact_active: $route.path == item.route, registroCompra: item.title == 'REGISTRO DE COMPRAS', registroCompra2: $route.path == '/PerfilAdminView' && item.title == 'REGISTRO DE COMPRAS' }">
 
                             {{ item.title }}
 
@@ -33,11 +33,11 @@ export default {
         items: [
             {
                 title: 'STOCK',
-                route: ''
+                route: '/PerfilAdminView'
             },
             {
                 title: 'AGREGAR',
-                route: ''
+                route: '/PerfilAdminAgregarView'
             },
             {
                 title: 'REINTEGROS',
