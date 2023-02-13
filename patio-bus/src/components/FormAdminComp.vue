@@ -243,6 +243,7 @@ export default {
     font-family: 'red-hat';
     font-size: 15px;
     color: #b3b6bc;
+    font-weight: lighter;
 }
 .uno{
     text-align: center;
