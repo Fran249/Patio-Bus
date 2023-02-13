@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import { doc, updateDoc, arrayUnion,  } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebase/index";
 import {getFirestore} from "firebase/firestore"
@@ -195,7 +195,8 @@ export default {
       //
       // }
 
-      const cardRef = doc(db, "Productos", "ensalada1");
+      try { 
+        const cardRef = doc(db, "Productos", this.categoria.toLowerCase());
                 //check Tamaños 
                 let tamañoChecked = this.tamaño
         if(this.tamaño == 'Todos'){
@@ -229,11 +230,50 @@ export default {
         console.log(newCard)
       // Atomically add a new region to the "regions" array field.
       await updateDoc(cardRef, {
-        ensalada1: arrayUnion(newCard),
+        card: arrayUnion(newCard),
       });
 
       // Atomically remove a region from the "regions" array field.
-    },
+    }
+    catch(error){
+
+       if(error.code === 'not-found' ){
+                //check Tamaños 
+                let tamañoChecked = this.tamaño
+        if(this.tamaño == 'Todos'){
+            tamañoChecked = [
+                {
+                    nombre:'45ml'
+                },
+                {
+                    nombre: '75ml'
+                }
+            ]
+        }else {
+            tamañoChecked = {
+                nombre: this.tamaño
+            }
+        }
+
+
+        const newCard = {
+            nombre: this.nombre,
+            category: this.categoria,
+            descripcion: this.descripcion,
+            id: this.id,
+            tamaños: tamañoChecked ,
+            seleccion: this.seleccion,
+            salsas: this.salsas,
+            stock: this.stock,
+            precio: this.precio
+        
+        }
+        let cardNueva = {card: [newCard]}
+        await setDoc(doc(db, "Productos", this.categoria.toLowerCase()),cardNueva );
+        console.log('agregado con exito')
+       }
+    }
+    }
   },
 };
 </script>
