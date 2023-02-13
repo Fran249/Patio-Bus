@@ -39,6 +39,15 @@
 
                 </button>
             </div>
+            <div class="btn-save mt-15">
+                <button class="boton-save d-flex flex-row justify-center align-center" >
+                    <h3 class="save-text"> <strong> GUARDAR CAMBIOS</strong> </h3>
+                   
+
+
+
+                </button>
+            </div>
         </v-container>
 
     </div>
@@ -186,5 +195,26 @@ export default {
     height: 80%;
     width: 100%;
     align-items: flex-start;
+}
+.btn-save { 
+    position: absolute;
+    right: 20%;
+    background-color: black;
+    width: 250px;
+    height: 50px;
+
+}
+.boton-save{   
+    width: 100%;
+    height: 100%;
+}
+.save-text {
+    color: white;
+    margin-bottom: 0%;
+    font-family: 'red-hat';
+    font-size: 16px;
+    font-weight: bolder;
+    
+
 }
 </style>
