@@ -133,6 +133,7 @@ import store from '@/store'
 
                     localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
                     store.commit('forceRenderCarrito', +1)
+                    store.commit("addedToCart", true)
 
                 } else {
                     return
@@ -142,6 +143,7 @@ import store from '@/store'
                 setTimeout(this.notificacionCarrito, 1200)
 
                 store.commit("sendNotif", this.carrito.length)
+                
             }
 
            

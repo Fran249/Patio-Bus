@@ -15,7 +15,7 @@
                             <v-img src="../assets/navIzquierda.png" width="50%" >
                             
                             </v-img>
-                            <div class="d-flex flex-column" style="width: 100%" id="div-botones">
+                            <div class="d-flex flex-column ml-5" style="width: 100%" id="div-botones">
                                 <v-btn icon href='https://www.instagram.com/muchogusto.info/'>
                                             <v-img src="../assets/Inst.2.png" contain width="25" height="20"></v-img>
                                         </v-btn>   
@@ -121,6 +121,7 @@
                     <v-dialog v-model="registro">
                         <RegistroComp/>
                     </v-dialog>
+                    <addedToCart/>
     </div>
 </template>
 
@@ -136,87 +137,76 @@ export default {
         percentage: "600",
         carrito: store.state.carrito,
         menuOn: false,
-
     }),
-
-    beforeCreate(){
+    beforeCreate() {
         auth.onAuthStateChanged(user => {
-            const carritoLocal = localStorage.getItem(`cart/${user.uid}`)
-const carritoLocalParsed = JSON.parse(carritoLocal)
-const totalArray = carritoLocalParsed.length
-
-  store.commit('sendNotif', totalArray)
-        })
-
+            const carritoLocal = localStorage.getItem(`cart/${user.uid}`);
+            const carritoLocalParsed = JSON.parse(carritoLocal);
+            const totalArray = carritoLocalParsed.length;
+            store.commit("sendNotif", totalArray);
+        });
     },
-    mounted(){
-
-    window.addEventListener( "scroll", () => {
-
-                   if ( window.scrollY > 0) {
-              this.percentage =  -window.scrollY +110
-              document.getElementById('div-botones').style.marginBottom = "100px" 
-              document.getElementById('img-logoback1').style.cursor = "auto"  
-            document.getElementById('div3').style.opacity = "0"
-            document.getElementById('div3').style.transition = ".5s"      
-            document.getElementById('IconoAfter').style.transition = ".5s"
-            document.getElementById('IconoAfter').style.opacity = "1"
-            document.getElementById('div1').style.height = '90vh'
-            document.getElementById('div2').style.height = '90vh'
-            document.getElementById("div3").style.height = "100px"
-            document.getElementById('div1').style.transition = ".5s"
-            document.getElementById('div2').style.transition = ".5s"
-            document.getElementById('div3').style.transition = ".5s"
-            
+    mounted() {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 0) {
+                this.percentage = -window.scrollY + 110;
+                document.getElementById("div-botones").style.marginBottom = "100px";
+                document.getElementById("img-logoback1").style.cursor = "auto";
+                document.getElementById("div3").style.opacity = "0";
+                document.getElementById("div3").style.transition = ".5s";
+                document.getElementById("IconoAfter").style.transition = ".5s";
+                document.getElementById("IconoAfter").style.opacity = "1";
+                document.getElementById("div1").style.height = "90vh";
+                document.getElementById("div2").style.height = "90vh";
+                document.getElementById("div3").style.height = "100px";
+                document.getElementById("div1").style.transition = ".5s";
+                document.getElementById("div2").style.transition = ".5s";
+                document.getElementById("div3").style.transition = ".5s";
             }
             else {
-              this.percentage =  -window.scrollY + 5000
-              document.getElementById('div-botones').style.marginBottom = "50px" 
-              document.getElementById('div1').style.height = '100vh'
-              document.getElementById('div2').style.height = '100vh'
-              document.getElementById("div3").style.height = "100px";
-              document.getElementById('img-logoback1').style.cursor = "pointer"
-            document.getElementById('div3').style.opacity = "1"
-            document.getElementById('div3').style.transition = ".5s"   
-              document.getElementById('div1').style.transition = ".5s"
-                document.getElementById('div2').style.transition = ".5s"
-
-
-              document.getElementById('img-logoback').style.transition = "1s";
-            document.getElementById('img-logoback1').style.transition = "1s";            
-            document.getElementById('img-logoback2').style.opacity = "1";
-            document.getElementById('img-logoback').style.opacity = "1";
-            document.getElementById('IconoAfter').style.opacity = "0"
-
+                this.percentage = -window.scrollY + 5000;
+                document.getElementById("div-botones").style.marginBottom = "50px";
+                document.getElementById("div1").style.height = "100vh";
+                document.getElementById("div2").style.height = "100vh";
+                document.getElementById("div3").style.height = "100px";
+                document.getElementById("img-logoback1").style.cursor = "pointer";
+                document.getElementById("div3").style.opacity = "1";
+                document.getElementById("div3").style.transition = ".5s";
+                document.getElementById("div1").style.transition = ".5s";
+                document.getElementById("div2").style.transition = ".5s";
+                document.getElementById("img-logoback").style.transition = "1s";
+                document.getElementById("img-logoback1").style.transition = "1s";
+                document.getElementById("img-logoback2").style.opacity = "1";
+                document.getElementById("img-logoback").style.opacity = "1";
+                document.getElementById("IconoAfter").style.opacity = "0";
             }
         });
     },
     methods: {
-        ...mapActions(['cerrarSesion']),
-        quitarClass(){
+        ...mapActions(["cerrarSesion"]),
+        quitarClass() {
             window.scrollTo(0, 1000);
         },
-        openIngreso(){
-            store.commit('toggleIngreso', true)
+        openIngreso() {
+            store.commit("toggleIngreso", true);
         },
-        openRegistro(){
-            store.commit('toggleRegistro', true)
+        openRegistro() {
+            store.commit("toggleRegistro", true);
         },
-        openCarrito(){
-            store.commit('toggleCarrito', true)
+        openCarrito() {
+            store.commit("toggleCarrito", true);
         }
     },
     updated() {
         this.carrito = store.state.carrito;
     },
-
     computed: {
         componentKey: {
-            get(){
-                return store.state.forceRenderCarrito
+            get() {
+                return store.state.forceRenderCarrito;
             },
-            set(){
-                store.commit('forceRenderCarrito', +1)
+            set() {
+                store.commit("forceRenderCarrito", +1);
             }
         },
         carritoCompra: {
@@ -243,18 +233,17 @@ const totalArray = carritoLocalParsed.length
                 store.commit("toggleRegistro", value);
             },
         },
-        notif : {
-            get(){
-                return store.state.notif
+        notif: {
+            get() {
+                return store.state.notif;
             },
-            set(value){
-               store.commit("sendNotif", value)
+            set(value) {
+                store.commit("sendNotif", value);
             }
         },
-        ...mapGetters(['existeUsuario']),
-        ...mapState(['usuario']),
+        ...mapGetters(["existeUsuario"]),
+        ...mapState(["usuario"]),
     },
-
 }
 
 

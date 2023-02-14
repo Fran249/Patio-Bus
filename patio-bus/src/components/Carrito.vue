@@ -21,7 +21,7 @@
                 </p>
             </div>
             <div class="columna2"  v-if="car.category != 'ensaladas'" >
-                <h2>{{car.nombre}}</h2>
+                <h2  v-if="car.category != 'cafe'">{{car.nombre}}</h2>
                 <div class="botonera" v-if="car.category != 'cafe'">
                     <div class="contador" >
                         <h3 v-if="car.cantidad >= 0">{{ car.cantidad }}</h3>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div style="width: 100%; margin-left: 75px" v-if="car.category == 'cafe'" class="tamaños">
-                <h2 class="ñoquis-h2">{{ car.titulo }}</h2>
+                <h2 class="ñoquis-h2"  v-if="car.category == 'cafe'">{{ car.titulo }}</h2>
                 <p class="ñoquis-p">{{ car.descripcion }}</p>
 
                     <div class="d-flex flex-row tamaños">
@@ -200,14 +200,10 @@ export default {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                     let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
-                
-                    if(datosLocalStorage === null){
-                        this.carrito = [];
-                    }else{
-                        this.carrito = datosLocalStorage;
-                        store.commit("sendNotif", this.carrito.length)
+                    this.carrito = datosLocalStorage;
+                    store.commit("sendNotif", this.carrito.length)
                         console.log(this.carrito)
-                    } 
+
                 } else {
                     // User is signed out
                     // ...

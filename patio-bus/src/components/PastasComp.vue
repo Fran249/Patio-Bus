@@ -149,6 +149,12 @@ export default {
         carrito : [],
 
     }),
+    watch: {
+        carrito(){
+        store.commit('carritoCompras', this.carrito)
+            console.log(store.state.carritoCompras)
+      }
+    },
     methods: {
         selectPasta(pasta){
             this.selected = [pasta]
@@ -175,6 +181,7 @@ export default {
                     console.log(this.carrito)
                     localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
                     store.commit('forceRenderCarrito', +1)
+                    store.commit("addedToCart", true)
 
                 } else {
                     return
@@ -184,6 +191,7 @@ export default {
                 setTimeout(this.notificacionCarrito, 1200)
 
                 store.commit("sendNotif", this.carrito.length)
+               
 
             }
 
@@ -246,6 +254,7 @@ export default {
                         let datosLocalStorage = JSON.parse(localStorage.getItem(`cart/${auth.currentUser.uid}`));
                         if(datosLocalStorage === null){
                             this.carrito = [];
+                            console.log(this.carrito)
                         }else{
                             this.carrito = datosLocalStorage;
                             store.commit("sendNotif", this.carrito.length)

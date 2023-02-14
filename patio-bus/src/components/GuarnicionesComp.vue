@@ -107,7 +107,7 @@ export default {
         
         agregarCart(select){
             const index = this.carrito.findIndex(object => {
-                return object.nombre === select.nombre;
+                return object.id === select.id;
             });
             if (auth.currentUser == null) {
                 return
@@ -127,6 +127,7 @@ export default {
 
                     localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
                     store.commit('forceRenderCarrito', +1)
+                    store.commit("addedToCart", true)
 
                 } else {
                     return
@@ -136,6 +137,7 @@ export default {
                 setTimeout(this.notificacionCarrito, 1200)
 
                 store.commit("sendNotif", this.carrito.length)
+                
             }
 
            

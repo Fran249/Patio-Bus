@@ -117,6 +117,7 @@ export default {
                     localStorage.setItem(`cart/${auth.currentUser.uid}`, JSON.stringify(this.carrito))
 
                     store.commit('forceRenderCarrito', + 1)
+                    store.commit("addedToCart", true)
                 } else {
                     return
 
@@ -125,8 +126,10 @@ export default {
                 setTimeout(this.notificacionCarrito, 1200)
 
                 store.commit("sendNotif", this.carrito.length)
-               
+                
+                
             }
+            
       }
     },
     watch:{

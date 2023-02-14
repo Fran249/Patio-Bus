@@ -20,7 +20,7 @@
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <v-img style="height: 300px;" src="../assets/ImagenesCards/ImgCardHome/pastas.jpg" alt="..."
-                  @click="carritoOpen()">
+               >
 
                 </v-img>
               </div>
@@ -47,15 +47,22 @@
 <script>
 import NavBar from '@/components/NavBar.vue';
 import PastasComp from '@/components/PastasComp.vue';
+import store from '@/store';
 export default {
-  name: 'Pastas-Vue',
-  data: () => ({
-    width: window.innerWidth
-  }),
+  name: 'PastasView',
   components: {
     NavBar,
     PastasComp,
   },
+  data: () => ({
+    width: window.innerWidth
+  }),
+
+  methods:{
+      carritoOpen(){
+        store.commit("toggleCarrito" , true)
+      }
+    },
 }
 </script>
 <style lang="scss" scoped>

@@ -10,10 +10,11 @@ import IngresoComp from '@/components/IngresoComp.vue'
 import RegistroComp from '@/components/RegistroComp.vue'
 import LinksPerfilCompra from '@/components/LinksPerfilCompra'
 import LinksPerfilAdmin from '@/components/LinksPerfilAdmin'
+import addedToCart from '@/components/addedToCart'
 
 Vue.config.productionTip = false
 
-
+Vue.component('addedToCart', addedToCart)
 Vue.component('LinksPerfilCompra', LinksPerfilCompra)
 Vue.component('IngresoComp', IngresoComp)
 Vue.component('RegistroComp', RegistroComp)
