@@ -57,47 +57,78 @@
             />
           </div>
           <div class="d-flex flex-row justify-space-between">
-            
-                <v-menu offset-y >
+              <v-menu offset-y  v-if="categoria === 'Guarniciones'">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn
-                class="categ-id-stock-precio"
+                class="categ-id-stock-precio limite"
                 style="background-color: transparent"
                 v-bind="attrs"
                 v-on="on"
                 >
-                {{tamaño}}
+                {{limite}}
                 </v-btn>
             </template>
             <v-list>
                 <v-list-item
-                v-for="tamaño in tamaños"
-                :key="tamaño.nombre"
-                @click="pushTamaño(tamaño)"
+                v-for="limite in limites"
+                :key="limite.desc"
+                @click="pushLimite(limite)"
                 >
-                <v-list-item-title >{{ tamaño.nombre }}</v-list-item-title>
+                <v-list-item-title >{{ limite.desc}}</v-list-item-title>
                 </v-list-item>
             </v-list>
             </v-menu>
-            <select class="categ-id-stock-precio">
-              <option value="">Salsas</option>
-              <option value="">Salsas</option>
-              <option value="">Salsas</option>
-            </select>
-            <select class="categ-id-stock-precio">
-              <option value="">Ingredientes</option>
-              <option value="">Ingredientes</option>
-              <option value="">Ingredientes</option>
-            </select>
-            <select class="categ-id-stock-precio">
-              <option value="">Limite</option>
-              <option value="">Limite</option>
-              <option value="">Limite</option>
-            </select>
           </div>
         </v-container>
+        <v-container>
+          <v-col v-if="categoria != 'Categoria'" class="descripcion">
+            <h1>Su producto tendrá:</h1>
+            <p>ID: {{id }}</p>
+            <p>Stock: {{ stock }}</p>
+            <p>Precio: {{ precio }}</p>
+            <p v-if="categoria == 'Guarniciones'">Limite de ingredientes: </p>
+                <h3 v-if="limite != 'Ensalada Cesar'">{{ limite }}</h3>
+            <p v-if="categoria == 'Infusiones'">Tamaños</p>
+            <p v-if="categoria == 'Pastas'">Salsas, Tucos y Cremas</p>
+            <div v-if="categoria === 'Guarniciones'" class="mt-15">
+              <h3>-Ingredientes</h3>
+              <ul>
+                <li>Lechuga</li>
+                <li>Tomate</li>
+                <li>Cebolla</li>
+                <li>Zanahoria</li>
+                <li>Remolacha</li>
+              </ul>
+            </div>
+            <div v-if="categoria === 'Infusiones'">
+              <h3>Tamaños</h3>
+              <ul>
+                <li>45ml</li>
+                <li>75ml</li>
+              </ul>
+            </div>
+            <div v-if="categoria === 'Pastas'">
+              <h3>Salsas</h3>
+              <ul>
+                <li>Filetto</li>
+                <li>Bolognesa</li>
+              </ul>
+              <h3>Tucos</h3>
+              <ul>
+                <li>Pollo</li>
+                <li>Carne</li>
+              </ul>
+              <h3>Cremas</h3>
+              <ul>
+                <li>Verdeo</li>
+                <li>Cuatro Quesos</li>
+              </ul>
+            </div>
+            
+          </v-col>
+        </v-container>
       </v-col>
-      <v-btn @click="agregar()">gandjmo</v-btn>
+
       <v-col cols="3"> </v-col>
     </v-row>
   </div>
@@ -110,38 +141,41 @@ import { firebaseConfig } from "../firebase/index";
 import {getFirestore} from "firebase/firestore"
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
 export default {
   name: "FormAdminComp",
   data: () => ({
     nombre: "",
     descripcion: "",
     categoria: "Categoria",
-    seleccion: [],
-    id: "",
-    tamaño: 'Tamaños',
-
-    tamaños: [
-        {
-            nombre: 'Todos'
-        },
-        {
-            nombre: '45ml'
-        },
-        {
-            nombre: '75ml'
-        }
+    limite: 'Ensalada Cesar',
+    limites: [
+      {
+        desc: 'Ensalada cesar',
+      },
+      {
+        desc: 'Ensalada (Dos ingredientes)'
+      },
+      {
+        desc: 'Ensalada (Tres ingredientes)'
+      },
+      {
+        desc: 'Ensalada (Cuatro ingredientes)'
+      }
     ],
+    tamaños : [
+      {
+        nombre: '45ml',
+      },
+      {
+        nombre: '75ml'
+      }
+    ],
+    id: "",
     salsas: [],
-    cantidad: "",
     stock: "",
     precio: "",
     cardArmada : [],
-    items: [
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me 2' },
-      ],
     categorias: [
         {
             nombre: 'Infusiones'
@@ -186,9 +220,8 @@ export default {
         this.categoria = categ.nombre
 
     },
-    pushTamaño(tamaño){
-        this.tamaño = tamaño.nombre
-
+    pushLimite(limite){
+      this.limite = limite.desc
     },
     async agregar() {
       // const newObject = {
@@ -198,21 +231,7 @@ export default {
       try { 
         const cardRef = doc(db, "Productos", this.categoria.toLowerCase());
                 //check Tamaños 
-                let tamañoChecked = this.tamaño
-        if(this.tamaño == 'Todos'){
-            tamañoChecked = [
-                {
-                    nombre:'45ml'
-                },
-                {
-                    nombre: '75ml'
-                }
-            ]
-        }else {
-            tamañoChecked = {
-                nombre: this.tamaño
-            }
-        }
+      
 
 
         const newCard = {
@@ -220,8 +239,8 @@ export default {
             category: this.categoria,
             descripcion: this.descripcion,
             id: this.id,
-            tamaños: tamañoChecked ,
-            seleccion: this.seleccion,
+            tamaños: this.tamaños ,
+            limites: this.limites,
             salsas: this.salsas,
             stock: this.stock,
             precio: this.precio
@@ -238,22 +257,7 @@ export default {
     catch(error){
 
        if(error.code === 'not-found' ){
-                //check Tamaños 
-                let tamañoChecked = this.tamaño
-        if(this.tamaño == 'Todos'){
-            tamañoChecked = [
-                {
-                    nombre:'45ml'
-                },
-                {
-                    nombre: '75ml'
-                }
-            ]
-        }else {
-            tamañoChecked = {
-                nombre: this.tamaño
-            }
-        }
+              
 
 
         const newCard = {
@@ -261,8 +265,8 @@ export default {
             category: this.categoria,
             descripcion: this.descripcion,
             id: this.id,
-            tamaños: tamañoChecked ,
-            seleccion: this.seleccion,
+            tamaños: this.tamaños ,
+            limites: this.limites,
             salsas: this.salsas,
             stock: this.stock,
             precio: this.precio
@@ -273,11 +277,19 @@ export default {
         console.log('agregado con exito')
        }
     }
-    }
+    }, 
   },
 };
 </script>
 <style lang="scss" scoped>
+
+.descripcion :is( p, h3,h1, li){
+  font-family: 'red-hat';
+  font-size: 20px;
+  color: #555;
+
+}
+
 .v-btn{
     text-transform: none !important;
     font-family: 'red-hat';
@@ -307,6 +319,9 @@ export default {
   margin-bottom: 5px;
 }
 
+.limite{
+  width: 27rem;
+}
 option,
 select,
 input {

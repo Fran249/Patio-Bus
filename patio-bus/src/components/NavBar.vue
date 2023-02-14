@@ -54,6 +54,9 @@
                                     <router-link class="router-link" to="/RegistroComprasUser"><h3>REGISTRO DE COMPRAS</h3></router-link>
                                 </v-list-item>
                                 <v-list-item>
+                                    <router-link class="router-link" to="/PerfilAdminAgregarView"><h3>ADMIN</h3></router-link>
+                                </v-list-item>
+                                <v-list-item>
                                     <h3 class="cerrar-sesion" @click="cerrarSesion">CERRAR SESIÓN</h3>
                                 </v-list-item>
                             </v-list>
