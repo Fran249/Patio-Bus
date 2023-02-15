@@ -24,7 +24,7 @@ export default {
 computed: {
       value: {
            get(){
-              return true
+              return store.state.addedToCart
            },
            set(value){
              store.commit('addedToCart', value)

@@ -22,8 +22,8 @@
                 <v-card-actions >
                     <div class="d-flex flex-column" style="width:100%">
                         <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                        <button class="button" v-for="tamaño in select.tamaños" :key="tamaño.tamaño" >
-                            <h3 class="h3-button">{{tamaño.tamaño}}</h3>
+                        <button class="button" v-for="tamaño in select.tamaños" :key="tamaño.nombre" >
+                            <h3 class="h3-button">{{tamaño.nombre}}</h3>
                         </button>
                         </div>
                         <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
@@ -74,8 +74,7 @@ import { auth, firebaseConfig } from '../firebase/index';
 import { onAuthStateChanged } from "@firebase/auth";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-const storage = getStorage();
+
 import store from '@/store'
 
 export default {
@@ -144,40 +143,34 @@ export default {
     beforeMount(){
         onSnapshot(doc(db, "Productos/infusiones"), (doc) => {
 
-                this.cafes = doc.data().cafe
+                this.cafes = doc.data().card
 
 
                 this.cafes.forEach(item =>{
 
-        getDownloadURL(ref(storage, `Productos/infusiones/${item.id}.jpg`))
-            .then((url) => {
-                const newCafe= {
+                    const newCafe= {
                     nombre : item.nombre,
                     id : item.id,
-                    src: url,
+                    src: item.src,
                     tamaños : item.tamaños,
                     category: item.category
                 }
   
                 this.newCafes.push(newCafe)
 
-                if(item.nombre == 'Café'){
+                if(item.nombre == 'Cafe'){
                     const newSelected = {
                         nombre: item.nombre,
                         id: item.id,
                         tamaños: item.tamaños,
-                        src: url,
+                        src: item.src,
                         category: item.category
                     }
                     this.selected.push(newSelected)
+                    console.log(newSelected)
                 }else {
                     return 
                 }
-    
-            })
-            .catch((error) => {
-                console.log(error)
-            });
 
 
             })

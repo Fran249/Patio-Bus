@@ -180,6 +180,7 @@
 
 
 <script>
+import store from "@/store";
 import {
   getStorage,
   ref,
@@ -197,9 +198,10 @@ export default {
         imagenesPastas: [],
     }),
     methods:{
-        selectImg(item){
+       selectImg(item){
             console.log(item)
             this.selected = item
+            store.commit('imagenSelected', item.src)
         }
     },
     async beforeMount(){

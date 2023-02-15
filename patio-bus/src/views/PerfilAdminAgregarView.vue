@@ -4,7 +4,6 @@
 <h3 class="adminis">ADMINISTRADOR</h3>
 <LinksPerfilAdmin />
 <FormAdminComp/>
-<CardsAdminAgregar/>
 <FooterVue/>
     </div>
 </template>
@@ -17,7 +16,7 @@
 import FooterVue from '@/components/FooterVue.vue';
 import NavBar from '@/components/NavBar.vue';
 import FormAdminComp from '@/components/FormAdminComp.vue';
-import CardsAdminAgregar from '@/components/CardsAdminAgregar.vue';
+
 export default {
     name: 'AgregarView',
     data: () => ({
@@ -27,7 +26,6 @@ export default {
     FooterVue,
     NavBar,
     FormAdminComp,
-    CardsAdminAgregar,
     },
     }
 </script>
