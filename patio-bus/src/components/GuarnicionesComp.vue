@@ -36,10 +36,12 @@
                     </v-card-actions>
                 </v-card>
             </v-col>
+           
             <v-col cols="6" >
-                <v-row>
-                    <v-col cols="6" v-for="ensalada in ensaladas" :key="ensalada.nombre" >
-                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectEnsalada(ensalada)">
+                <v-row v-for="(pagina, index) in ensaladasPrueba" :key="index">
+                    <div v-if="index == indexed" class="d-flex flex-row flex-wrap">
+                        <v-col cols="6" v-for="ensalada in pagina" :key="ensalada.nombre" >
+                        <v-card  style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectEnsalada(ensalada)">
                             <v-img src="../assets/ImagenesCards/Ensalada3.jpg">
 
                             </v-img>
@@ -53,7 +55,10 @@
                             </v-card-title>
                         </v-card>
                     </v-col>
+                    </div>
+  
                 </v-row>
+
             </v-col>
         </v-row>
         <div class="container-selectors-up">
@@ -64,12 +69,14 @@
         <h3 class="mt-2" v-for="select in selected" :key="select.id">{{ select.id }} de {{ensaladas.length}}</h3>
     </div>
     </div>
-
+    <v-btn @click="consolear()">
+        agdgad
+    </v-btn>
     </v-container>
 </template>
 
 <script>
-import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot , setDoc} from "firebase/firestore";
 import { initializeApp } from 'firebase/app';
 import {  firebaseConfig } from '../firebase/index';
 const app = initializeApp(firebaseConfig);
@@ -92,6 +99,9 @@ export default {
         selected: [],
         newEnsaladas : [],
         carrito : [],
+        ensaladasPrueba: [
+        ],
+        indexed : 0,
     }),
     watch: {
         carrito(){
@@ -100,6 +110,11 @@ export default {
       }
     },
     methods: {
+        consolear(){
+        const docRef = doc(db, 'Productos','ensalada1','pagina1','pagina');
+        setDoc(docRef,{pagina: this.ensaladas});
+ 
+        },
         selectEnsalada(ensalada){
             this.selected = [ensalada]
             console.log(this.selected)
@@ -148,7 +163,12 @@ export default {
     beforeMount(){
         onSnapshot(doc(db, "Productos/ensaladas"), (doc) => {
 
-                this.ensaladas = doc.data().ensaladas
+                for (let index = 0; index <= 3; index++) {
+                    this.ensaladasPrueba.push(doc.data().pagina1)
+                }
+                console.log(this.ensaladasPrueba)
+
+                this.ensaladas = doc.data().pagina1
 
 
                 this.ensaladas.forEach(item =>{
