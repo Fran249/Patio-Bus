@@ -1,6 +1,7 @@
 <template>
-    <v-container class="card-container">
-        <v-row>
+     <transition name="fade">
+    <v-container  v-if="show" >
+        <v-row >
             <v-col cols="6" v-for="select in selected" :key="select.nombre">
                 <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;">
                     <v-img src="../assets/ImagenesCards/Ensalada1.jpg" style="height: 250px">
@@ -36,11 +37,11 @@
                     </v-card-actions>
                 </v-card>
             </v-col>
+            
            
-            <v-col cols="6" >
-                <v-row v-for="(pagina, index) in ensaladasPrueba" :key="index">
-                    <div v-if="index == indexed" class="d-flex flex-row flex-wrap">
-                        <v-col cols="6" v-for="ensalada in pagina" :key="ensalada.nombre" >
+                <v-col cols="6" >
+                <v-row >
+                        <v-col cols="6"  v-for="ensalada in ensaladas" :key="ensalada.nombre"  >
                         <v-card  style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectEnsalada(ensalada)">
                             <v-img src="../assets/ImagenesCards/Ensalada3.jpg">
 
@@ -55,24 +56,28 @@
                             </v-card-title>
                         </v-card>
                     </v-col>
-                    </div>
-  
                 </v-row>
 
             </v-col>
+
+
+            <v-btn icon color="black" @click="cambiarPagina()" class="cambiar-pagina" :disabled="disabled">
+                    <v-icon>
+                        mdi-arrow-right
+                    </v-icon>
+                </v-btn>
         </v-row>
         <div class="container-selectors-up">
         <div class="select-container">
         <div class="selectores" >
             <div class="selector"  v-for="ensalada in ensaladas" :key="ensalada.id"></div>
         </div>
-        <h3 class="mt-2" v-for="select in selected" :key="select.id">{{ select.id }} de {{ensaladas.length}}</h3>
+        <h3 class="mt-2" >{{ index }} de {{ 3 }}</h3>
     </div>
     </div>
-    <v-btn @click="consolear()">
-        agdgad
-    </v-btn>
+
     </v-container>
+</transition>
 </template>
 
 <script>
@@ -101,7 +106,9 @@ export default {
         carrito : [],
         ensaladasPrueba: [
         ],
-        indexed : 0,
+        index: 1,
+        show: true,
+        disabled: false,
     }),
     watch: {
         carrito(){
@@ -111,10 +118,78 @@ export default {
     },
     methods: {
         consolear(){
-        const docRef = doc(db, 'Productos','ensalada1','pagina1','pagina');
+        const docRef = doc(db, 'Productos','ensalada1','pagina3','pagina');
         setDoc(docRef,{pagina: this.ensaladas});
  
         },
+        cambiarPagina(){
+            this.show = false
+
+            if(this.index == 1 || this.index == 2){
+                
+                this.ensaladas = []
+                this.newEnsaladas = []
+                this.selected = []
+                this.index++
+                
+            const docRef = doc(db, 'Productos','ensalada1',`pagina${this.index}`,'pagina')
+        onSnapshot(docRef, (doc) => {
+     
+
+                this.ensaladas = doc.data().pagina
+
+
+                this.ensaladas.forEach(item =>{
+          getDownloadURL(ref(storage, `Productos/ensaladas/${item.id}.jpg`))
+            .then((url) => {
+                const newEnsalada= {
+                    nombre : item.nombre,
+                    id : item.id,
+                    url: url,
+                    seleccion: item.seleccion ,
+                    cantidad: item.cantidad, 
+                    descripcion: item.descripcion,
+                    category: item.category,       
+                }
+  
+                this.newEnsaladas.push(newEnsalada)
+                console.log('new ensalada', this.newEnsaladas)
+                if(item.id == 4){
+                    const newSelected = {
+                        nombre: item.nombre,
+                        id: item.id,
+                        url: url,
+                        seleccion: item.seleccion,
+                        cantidad: item.cantidad, 
+                        descripcion: item.descripcion, 
+                        category: item.category, 
+                    }
+                    this.selected.push(newSelected)
+                    console.log(this.selected)
+                    this.show = true
+                }else {
+                    return 
+                }
+    
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+
+
+            })
+            this.ensaladas = this.newEnsaladas
+            
+
+            })
+            if(this.index == 3){
+                this.disabled = true;
+                console.log(this.index)
+            }
+            
+            }
+        },
+
         selectEnsalada(ensalada){
             this.selected = [ensalada]
             console.log(this.selected)
@@ -161,14 +236,12 @@ export default {
 
     },
     beforeMount(){
-        onSnapshot(doc(db, "Productos/ensaladas"), (doc) => {
+        const docRef = doc(db, 'Productos','ensalada1','pagina1','pagina')
+        onSnapshot(docRef, (doc) => {
+                console.log(doc.data())
+    
 
-                for (let index = 0; index <= 3; index++) {
-                    this.ensaladasPrueba.push(doc.data().pagina1)
-                }
-                console.log(this.ensaladasPrueba)
-
-                this.ensaladas = doc.data().pagina1
+                this.ensaladas = doc.data().pagina
 
 
                 this.ensaladas.forEach(item =>{
@@ -241,6 +314,17 @@ export default {
 
 <style lang="scss" scoped>
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+.cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 73rem;
+}
 .height{
     padding-bottom: 40px;
 }
@@ -381,6 +465,11 @@ export default {
         width: 130px;
 
     }
+    .cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 110rem;
+}
 
 
 }
