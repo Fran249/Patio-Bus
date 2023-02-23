@@ -57,7 +57,7 @@
             />
           </div>
           <div class="d-flex flex-row justify-space-between">
-              <v-menu offset-y  v-if="categoria === 'Guarniciones'">
+              <v-menu offset-y  v-if="categoria != 'Categoria'">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn
                 class="categ-id-stock-precio limite"
@@ -65,19 +65,19 @@
                 v-bind="attrs"
                 v-on="on"
                 >
-                {{limite}}
+                {{paginaShow}}
                 </v-btn>
             </template>
             <v-list>
                 <v-list-item
-                v-for="limite in limites"
-                :key="limite.desc"
-                @click="pushLimite(limite)"
+                v-for="pagina in paginas"
+                :key="pagina.index"
+                @click="pushPagina(pagina)"
                 >
-                <v-list-item-title >{{ limite.desc}}</v-list-item-title>
+                <v-list-item-title >{{ pagina.index}}</v-list-item-title>
                 </v-list-item>
             </v-list>
-            </v-menu>
+            </v-menu>        
           </div>
         </v-container>
         <v-container>
@@ -305,15 +305,37 @@
         </div>
                            
         </v-dialog>
+        
+
     </div>
 
     </v-row>
+    <v-snackbar color="transparent" elevation="0" v-model="refValue" :timeout="1000">
+        <div class="notif-container">
+            <div class="div-border">
+              <p >Esta pagina esta llena, porfavor, elija otra</p>
+                <v-img width="130" height="30" contain src="../assets/ImagenesCards/Iconos/4.png" class="img">
+
+                </v-img>
+            </div>
+        </div>
+    </v-snackbar>
+    <v-snackbar color="transparent" elevation="0" v-model="saveValue" :timeout="1000">
+        <div class="notif-container">
+            <div class="div-border">
+              <p >Se ha guardado su producto con éxito!</p>
+                <v-img width="130" height="30" contain src="../assets/ImagenesCards/Iconos/4.png" class="img">
+
+                </v-img>
+            </div>
+        </div>
+    </v-snackbar>
   </div>
 </template>
 
 <script>
 
-import { doc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, setDoc, getDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebase/index";
 import {getFirestore} from "firebase/firestore"
@@ -333,6 +355,7 @@ export default {
   name: "FormAdminComp",
   data: () => ({
     UploadValue: 0,
+    saveValue: false,
     selectedCategoryImg: null,
     nombre: "",
     descripcion: "",
@@ -352,6 +375,7 @@ export default {
                 'Postres',
                 'Bebidas'],
     limites: [
+      
       {
         desc: 'Ensalada cesar',
       },
@@ -373,6 +397,18 @@ export default {
         nombre: '75ml'
       }
     ],
+    paginas: [
+      
+      { 
+        index: 'Página 1'
+      },
+      {
+        index: 'Página 2'
+      },
+      {
+        index: 'Página 3'
+      }
+    ],
     id: "",
     salsas: [],
     stock: "",
@@ -383,7 +419,7 @@ export default {
             nombre: 'Infusiones'
         },
         {
-            nombre: 'Snacks Dulces'
+            nombre: 'Snacks'
         },
         {
             nombre: 'Entradas'
@@ -422,6 +458,9 @@ export default {
         imagenesSnacks: [],
         imagenesPastas: [],
         selectSrc: '',
+        paginaSelected: '',
+        paginaShow:'Paginas',
+        refValue : false
   }),
   watch:{
     selectedCategoryImg() {
@@ -437,7 +476,37 @@ export default {
             
         },
     pushCard(categ){
-        this.categoria = categ.nombre
+        this.categoria = categ.nombre.toLowerCase()
+
+    },
+    pushPagina(pagina){
+        if(pagina.index == 'Página 1'){
+          this.paginaSelected = 'pagina1'
+          this.paginaShow = pagina.index
+        }else if(pagina.index == 'Página 2'){
+          this.paginaSelected = 'pagina2',
+          this.paginaShow = pagina.index
+        }else if(pagina.index == 'Página 3'){
+          this.paginaSelected = 'pagina3',
+          this.paginaShow = pagina.index
+        }
+        const paginasRef = [
+            {
+              ref: doc(db, 'Productos', this.categoria, this.paginaSelected, 'pagina'),
+            },
+          ]
+              paginasRef.forEach(element=>{
+              getDoc(element.ref).then(doc=>{
+              
+                if(doc.data().pagina.length >= 4){
+                  this.refValue = true
+                  this.paginaShow = 'Páginas'
+                  this.paginaSelected = ''
+                }else {
+                  this.refValue = false
+                }
+              })
+        })
 
     },
     pushLimite(limite){
@@ -467,7 +536,7 @@ export default {
       // }
 
       try { 
-        const cardRef = doc(db, "Productos", this.categoria.toLowerCase());
+        const cardRef = doc(db, "Productos", this.categoria.toLowerCase(),this.paginaSelected, 'pagina');
                 //check Tamaños 
       
 
@@ -493,9 +562,16 @@ export default {
           Object.assign(newCard , {salsas: this.salsas})
           console.log(newCard)
         }
+        this.saveValue = true
+        this.categoria = ''
+        this.stock = ''
+        this.precio = ''
+        this.id = ''
+        this.nombre = ''
+
       // Atomically add a new region to the "regions" array field.
       await updateDoc(cardRef, {
-        card: arrayUnion(newCard),
+        pagina: arrayUnion(newCard),
       })
 
       // Atomically remove a region from the "regions" array field.
@@ -532,7 +608,13 @@ export default {
     }
     }, 
   },
+   beforeCreate(){
+   
+ 
+
+  },
   async beforeMount(){
+
     const listRef1 = ref(storage, "Productos/ensaladas");
     const listRef2 = ref(storage, "Productos/pastas");
     const listRef3 = ref(storage, "Productos/snacks");
@@ -611,6 +693,38 @@ export default {
 </script>
 <style lang="scss" scoped>
 
+.notif-container{
+        background-color: white;
+        width: 360px;
+        height: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+    .div-border{
+        width: 350px;
+        padding: 10px;
+       border: 1px solid black;  
+        display: grid;
+        grid-template-columns: 300px 35px;
+        grid-template-rows: 1fr;
+       p{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        margin-bottom: 0;
+        color: black;
+        font-family: 'red-hat';
+        font-weight: 500;
+        color: #111;
+        place-self: center;
+       }
+       .img{
+        margin-right: 30px;
+        grid-column: 2/3;
+        grid-row: 1/2;
+       }
+    }
 .p-subir{
   color: black;
   font-weight: 500;
