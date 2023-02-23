@@ -1,5 +1,6 @@
 <template>
-    <v-container class="card-container" >
+     <transition name="fade">
+    <v-container class="card-container" v-if="show">
   
               <v-row>
                   <v-col cols="6" v-for="(select,i) in selected" :key="i">
@@ -59,8 +60,12 @@
                     </v-col>
                 </v-row>
             </v-col>
+            <v-btn icon color="black" @click="cambiarPagina()" class="cambiar-pagina" :disabled="disabled">
+                    <v-icon>
+                        mdi-arrow-right
+                    </v-icon>
+                </v-btn>
               </v-row>
-          
               <div class="container-selectors-up">
         <div class="select-container">
         <div class="selectores" >
@@ -70,12 +75,13 @@
     </div>
     </div>
     </v-container>
+</transition>
   </template>
   
   
   <script>
 
-import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot, setDoc, } from "firebase/firestore";
 import { initializeApp } from 'firebase/app';
 import {  firebaseConfig } from '../firebase/index';
 const app = initializeApp(firebaseConfig);
@@ -99,6 +105,9 @@ import store from '@/store'
         selected: [],
         newCereales : [],
         carrito : [],
+        index: 1,
+        show: true,
+        disabled: false,
         
   
       }),
@@ -109,6 +118,80 @@ import store from '@/store'
       }
     },
       methods: {
+        cambiarPagina(){
+            this.show = false
+
+            if(this.index == 1 || this.index == 2){
+                
+                this.cereales = []
+                this.newCereales = []
+                this.selected = []
+                this.index++
+                
+            const docRef = doc(db, 'Productos','snacks',`pagina${this.index}`,'pagina')
+        onSnapshot(docRef, (doc) => {
+     
+
+                this.cereales = doc.data().pagina
+
+                onSnapshot(docRef, (doc) => {
+
+                this.cereales = doc.data().pagina
+
+
+                this.cereales.forEach(item =>{
+                getDownloadURL(ref(storage, `Productos/snacks/${item.id}.jpg`))
+                .then((url) => {
+                const newCereal= {
+                    nombre : item.nombre,
+                    id : item.id,
+                    url: url,
+                    buyNumber : item.buyNumber,
+                }
+
+                this.newCereales.push(newCereal)
+                console.log(this.newCereales)
+                if(item.nombre == 'Mix de cereales'){
+                    const newSelected = {
+                        nombre: item.nombre,
+                        id: item.id,
+                        url: url,
+                        buyNumber : item.buyNumber,
+                    }
+                    this.selected.push(newSelected)
+                    console.log(this.selected)
+                    this.show = true
+
+                }else {
+                    return 
+                }
+
+                })
+                .catch((error) => {
+                console.log(error)
+                });
+
+
+                })
+                this.cereales = this.newCereales
+
+
+                })
+            
+
+            })
+            if(this.index == 3){
+                this.disabled = true;
+                console.log(this.index)
+            }
+            
+            }
+        },
+        consolear(){
+        const docRef = doc(db, 'Productos','snacks','pagina3','pagina');
+        setDoc(docRef,{pagina: this.cereales});
+ 
+        },
         selectCereal(cereal){
             this.selected = [cereal]
             console.log(this.selected)
@@ -152,9 +235,10 @@ import store from '@/store'
 
     },
     beforeMount(){
-        onSnapshot(doc(db, "Productos/snacks"), (doc) => {
+        const docRef = doc(db, 'Productos','snacks','pagina1','pagina')
+        onSnapshot(docRef, (doc) => {
 
-                this.cereales = doc.data().snacks
+                this.cereales = doc.data().pagina
 
 
                 this.cereales.forEach(item =>{
@@ -221,6 +305,18 @@ import store from '@/store'
   
   
   <style lang="scss" scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+.cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 73rem;
+}
   .container-selectors-up{
     width: 100%;
     display: flex;
@@ -355,6 +451,17 @@ import store from '@/store'
   }
   
   }
+  @media screen and (min-width: 1500px) {
+
+    .cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 110rem;
+}
+
+
+}
+
   @media screen and (max-width: 1300px) {
      
   }

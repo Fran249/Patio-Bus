@@ -1,10 +1,11 @@
 <template>
-  <v-container class="card-container" >
+    <transition name="fade">
+  <v-container class="card-container" v-if="show" >
 
             <v-row>
                 <v-col cols="6" v-for="(select,i) in selected" :key="i">
                             <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;" >
-                                <v-img :src="select.src" style="height: 250px">
+                                <v-img :src="select.url" style="height: 250px">
                                     
                                 </v-img>           
                 <div style="width: 100%;">
@@ -22,8 +23,8 @@
                 <v-card-actions >
                     <div class="d-flex flex-column" style="width:100%">
                         <div style="width: 100%;  gap: 30px" class="d-flex flex-row justify-start">
-                        <button class="button" v-for="tamaño in select.tamaños" :key="tamaño.nombre" >
-                            <h3 class="h3-button">{{tamaño.nombre}}</h3>
+                        <button class="button" v-for="tamaño in select.tamaños" :key="tamaño.tamaño" >
+                            <h3 class="h3-button">{{tamaño.tamaño}}</h3>
                         </button>
                         </div>
                         <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
@@ -42,7 +43,7 @@
                 <v-row>
                     <v-col cols="6" v-for="(cafe, i) in cafes" :key="i">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectCafe(cafe)">
-                            <v-img :src="cafe.src">
+                            <v-img :src="cafe.url">
                             </v-img>
                             <v-card-title>
                                 <h3 class="title-cafe">
@@ -53,25 +54,34 @@
                     </v-col>
                 </v-row>
             </v-col>
+            <v-btn icon color="black" @click="cambiarPagina()" class="cambiar-pagina" :disabled="disabled">
+                    <v-icon>
+                        mdi-arrow-right
+                    </v-icon>
+                </v-btn>
             </v-row>
+
             <div class="container-selectors-up">
         <div class="select-container">
         <div class="selectores" >
             <div class="selector"  v-for="cafe in cafes" :key="cafe.id"  @click="selectorShow(cafe)"></div>
         </div>
-        <h3 class="mt-2" v-for="select in selected" :key="select.id">{{ select.id }} de {{cafes.length}}</h3>
+        <h3 class="mt-2" >{{ index}} de {{3}}</h3>
     </div>
     </div>
 
   </v-container>
+</transition>
 </template>
 
 
 <script>
-import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot, setDoc } from "firebase/firestore";
 import { initializeApp  } from 'firebase/app';
 import { auth, firebaseConfig } from '../firebase/index';
 import { onAuthStateChanged } from "@firebase/auth";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+const storage = getStorage();
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -87,9 +97,84 @@ export default {
         cafes: [],
         newCafes : [],
         selected : [],
-        carrito : []
+        carrito : [],
+        index: 1,
+        show: true,
+        disabled: false,
     }),
     methods: {
+        cambiarPagina(){
+            this.show = false
+
+            if(this.index == 1 || this.index == 2){
+                
+                this.cafes = []
+                this.newCafes = []
+                this.selected = []
+                this.index++
+                
+            const docRef = doc(db, 'Productos','infusiones',`pagina${this.index}`,'pagina')
+        onSnapshot(docRef, (doc) => {
+     
+
+                this.cafes = doc.data().pagina
+
+                onSnapshot(docRef, (doc) => {
+
+                this.cafes = doc.data().pagina
+
+
+                this.cafes.forEach(item =>{
+                    getDownloadURL(ref(storage, `Productos/infusiones/${item.id}.jpg`))
+                    .then((url) => {
+                    const newCafe= {
+                    nombre : item.nombre,
+                    id : item.id,
+                    url: url,
+                    tamaños : item.tamaños,
+                    category: item.category
+                }
+  
+                this.newCafes.push(newCafe)
+
+                if(item.nombre == 'Café'){
+                    const newSelected = {
+                        nombre: item.nombre,
+                        id: item.id,
+                        tamaños: item.tamaños,
+                        url: url,
+                        category: item.category
+                    }
+                    this.selected.push(newSelected)
+                    console.log(newSelected)
+                    console.log(this.selected)
+                    this.show = true
+
+                }else {
+                    return 
+                }
+            })  
+
+            })
+                this.cereales = this.newCereales
+
+
+                })
+            
+
+            })
+            if(this.index == 3){
+                this.disabled = true;
+                console.log(this.index)
+            }
+            
+            }
+        },
+        consolear(){
+        const docRef = doc(db, 'Productos','infusiones','pagina3','pagina');
+        setDoc(docRef,{pagina: this.cafes});
+ 
+        },
         selectCafe(cafe){
             this.selected = [cafe]
             console.log(this.selected)
@@ -141,37 +226,41 @@ export default {
       }
     },
     beforeMount(){
-        onSnapshot(doc(db, "Productos/infusiones"), (doc) => {
+        const docRef = doc(db, 'Productos', 'infusiones', 'pagina1', 'pagina')
+        onSnapshot(docRef, (doc) => {
 
-                this.cafes = doc.data().card
+                this.cafes = doc.data().pagina
 
 
                 this.cafes.forEach(item =>{
-
+                    getDownloadURL(ref(storage, `Productos/infusiones/${item.id}.jpg`))
+                    .then((url) => {
                     const newCafe= {
                     nombre : item.nombre,
                     id : item.id,
-                    src: item.src,
+                    url: url,
                     tamaños : item.tamaños,
                     category: item.category
                 }
   
                 this.newCafes.push(newCafe)
 
-                if(item.nombre == 'Cafe'){
+                if(item.nombre == 'Café'){
                     const newSelected = {
                         nombre: item.nombre,
                         id: item.id,
                         tamaños: item.tamaños,
-                        src: item.src,
+                        url: url,
                         category: item.category
                     }
                     this.selected.push(newSelected)
                     console.log(newSelected)
+                    console.log(this.selected)
+
                 }else {
                     return 
                 }
-
+            })  
 
             })
             this.cafes = this.newCafes
@@ -209,6 +298,17 @@ export default {
 
 
 <style lang="scss" scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+.cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 73rem;
+}
   .container-selectors-up{
     width: 100%;
     display: flex;
@@ -315,9 +415,15 @@ export default {
     width: 130px;
     
 }
+.cambiar-pagina{
+position: absolute;
+place-self: center;
+margin-left: 110rem;
+}
 
 
 }
+
 @media screen and (max-width: 1300px) {
    
 }

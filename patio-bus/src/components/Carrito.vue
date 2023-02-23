@@ -12,8 +12,11 @@
             <v-img class="imagen-plato" :src="car.src" style=" width: 100%; height: 100%">
 
             </v-img>
+            <v-img class="imagen-plato" :src="car.url" style=" width: 100%; height: 100%" v-if="car.category == 'infusiones'">
+
+            </v-img>
             <div class="columna2">
-                <h3 class="h3-ensalada">
+                <h3 class="h3-ensalada" v-if="car.category == 'infusiones'">
                     {{ car.nombre }}
                 </h3>
                 <p class="ml-1">
@@ -21,8 +24,8 @@
                 </p>
             </div>
             <div class="columna2"  v-if="car.category != 'ensaladas'" >
-                <h2  v-if="car.category != 'cafe'">{{car.nombre}}</h2>
-                <div class="botonera" v-if="car.category != 'cafe'">
+                <h2  v-if="car.category != 'infusiones'">{{car.nombre}}</h2>
+                <div class="botonera" v-if="car.category != 'infusiones'">
                     <div class="contador" >
                         <h3 v-if="car.cantidad >= 0">{{ car.cantidad }}</h3>
                     </div>
@@ -32,8 +35,8 @@
                     </div>
                 </div>
             </div>
-            <div style="width: 100%; margin-left: 75px" v-if="car.category == 'cafe'" class="tamaños">
-                <h2 class="ñoquis-h2"  v-if="car.category == 'cafe'">{{ car.titulo }}</h2>
+            <div style="width: 100%; margin-left: 75px" v-if="car.category == 'infusiones'" class="tamaños">
+                <h2 class="ñoquis-h2"  v-if="car.category == 'infusiones'">{{ car.titulo }}</h2>
                 <p class="ñoquis-p">{{ car.descripcion }}</p>
 
                     <div class="d-flex flex-row tamaños">
