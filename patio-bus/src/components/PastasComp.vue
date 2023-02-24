@@ -1,5 +1,6 @@
 <template>
-    <v-container class="card-container">
+      <transition name="fade">
+    <v-container class="card-container" v-if="show">
         <v-row>
             <v-col cols="6" v-for="select in selected" :key="select.nombre">
                 <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;">
@@ -98,6 +99,11 @@
                     
                 </v-row>
             </v-col>
+            <v-btn icon color="black" @click="cambiarPagina()" class="cambiar-pagina" :disabled="disabled">
+                    <v-icon>
+                        mdi-arrow-right
+                    </v-icon>
+                </v-btn>
         </v-row>
         <div class="container-selectors-up">
             <div class="select-container">
@@ -112,11 +118,12 @@
         </div>
 
     </v-container>
+</transition>
 </template>
 
 <script>
 
-import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot, setDoc } from "firebase/firestore";
 import { initializeApp } from 'firebase/app';
 import {  firebaseConfig } from '../firebase/index';
 const app = initializeApp(firebaseConfig);
@@ -147,6 +154,9 @@ export default {
         selected: [],
         newPastas : [],
         carrito : [],
+        index: 1,
+        show: true,
+        disabled: false,
 
     }),
     watch: {
@@ -156,6 +166,81 @@ export default {
       }
     },
     methods: {
+        consolear(){
+        const docRef = doc(db, 'Productos','pastas','pagina3','pagina');
+        setDoc(docRef,{pagina: this.pastas});
+ 
+        },
+        cambiarPagina(){
+            this.show = false
+
+            if(this.index == 1 || this.index == 2){
+                
+                this.pastas = []
+                this.newPastas = []
+                this.selected = []
+                this.index++
+                
+            const docRef = doc(db, 'Productos','pastas',`pagina${this.index}`,'pagina')
+            onSnapshot(docRef, (doc) => {
+
+
+                this.pastas = doc.data().pagina
+
+                onSnapshot(docRef, (doc) => {
+
+                this.pastas = doc.data().pagina
+
+
+                this.pastas.forEach(item =>{
+                getDownloadURL(ref(storage, `Productos/pastas/${item.id}.jpg`))
+                .then((url) => {
+                    const newPasta= {
+                    nombre : item.nombre,
+                    id : item.id,
+                    src: url,
+                    salsas: item.salsas,
+                    category: item.category,
+                }
+                
+                this.newPastas.push(newPasta)
+                console.log(this.newPastas)
+                if(item.nombre == 'Ñoquis'){
+                    const newSelected = {
+                        nombre: item.nombre,
+                        id: item.id,
+                        src: url,
+                        salsas: item.salsas,
+                        category: item.category,
+                    }
+                    this.selected.push(newSelected)
+                    console.log(this.selected)
+                    this.show = true
+                }else {
+                    return 
+                }
+    
+                })
+                .catch((error) => {
+                console.log(error)
+                });
+
+
+                })
+                this.pastas = this.newPastas
+
+
+                })
+
+
+            })
+            if(this.index == 3){
+                this.disabled = true;
+                console.log(this.index)
+            }
+
+            }
+        },
         selectPasta(pasta){
             this.selected = [pasta]
             console.log(this.selected)
@@ -201,9 +286,10 @@ export default {
 
     },
     beforeMount(){
-        onSnapshot(doc(db, "Productos/pastas"), (doc) => {
+        const docRef = doc(db, 'Productos','pastas','pagina1','pagina')
+        onSnapshot(docRef, (doc) => {
 
-                this.pastas = doc.data().pastas
+                this.pastas = doc.data().pagina
 
                 console.log(this.pastas)
                 this.pastas.forEach(item =>{
@@ -272,6 +358,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+.cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 73rem;
+}
 .container-selectors-up {
     width: 100%;
     display: flex;
@@ -432,6 +530,11 @@ export default {
         width: 100px;
 
     }
+    .cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 110rem;
+}
 
 
 }
