@@ -35,12 +35,14 @@
       </v-col>
     </v-row>
   </v-container>
+  <CarnesComp/>
   <FooterVue/>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import CarnesComp from '@/components/carnesComp.vue'
 
 export default {
     name: 'Carnes-Vue',
@@ -49,6 +51,7 @@ export default {
     }),
     components: {
         NavBar,
+        CarnesComp
     },
 }
 </script>

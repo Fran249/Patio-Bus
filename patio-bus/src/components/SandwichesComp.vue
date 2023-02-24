@@ -309,11 +309,7 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0
 }
-.cambiar-pagina{
-    position: absolute;
-    place-self: center;
-    margin-left: 73rem;
-}
+
   .container-selectors-up{
     width: 100%;
     display: flex;
@@ -453,13 +449,17 @@ export default {
     .cambiar-pagina{
     position: absolute;
     place-self: center;
-    margin-left: 110rem;
+    margin-left: 111rem;
 }
 
 
 }
 
-  @media screen and (max-width: 1300px) {
-     
+  @media screen and (max-width:1400px ) {
+    .cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 73rem;
+}
   }
   </style>

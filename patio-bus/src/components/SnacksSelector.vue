@@ -438,6 +438,7 @@ import store from '@/store'
   }
   
   
+
   @media screen and (min-width: 1400px){
       .button{
       width: 130px;
@@ -456,13 +457,17 @@ import store from '@/store'
     .cambiar-pagina{
     position: absolute;
     place-self: center;
-    margin-left: 110rem;
+    margin-left: 111rem;
 }
 
 
 }
 
-  @media screen and (max-width: 1300px) {
-     
+  @media screen and (max-width:1400px ) {
+    .cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 73rem;
+}
   }
   </style>

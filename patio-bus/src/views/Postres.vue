@@ -34,12 +34,14 @@
       </v-col>
     </v-row>
   </v-container>
+  <PostresComp/>
   <FooterVue/>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import PostresComp from '@/components/postresComp.vue'
 export default {
     name: 'Postres-Vue',
     data: () => ({
@@ -47,6 +49,7 @@ export default {
     }),
     components: {
         NavBar,
+        PostresComp,
     },
 }
 </script>

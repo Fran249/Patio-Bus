@@ -34,12 +34,14 @@
       </v-col>
     </v-row>
   </v-container>
+  <PizzasComp/>
   <FooterVue/>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import PizzasComp from '@/components/pizzasComp.vue'
 export default {
     name: 'Pizzas-Vue',
     data: () => ({
@@ -47,6 +49,7 @@ export default {
     }),
     components: {
         NavBar,
+        PizzasComp,
     },
 }
 </script>

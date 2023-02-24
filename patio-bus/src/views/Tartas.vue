@@ -34,12 +34,14 @@
       </v-col>
     </v-row>
   </v-container>
+  <TartasComp/>
   <FooterVue/>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import TartasComp from '@/components/tartasComp'
 export default {
     name: 'Tartas-Vue',
     data: () => ({
@@ -47,6 +49,7 @@ export default {
     }),
     components: {
         NavBar,
+        TartasComp
     },
 }
 </script>
