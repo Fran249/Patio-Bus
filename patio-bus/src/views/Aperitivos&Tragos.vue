@@ -35,22 +35,22 @@
       </v-col>
     </v-row>
   </v-container>
-  <BebidasComp/>
+  <AperitivosComp/>
   <FooterVue/>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
-import BebidasComp from '@/components/bebidasComp.vue'
+import AperitivosComp from '@/components/aperitivosComp.vue'
 export default {
-    name: 'Bebidas-Vue',
+    name: 'AperitivosYtragos',
     data: () => ({
         width: window.innerWidth
     }),
     components: {
         NavBar,
-        BebidasComp,
+        AperitivosComp,
     },
 }
 </script>

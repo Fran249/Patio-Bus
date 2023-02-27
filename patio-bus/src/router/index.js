@@ -43,6 +43,33 @@ const routes = [
     
   },
   {
+    path: '/Aperitivos&Tragos',
+    name: 'Aperitivos&Tragos',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "cartaBus" */ '../views/Aperitivos&Tragos.vue'),
+    
+  },
+  {
+    path: '/vinosBlancos',
+    name: 'vinosBlancos',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "cartaBus" */ '../views/vinosBlancos.vue'),
+    
+  },
+  {
+    path: '/vinosTintos',
+    name: 'vinosTintos',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "cartaBus" */ '../views/vinosTintos.vue'),
+    
+  },
+  {
     path: '/Q&A',
     name: 'Q&A',
     // route level code-splitting

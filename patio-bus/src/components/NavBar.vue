@@ -147,6 +147,9 @@ export default {
         });
     },
     mounted() {
+
+        window.scrollTo(0,50)
+
         window.addEventListener("scroll", () => {
             if (window.scrollY > 0) {
                 this.percentage = -window.scrollY + 110;
@@ -156,8 +159,13 @@ export default {
                 document.getElementById("div3").style.transition = ".5s";
                 document.getElementById("IconoAfter").style.transition = ".5s";
                 document.getElementById("IconoAfter").style.opacity = "1";
-                document.getElementById("div1").style.height = "90vh";
+                if(this.$route.path == '/'){
+                    document.getElementById("div1").style.height = "90vh";
                 document.getElementById("div2").style.height = "90vh";
+                }else {
+                    document.getElementById("div1").style.height = "70vh";
+                document.getElementById("div2").style.height = "70vh";    
+                }
                 document.getElementById("div3").style.height = "100px";
                 document.getElementById("div1").style.transition = ".5s";
                 document.getElementById("div2").style.transition = ".5s";
@@ -168,6 +176,13 @@ export default {
                 document.getElementById("div-botones").style.marginBottom = "50px";
                 document.getElementById("div1").style.height = "100vh";
                 document.getElementById("div2").style.height = "100vh";
+                if(this.$route.path == '/'){
+                    document.getElementById("div1").style.height = "100vh";
+                document.getElementById("div2").style.height = "100vh";
+                }else {
+                    document.getElementById("div1").style.height = "80vh";
+                document.getElementById("div2").style.height = "80vh";
+                }
                 document.getElementById("div3").style.height = "100px";
                 document.getElementById("img-logoback1").style.cursor = "pointer";
                 document.getElementById("div3").style.opacity = "1";
@@ -200,6 +215,7 @@ export default {
     updated() {
         this.carrito = store.state.carrito;
     },
+
     computed: {
         componentKey: {
             get() {
