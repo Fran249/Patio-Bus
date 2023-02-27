@@ -1,5 +1,5 @@
 <template>
-    <v-snackbar color="transparent" elevation="0" v-model="value">
+    <v-snackbar color="transparent" elevation="0" v-model="value" timeout="1000">
         <div class="notif-container">
             <div class="div-border">
                 <p>Agregado con exito!</p>

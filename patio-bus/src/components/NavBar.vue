@@ -15,7 +15,7 @@
                             <v-img src="../assets/navIzquierda.png" width="50%" >
                             
                             </v-img>
-                            <div class="d-flex flex-column ml-5" style="width: 100%" id="div-botones">
+                            <div class="d-flex flex-column ml-5 " style="width: 100% " id="div-botones">
                                 <v-btn icon href='https://www.instagram.com/muchogusto.info/'>
                                             <v-img src="../assets/Inst.2.png" contain width="25" height="20"></v-img>
                                         </v-btn>   
