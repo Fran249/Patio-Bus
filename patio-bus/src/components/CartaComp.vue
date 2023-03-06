@@ -171,7 +171,7 @@
     </v-row>
       <v-dialog v-model="popUp">
           <div style="width: 100%; height: 100%; padding: 10px; background: white;" class="d-flex flex-column align-center">
-            <h3 class="mb-5" style="font-family: 'RedHatDisplay'"> ! NO MÁS ZOOM !</h3>
+            <h3 class="mb-5" style="font-family: 'RedHatDisplay' ; font-size: 15px"> ! NO MÁS ZOOM !</h3>
             <p class="text-center" style="font-family: 'RedHatDisplay'"> 
               TE FACILITAMOS LA EXPERIENCIA
               TAN SOLO CLICKEA EN LA SECCIÓN Y LA CARTA LO HACE POR VOS
@@ -192,8 +192,7 @@ export default {
     items: [
       {src1: require('../assets/Combo1.png'),
       src2:require('../assets/Combo2.png') },
-      {src1: require('../assets/Combo3.png'),
-      src2: require('../assets/Combo4.png')}
+      {src1: require('../assets/Combo3.png')}
     ],
     arrows: false,
     datosDialog: '',

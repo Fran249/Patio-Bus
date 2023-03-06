@@ -82,18 +82,6 @@ export default {
                     src: require('../assets/Combo3.png'),
                     category: 'combos',
                 },
-                {   
-                  items: [
-                      {
-                        nombre: 'Mate + Kit desayuno',
-                        precio: 123,
-                      
-                      },
-                    ],
-                    src: require('../assets/Combo4.png'),
-                    category: 'combos',
-                },
-
             ],
             
     }),

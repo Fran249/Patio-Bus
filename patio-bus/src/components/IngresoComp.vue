@@ -1,5 +1,5 @@
 <template>
-<div class="form-container">
+<div class="form-container" style="padding-top: 150px; padding-bottom: 150px;">
     <div style="width: 100%" class="grid-cont h3-icon-cont">
         <h3 class="h3-welcome">¡BIENVENIDO!</h3>
 
