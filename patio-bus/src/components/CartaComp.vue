@@ -1,7 +1,7 @@
 <template>
   <div >
     <v-app-bar color="transparent" height="100" elevate-on-scroll >
-      <v-img src="../assets/PatioBusNav.png" contain width="75" height="75">
+      <v-img src="../assets/IconosNew/Iconos/Marca.png" contain width="75" height="75">
 
       </v-img>
     </v-app-bar>
@@ -82,47 +82,50 @@
     </v-dialog>
     <v-dialog v-model="dialogResto2" >
       <div style="background-color: white; padding: 20px">
-      <v-img src="../assets/dialogs/Sandwiches.png"></v-img>
+      <v-img src="../assets/dialogs/Carnes.png"></v-img>
     </div>
     </v-dialog>
 </div>
 </div>
       <div class="d-flex flex-row justify-center pa-2" >
         <div class="d-flex flex-column " style="height: 100% ; width: 50%" >
-          <v-img contain width="80%" class="mb-3 ml-2" heigth="50%" src="../assets/Entrada.png" @click="dialogResto1 = true">
+          <div style="width: 88%">
+            <v-img contain width="80%" class="mb-3 ml-2" heigth="50%" src="../assets/Entrada.png" @click="dialogResto1 = true">
 
-</v-img>
-          <v-img contain width="170" height="100%" src="../assets/Sandwiches.png"  @click="dialogResto3 = true">
-          </v-img>
-          <v-img style="margin-top: 10px" contain width="170" height="100%" src="../assets/Empanadas.png" @click="dialogResto4 = true" >
-          </v-img>
-          <v-img style="margin-top: 10px" contain width="170" height="100%" src="../assets/Tartas.png" @click="dialogResto5 = true" >
-          </v-img>
-          <v-img contain width="170" height="150" src="../assets/Pizzas.png"  @click="dialogResto8 = true">
-          </v-img>
-          <v-dialog v-model="dialogResto8" >
-            <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/dialogs/Pizzas.png" ></v-img>
+              </v-img>
+              <v-img contain width="170" height="100%" src="../assets/Sandwiches.png"  @click="dialogResto3 = true">
+              </v-img>
+              <v-img style="margin-top: 10px" contain width="170" height="100%" src="../assets/Empanadas.png" @click="dialogResto4 = true" >
+              </v-img>
+              <v-img style="margin-top: 10px" contain width="170" height="100%" src="../assets/Tartas.png" @click="dialogResto5 = true" >
+              </v-img>
+              <v-img contain width="170" height="150" src="../assets/Pizzas.png"  @click="dialogResto8 = true">
+              </v-img>
+              <v-dialog v-model="dialogResto8" >
+                <div style="background-color: white; padding: 20px">
+                <v-img src="../assets/dialogs/Pizzas.png" ></v-img>
+              </div>
+              </v-dialog>
+              <v-dialog v-model="dialogResto3" >
+                <div style="background-color: white; padding: 20px">
+                <v-img src="../assets/dialogs/Sandwiches.png"></v-img>
+              </div>
+              </v-dialog>
+              <v-dialog v-model="dialogResto4" >
+                <div style="background-color: white; padding: 20px">
+                <v-img src="../assets/dialogs/Empanadas.png"></v-img>
+              </div>
+              </v-dialog>
+              <v-dialog v-model="dialogResto5" >
+                <div style="background-color: white; padding: 20px">
+                <v-img src="../assets/dialogs/Tartas.png"></v-img>
+              </div>
+              </v-dialog>
           </div>
-          </v-dialog>
-          <v-dialog v-model="dialogResto3" >
-            <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/dialogs/Carnes.png"></v-img>
-          </div>
-          </v-dialog>
-          <v-dialog v-model="dialogResto4" >
-            <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/dialogs/Guarniciones.png"></v-img>
-          </div>
-          </v-dialog>
-          <v-dialog v-model="dialogResto5" >
-            <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/dialogs/Tartas.png"></v-img>
-          </div>
-          </v-dialog>
         </div>
         <div class="d-flex flex-column align-end" style="height: 100%; width: 50%;">
-          <v-img contain  class="mr-4" width="80%" heigth="50%" src="../assets/Carnes.png" @click="dialogResto2 = true">
+          <div style="width: 88%">
+            <v-img contain  class="mr-4" width="80%" heigth="50%" src="../assets/Carnes.png" @click="dialogResto2 = true">
 
           </v-img>
           <v-img contain width="180"  height="105" src="../assets/Guarniciones.png"  @click="dialogResto6 = true">
@@ -138,7 +141,7 @@
 
           <v-dialog v-model="dialogResto6" >
             <div style="background-color: white; padding: 20px">
-            <v-img src="../assets/dialogs/Empanadas.png"></v-img>
+            <v-img src="../assets/dialogs/Guarniciones.png"></v-img>
           </div>
           </v-dialog>
           <v-dialog v-model="dialogResto7" >
@@ -152,6 +155,7 @@
             <v-img src="../assets/dialogs/Postres.png"></v-img>
           </div>
           </v-dialog>
+          </div>
 
         </div>
 <!------------------------------------------------------------------------Bebidas------------------------------------------------------------------------------------------>
