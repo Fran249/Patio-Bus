@@ -402,5 +402,10 @@ a {
             height: 50px;
         }
     }
+@media screen and (max-width: 600px){
+    .columna1{
+        
+    }
+}
 
 </style>

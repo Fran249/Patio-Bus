@@ -2,7 +2,7 @@
   <template>
     <div>
     <v-container>
-    <v-row style="height: 300px;">
+    <v-row style="height: 400px;" class="v_row-gaper">
       <v-col cols="12" xs= "12" sm= "12" md= "6" lg= "6" xl= "6">
         <div class="card1">
           <div class="card__content1">
@@ -19,7 +19,7 @@
           </div>
         </div>
       </v-col>
-      <v-col cols= "6" xs= "12" sm= "12" md= "6" lg= "6" xl= "6">
+      <v-col cols= "12" xs= "12" sm= "12" md= "6" lg= "6" xl= "6">
         <div class="card1">
           <div class="card__content1">
             <div class="card__front1" v-bind:style="{ 'background-image': `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%) , url(${require('../assets/ImagenesCards/SnacksInfusiones/snacks-dulces.jpg')}) ` }">
@@ -71,7 +71,9 @@ a, a:hover, a:focus, a:visited, button{
 
   --clr: #b7c9e5;
 }
-
+.v_row-gaper{
+  gap: 0;
+}
 .card1 {
   
   border: none;
@@ -166,5 +168,16 @@ a, a:hover, a:focus, a:visited, button{
   background-image: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4598214285714286) 0%), url('../assets/CarouselCarrito/Logo.png');
   background-size: 90%;
   background-position: -100%;
+}
+
+
+@media screen and (max-width: 600px){
+  .v_row-gaper{
+    gap: 50px;
+  }
+  .card__title1 {
+  font-size: 1.5rem;
+
+}
 }
 </style>
