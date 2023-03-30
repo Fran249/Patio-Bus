@@ -24,7 +24,7 @@
             </div>
             <div class="d-flex flex-row mt-3 " >
                 <v-btn icon text>
-                    <v-icon color="#ffff">
+                    <v-icon color="#ffff" class="icon-info">
                         mdi-information
                     </v-icon>
                 </v-btn>
@@ -40,8 +40,7 @@
 
 
         <div class="columna3">
- <v-btn class="wsp-btn" style=" ;" v-if="
-        !mobileViewSmall" elevation="9" fab :fixed="fixed" right bottom color="white">
+ <v-btn class="wsp-btn" style=" ;" elevation="9" fab :fixed="fixed" right bottom color="white">
             <v-img src="../assets/WhatsAppVerde.png" contain class="wsp">
 
             </v-img>
@@ -50,7 +49,7 @@
         
        
         <div class="columna2" contain>
-            <div style="width: 200px; margin-left: 25%;">
+            <div style="" class="img-cont-footer">
             <v-img class="footer-center mt-5" src="../assets/patio-bus-footer-center.png">                 
             </v-img>
             </div>
@@ -99,7 +98,7 @@ export default {
         changeHeight() {
 
             if (window.innerWidth <= 960) {
-                this.height = '100';
+                this.height = '250';
             }
             else if (window.innerWidth >= 960) {
                 this.height = '250'
@@ -147,6 +146,10 @@ export default {
 
 <style lang="scss" scoped >
 
+.img-cont-footer{
+    width: 200px;
+    margin-left: 25%;
+}
 .wsp-btn{
 
     width: 80px; 
@@ -403,8 +406,61 @@ a {
         }
     }
 @media screen and (max-width: 600px){
-    .columna1{
-        
+    .grid-container {
+    margin-top: 0;
+    width: 100%;
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 10px;
+    grid-row: 1, 200px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 0px;
+
+
+}
+.img-cont-footer{
+    width: 200px;
+    margin-left: 0%;
+    margin-right: 75%;
+}
+
+.columna3 .wsp-btn {
+        position: absolute;
+        bottom: 190px;
+        right: 10px;
+}
+.columna1 {
+    grid-row: 1;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+    margin-bottom: 200px
+}
+.title-mg1 {
+    color: #FFF;
+    font-family: 'red-hat';
+    font-weight: lighter;
+    font-size: 10px;
+}
+.icon-info {
+    margin-top: 15px;
+}
+.title-mg1 p {
+    margin-top: 10px;
+}
+.columna2 {
+        height: 100%;
+        padding: 50px;
+        transform: scale(.7);
+        grid-row: 1/2;
+        grid-column: 2/3;
+        display: grid;
+        place-items: center;
+        margin-bottom: 100px;
+
     }
 }
 
