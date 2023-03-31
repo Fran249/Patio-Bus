@@ -5,18 +5,20 @@
 
     </div>
     <CarouselsVue style="margin-top: 5rem; margin-bottom: 5rem;"/>
-
-  <cards_cafet />
-
     <div class="d-flex flex-column align-center" style="width: 100%; margin-top: 5rem;">
-      <h5>¡Conocenos!</h5>
-    <h1 style="color: #000;">MENÚ</h1>
+      <h5 class="conocenos">¡Conocenos!</h5>
+    <h1 style="" class="menu">MENÚ</h1>
     </div>
 
     <v-container style="display: flex; justify-content: center;  flex-direction:row ; margin-bottom: 5rem;">
       
       <v-img src="../assets/IconosNew/Iconos/Miscela. Linea.png"></v-img>
     </v-container>
+    <div class="cards_cafet_cont">
+      <cards_cafet />
+    </div>
+
+
     
 
       <CardsVue />
@@ -60,7 +62,12 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
   
-
+.menu{
+  color: #000;
+}
+.cards_cafet_cont{
+  margin-bottom: 0px
+}
 .para-llevar{
   width: 100%;
   display: flex;
@@ -107,6 +114,27 @@ position: absolute;
 
 }
 
+@media screen and (max-width: 600px){
+  .cards_cafet_cont{
+  margin-bottom: 350px
+}
+
+.para-llevar{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  background-image: url('../assets/IconosNew/Iconos/ParaLlevar.png');
+  background-position: center;
+  background-size: 80%;
+}
+.menu{
+  font-size: 80px;
+}
+.conocenos{
+  font-size: 30px;
+}
+}
 
 
 

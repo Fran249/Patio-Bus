@@ -318,5 +318,11 @@ a, a:hover, a:visited , a:focus{
   transform: rotateX(180deg);
 
 }
+@media screen and (max-width: 600px){
+  .card__title {
+  font-size: 1.5rem;
+
+}
+}
 
 </style>

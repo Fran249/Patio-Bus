@@ -7,23 +7,23 @@
 
                  <div class="nav-izquierda" id="div1">
                        <div class="nav-izquierda-img-container">
-                        <v-img src="../assets/IconosNew/Iconos/PatioBus-Blanco.png" width="65%" style="margin-top: 25%">
+                        <v-img src="../assets/IconosNew/Iconos/PatioBus-Blanco.png" class="nav-white" style="margin-top: 25%">
 
                         </v-img>
 
 
-                            <v-img src="../assets/navIzquierda.png" width="50%" >
+                            <v-img src="../assets/navIzquierda.png" class="nav-under-white">
                             
                             </v-img>
-                            <div class="d-flex flex-column ml-5 " style="width: 100% " id="div-botones">
+                            <div class="div-botones" id="div-botones">
                                 <v-btn icon href='https://www.instagram.com/muchogusto.info/'>
-                                            <v-img src="../assets/Inst.2.png" contain width="25" height="20"></v-img>
+                                            <v-img src="../assets/Inst.2.png" contain class="icons"></v-img>
                                         </v-btn>   
                                 <v-btn icon href="https://www.facebook.com/Mucho-Gusto-110256295138152"  >
-                                    <v-img src="../assets/Fce2.png" contain width="25" height="20" style="border-radius: 50%;"></v-img>
+                                    <v-img src="../assets/Fce2.png" contain class="icons" style="border-radius: 50%;"></v-img>
                                 </v-btn>
                                 <v-btn icon href="https://www.facebook.com/Mucho-Gusto-110256295138152"  >
-                                    <v-icon color="white" size="30">mdi-google-maps</v-icon>
+                                    <v-icon color="white" class="icons">mdi-google-maps</v-icon>
                                 </v-btn>
                             </div>
                        </div>
@@ -33,18 +33,18 @@
 
             <v-col cols="7">
 
-                <v-img src="../assets/navDerecha.png" height="100vh"   id="div2">
-                    <div style="position: absolute; top:10%; right: 0 ; width: 10%; height: 100%; gap: 5px;" class="d-flex flex-column">
+                <v-img src="../assets/navDerecha.png" class="div-2"   id="div2" >
+                    <div style="" class="d-flex flex-column column-icons" >
                             <!--Iniciar Sesion-->
-                            <button v-if="!existeUsuario" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
+                            <button v-if="!existeUsuario" class="buttons" style="display: grid; place-items: center; background-color : rgb(0,0,0 ,.5); width: 50%; height: 7%;"  @click="openIngreso()">
                                 <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.Blanco.png"></v-img>
                             </button>
                             <!--Menu Desplegable-->
                             <v-menu offset-y left  v-if="existeUsuario" close-on-content-click >
                             <template v-slot:activator="{ on, attrs }">
-                                <button v-on="on" v-bind="attrs"  style="display: grid; place-items: center; background-color : rgb(255,255,255 ,.7); width: 52%; height: 7%;">
-                                <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-FlechaInvertida.png" ></v-img>
-                            </button>
+                                <button v-on="on" v-bind="attrs"  style="display: grid; place-items: center; background-color : rgb(255,255,255 ,.7); width: 52%; height: 7%;" class="buttons">
+                                    <v-img width="22" contain  src="../assets/IconosNew/Iconos/Icono-FlechaInvertida.png" ></v-img>
+                                </button>
                             </template>
                             <v-list style="background-color: rgb(255, 255, 255, .7); border-radius: 1px;" >
                                 <v-list-item>
@@ -63,11 +63,11 @@
                             </v-menu>
                             
                             <!--Registrarte-->
-                            <button v-if="!existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
+                            <button  class="buttons" v-if="!existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 50%; height: 7%;" @click="openRegistro()">
                                     <v-img class="ml-1" width="25" contain  src="../assets/IconosNew/Iconos/Icono-Usuario.png"></v-img>
                             </button>
                             <!--Carrito-->
-                            <button v-if="existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 52%; height: 7%;" @click="openCarrito()">
+                            <button class="buttons" v-if="existeUsuario"  style="display: grid; place-items: center ;background-color : rgb(255,255,255 ,.8) ;width: 52%; height: 7%;" @click="openCarrito()">
                                    <v-icon  color="#000">mdi-cart</v-icon>
                             </button>
                             <div  v-if="existeUsuario"  style="display: flex; justify-content: center; align-items: center; background-color : rgb(255,255,255 ,.8) ;  width: 52%; height: 7%;" >
@@ -76,7 +76,7 @@
 
 
                         </div>
-                    <div   id="div3"  >
+                    <div   id="div3"  class="div-logo-animation">
                         
                         <div  style="position: absolute ;border-radius: 50%; top: 50% ; left: 44.5%;  "  class="img-logoback" id="img-logoback" >
                             <v-img src="../assets/IconosNew/Iconos/Icono-Flecha.Fondo.png" contain style=" width: 10rem; height: 10rem;"  >
@@ -147,10 +147,13 @@ export default {
         });
     },
     mounted() {
+        console.log(this.width)
+        if(this.$route.path != '/'){
+            window.scrollTo(0, 100)
+        }
 
-        window.scrollTo(0,50)
-
-        window.addEventListener("scroll", () => {
+        if( window.innerWidth > 600){
+            window.addEventListener("scroll", () => {
             if (window.scrollY > 0) {
                 this.percentage = -window.scrollY + 110;
                 document.getElementById("div-botones").style.marginBottom = "100px";
@@ -196,6 +199,7 @@ export default {
                 document.getElementById("IconoAfter").style.opacity = "0";
             }
         });
+        }
     },
     methods: {
         ...mapActions(["cerrarSesion"]),
@@ -217,6 +221,14 @@ export default {
     },
 
     computed: {
+        width: {
+            get(){
+                return window.innerWidth
+            },
+            set(){
+                
+            }
+        },
         componentKey: {
             get() {
                 return store.state.forceRenderCarrito;
@@ -276,6 +288,10 @@ export default {
     
 }
 
+.icons{
+    width:25px ;
+    height: 20px;
+}
 
 .v-menu__content{
     border-radius: 1px;
@@ -397,7 +413,38 @@ body {
     height: 50px;
 }
 
+.div-2{
+    height: 100vh;
+}
 
+.div-botones{
+    width: 100% ;
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px; 
+    
+}
+.icon-google{
+    width:30px ;
+    height: 50px;
+}
+.nav-white{
+    width: 65%;
+}
+.nav-under-white{
+    width: 50%; 
+}
+.div-logo-animation{
+    display: flex;
+}
+.column-icons{
+position: absolute;
+top:10%;
+right: 0 ;
+width: 10%;
+height: 100%;
+gap: 5px;
+}
 
 @keyframes animacionLogo {
     0%{
@@ -489,5 +536,47 @@ body {
         width: 35px;
         height: 35px;
     }
+}
+
+@media screen and (max-width: 600px){
+    .nav-izquierda{
+    width: 100%;
+    height: 40vh;
+
+   
+}
+.div-2{
+    height: 40vh;
+}
+.icons{
+    width:10px ;
+    height: 15px;
+  
+}
+.div-botones{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+.nav-white{
+    width: 90%;
+    
+}
+.nav-under-white{
+    width: 90%;
+}
+.div-logo-animation{
+    display: none;
+}
+.column-icons{
+    margin-right: 5px;
+    width: 40%;
+    height: 500px;
+    align-items: end;
+}
+.buttons{
+  width: 30px;
+  height: 40px;
+}
 }
 </style>

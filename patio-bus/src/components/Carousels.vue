@@ -13,9 +13,9 @@
   <div class="carousel-inner">
     <div class="carousel-item "   v-for="img in images" :key="img.src" v-bind:class="{active: img.ind == 1}">
       <v-img :src="img.src"  alt="...">
-        <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
-          <v-btn icon class="mr-10 bg-black " color="white" width="45" height="45" @click="sendComboToCart(img)">
-            <v-icon>
+        <div style="" class="btn-container">
+          <v-btn icon class=" bg-black btn-buy" color="white"  @click="sendComboToCart(img)">
+            <v-icon class="icon-buy" >
               mdi-cart
             </v-icon>
           </v-btn>
@@ -48,6 +48,7 @@ export default {
     name: 'CarouselsVue',
     data: ()=>({
         carrito: [],
+        iconSize: 25,
         images:[{   
                     items: [
                       {
@@ -124,8 +125,10 @@ export default {
       carrito(){
         store.commit('carritoCompras', this.carrito)
             console.log(store.state.carritoCompras)
-      }
+      },
+ 
     },
+
     beforeCreate(){
       onAuthStateChanged(auth, (user) => {
                     if (user) {
@@ -153,6 +156,19 @@ export default {
 
 
 <style lang="scss" scoped>
+
+.btn-buy{
+  width:45px;
+  height:45px;
+  margin-right: 50px;
+}
+.btn-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 .carousel-item{
   width: 60%;
@@ -221,6 +237,47 @@ height: 40px;
 .carousel-control-next{
   height: 100px;
   margin-top: 5rem
+}
+}
+@media screen and (max-width: 600px) {
+  .carousel-item{
+    margin-left: 100px;
+  }
+  .carousel-control-prev{
+    height: 20px;
+    left: 15%;
+    margin-top: 50px;
+  }
+  .carousel-control-next{
+    height: 20px;
+    margin-top: 50px;
+  }
+  .carousel-indicators{
+    margin-bottom: 0;
+    transform: translateY(30px);
+  }
+  .carousel-control-next{
+    transform: translateX(0);
+  }
+  .carousel-inner{
+ height: 20vh;
+
+}
+.btn-buy{
+  width:30px;
+  height:30px;
+  margin-right: 10px;
+}
+.icon-buy{
+  transform: scale(.75);
+}
+.carousel-control-prev-icon{
+  width: 15px;
+  height: 25px;
+}
+.carousel-control-next-icon{
+  width: 15px;
+  height: 25px;
 }
 }
 </style>
