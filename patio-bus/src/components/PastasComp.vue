@@ -24,7 +24,7 @@
                     <v-card-actions>
                         <v-card-actions style="padding:2px">
                     <div class="d-flex flex-column" style="width:100%">
-                        <div style="width: 100%;  gap: 30px" class="d-flex flex-row flex-wrap justify-start" >
+                        <div style="" class="div-salsas" >
                             <div v-for="salsas in select.salsas" :key="salsas.nombre">
                                 <button class="button" v-if="salsas.nombre != 'Tuco' && salsas.nombre != 'Crema'">
                                 <h3 class="h3-button">{{salsas.nombre}}</h3>
@@ -359,6 +359,15 @@ export default {
 
 <style lang="scss" scoped>
 
+
+.div-salsas{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%; 
+    gap: 30px
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
 }
@@ -539,5 +548,12 @@ export default {
 
 }
 
-@media screen and (max-width: 1300px) {}
+@media screen and (max-width: 1750px) {
+    .div-salsas{
+    width: 100%; 
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+}
 </style>

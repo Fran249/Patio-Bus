@@ -28,7 +28,7 @@
                         </button>
                         </div>
                         <div style="width: 100%;" class="d-flex flex-row justify-end div-botones">
-                            <button class=" comprar  mr-5 mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'" @click="agregarCart(select)">
+                            <button class=" comprar mb-1 " @mouseover="colorCart = '#fff'" @mouseleave="colorCart = '#000'" @click="agregarCart(select)">
                                 <h3 class="h3-comprar mt-1">AGREGAR</h3>
                                 <v-icon v-bind:style="{'color' : colorCart}" size="20" class="mt-1 ">
                                     mdi-cart
@@ -303,6 +303,9 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0
+}
+.div-botones{
+    margin-left: 0;
 }
 .cambiar-pagina{
     position: absolute;
