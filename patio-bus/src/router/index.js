@@ -195,6 +195,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "MiPefil" */ '../views/MiPerfil.vue'),
     beforeEnter: (to,from, next) => {
       auth.onAuthStateChanged(user => {
+        if( user.uid == null){
+          next('/error')
+        }else{
         getRol(user.uid).then((rol)=>{
           if( rol == 'admin'){
             next()
@@ -204,7 +207,7 @@ const routes = [
             next('/error')
           }
             next();
-        })     
+        }) }    
       })
     },
   },
