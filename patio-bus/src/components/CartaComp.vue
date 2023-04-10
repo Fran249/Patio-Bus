@@ -1,6 +1,6 @@
 <template>
   <div >
-    <v-app-bar color="transparent" height="100" elevate-on-scroll >
+    <v-app-bar color="transparent" height="100" elevation="0">
       <v-img src="../assets/IconosNew/Iconos/Marca.png" contain width="75" height="75">
 
       </v-img>
@@ -11,15 +11,15 @@
       <v-col cols="12" class="cafet-recuadro">
       <v-img src="../assets/Cafet.Recuadro.png"  >
         <div style="width: 100%; height: 100%; ;" class="d-flex flex-row pa-2">
-          <v-img style="margin-top: 12px" width="2%" height="100%" contain src="../assets/Cafet.Recuadro1.png" @click="dialogCafeteria1 = true">
+          <v-img style="margin-top: 15px" width="2%" height="100%" contain src="../assets/Cafet.Recuadro1.png" @click="dialogCafeteria1 = true">
 
           </v-img>
-          <v-img  style="margin-top: 9px" width="2%" height="100%" contain src="../assets/Cafet.Recuadro2.png"  @click="dialogCafeteria2 = true">
+          <v-img  style="margin-top: 14px" width="2%" height="100%" contain src="../assets/Cafet.Recuadro2.png"  @click="dialogCafeteria2 = true">
 
           </v-img>
           <v-dialog v-model="dialogCafeteria1" color="white">
             <div style="background-color: white; padding: 20px;">
-              <v-img width="500" src="../assets/dialogs/Cafet. Recuadro1.png"></v-img>
+              <v-img width="500" src="../assets/dialogs/Cafet .Recuadro1.png"></v-img>
             </div>
           </v-dialog>
           <v-dialog v-model="dialogCafeteria2" >
@@ -77,7 +77,7 @@
 
   <v-dialog v-model="dialogResto1" color="white">
       <div style="background-color: white; padding: 20px">
-        <v-img src="../assets/dialogs/Entrada.png"></v-img>
+        <v-img src="../assets/Entradad.png"></v-img>
       </div>
     </v-dialog>
     <v-dialog v-model="dialogResto2" >
