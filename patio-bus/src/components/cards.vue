@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col
-        cols="12"
+        cols="6"
         :xs="item.xs"
         :sm="item.sm"
         :md="item.md"
@@ -45,7 +45,7 @@ export default {
         color: "#333",
         title: "Entradas",
         cardBackBody: "VER",
-        xs: "12",
+        xs: "6",
         sm: "6",
         md: "4",
         xl: "3",
@@ -56,7 +56,7 @@ export default {
         color: "#333",
         title: "Carnes",
         cardBackBody: "VER",
-        xs: "12",
+        xs: "6",
         sm: "6",
         md: "4",
         xl: "3",
@@ -248,6 +248,7 @@ a, a:hover, a:visited , a:focus{
   right: var(--spacer);
   border-left: 2px solid currentColor;
   transform: var(--level-one);
+
 }
 
 .card__title {
@@ -323,6 +324,54 @@ a, a:hover, a:visited , a:focus{
   font-size: 1.5rem;
 
 }
+.card {
+  height: 150px;
+}
+.card__front,.card__back{
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card__front::before {
+  height: 125px;
+
+}
+.card__title {
+  font-size: 1rem;
+  order: 2;
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-family: 'red-hat';
+}
+.card__body p{
+  font-size: 1rem;
+}
+.card1 {
+  height: 150px;
+}
+.card__back2{
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+  background-size: 80%;
+  
+}
+
+.texto_btn1 {
+  font-size: 1rem;
+
+}
+.card__body p{
+  font-size: 1rem;
+}
+.card1:hover .card__content1 {
+  transform: rotateY(0.5turn);
+  
+}
+
 }
 
 </style>

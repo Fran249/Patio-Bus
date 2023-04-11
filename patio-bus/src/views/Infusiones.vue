@@ -17,7 +17,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <v-img src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  alt="...">
+      <v-img src="../assets/ImagenesCards/ImgCardHome/guarniciones.jpg"  contain alt="...">
         
       </v-img>
     </div>      
@@ -35,7 +35,7 @@
       </v-col>
     </v-row>
   </v-container>
-  <InfusionesSelector/>
+  <InfusionesSelector />
   <FooterVue/>
     </div>
 </template>
@@ -64,6 +64,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
 
 .coffe{
   font-family: 'Quesha';
@@ -107,4 +108,13 @@ height: 40px;
     width: 100%;
     
 }
+
+@media screen and (max-width: 750px){
+  .carousel{
+    width: 100%;
+    height: 300px;
+    display: none;   
+}
+}
+
 </style>

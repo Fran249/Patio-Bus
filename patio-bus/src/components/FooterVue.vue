@@ -1,5 +1,5 @@
 <template>
-    <v-footer :height="height" class="grid-container">
+    <div v-bind:style="{'height' : height}" class="grid-container"  >
 
         <div class="columna1 mt-12">
             <div class="mg-container">
@@ -54,7 +54,7 @@
             </v-img>
             </div>
         </div>
-    </v-footer>
+    </div>
 
 </template>
 
@@ -207,6 +207,7 @@ h3 {
 }
 
 .grid-container {
+    height: 250px;
     margin-top: 7%;
     width: 100%;
     background-color: black;
@@ -407,7 +408,7 @@ a {
     }
 @media screen and (max-width: 600px){
     .grid-container {
-    margin-top: 0;
+    height: 300px;
     width: 100%;
     background-color: black;
     display: grid;
@@ -452,15 +453,17 @@ a {
     margin-top: 10px;
 }
 .columna2 {
-        height: 100%;
+        height: 70%;
         padding: 50px;
-        transform: scale(.7);
+        
         grid-row: 1/2;
         grid-column: 2/3;
         display: grid;
         place-items: center;
-        margin-bottom: 100px;
-
+        margin-bottom: 175px;
+        .img-cont-footer{
+            transform: scale(.7);
+        }   
     }
 }
 

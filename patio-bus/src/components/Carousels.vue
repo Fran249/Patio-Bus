@@ -12,7 +12,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item "   v-for="img in images" :key="img.src" v-bind:class="{active: img.ind == 1}">
-      <v-img :src="img.src"  alt="...">
+      <v-img :src="img.src"  alt="..." contain width="75%">
         <div style="" class="btn-container">
           <v-btn icon class=" bg-black btn-buy" color="white"  @click="sendComboToCart(img)">
             <v-icon class="icon-buy" >
@@ -53,10 +53,10 @@ export default {
                     items: [
                       {
                         nombre: 'Combo café con leche + 2 Medialunas',
-                        precio: 123,
+                        precio: 500,
                       },
                     ],
-                    src: require('../assets/Combo1.png'),
+                    src: require('../assets/CombosInicio/Combo1.png'),
                     category: 'combos',
                     ind: 1,
                 },
@@ -64,23 +64,23 @@ export default {
                   items: [
                       {
                         nombre: 'Combo café con leche + Kit desayuno',
-                        precio: 123,
+                        precio: 750,
 
                       },
                     ],
-                    src: require('../assets/Combo2.png'),
+                    src: require('../assets/CombosInicio/Combo2.png'),
                     category: 'combos',
                 },
                 {   
                   items: [
                       {
                         nombre: 'Jugo de naranja + tostado',
-                        precio: 123,
+                        precio: 1200,
                      
                       },
 
                     ],
-                    src: require('../assets/Combo3.png'),
+                    src: require('../assets/CombosInicio/Combo3.png'),
                     category: 'combos',
                 },
             ],
@@ -242,15 +242,17 @@ height: 40px;
 @media screen and (max-width: 600px) {
   .carousel-item{
     margin-left: 100px;
+    margin-top: 80px;
   }
   .carousel-control-prev{
     height: 20px;
     left: 15%;
-    margin-top: 50px;
+    margin-top: 100px;
   }
   .carousel-control-next{
     height: 20px;
-    margin-top: 50px;
+     margin-top: 100px;
+     margin-right: 50px;
   }
   .carousel-indicators{
     margin-bottom: 0;
@@ -261,7 +263,10 @@ height: 40px;
   }
   .carousel-inner{
  height: 20vh;
-
+ background-image: url(../assets/CarouselCarrito/1.png) , url(../assets/CarouselCarrito/blanco.jpg);
+ background-position: top center , bottom center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 80%;
 }
 .btn-buy{
   width:30px;

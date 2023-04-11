@@ -15,14 +15,14 @@
                             <v-img src="../assets/navIzquierda.png" class="nav-under-white">
                             
                             </v-img>
-                            <div class="div-botones" id="div-botones">
+                            <div class="div-botones " id="div-botones" >
                                 <v-btn icon href='https://www.instagram.com/muchogusto.info/'>
                                             <v-img src="../assets/Inst.2.png" contain class="icons"></v-img>
                                         </v-btn>   
                                 <v-btn icon href="https://www.facebook.com/Mucho-Gusto-110256295138152"  >
                                     <v-img src="../assets/Fce2.png" contain class="icons" style="border-radius: 50%;"></v-img>
                                 </v-btn>
-                                <v-btn icon href="https://www.facebook.com/Mucho-Gusto-110256295138152"  >
+                                <v-btn class="mb-15" icon href="https://www.facebook.com/Mucho-Gusto-110256295138152"  >
                                     <v-icon color="white" class="icons">mdi-google-maps</v-icon>
                                 </v-btn>
                             </div>
@@ -130,6 +130,7 @@ import {mapActions, mapState , mapGetters} from 'vuex'
 import store from '@/store';
 
 import { auth } from '@/firebase';
+
 
 export default {
     name: "NavBar",
@@ -279,6 +280,7 @@ export default {
 
 
 <style lang="scss" >
+
 
 .notif{
     font-family: 'red-hat';

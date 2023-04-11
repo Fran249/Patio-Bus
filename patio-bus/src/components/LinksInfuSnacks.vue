@@ -2,6 +2,7 @@
           <v-container style="display: flex ; justify-content: center;">
         <v-breadcrumbs
   divider=" "
+  class="breadcrumbs"
 >
 <v-breadcrumbs-item href="/Infusiones" >
   <h5  v-bind:class="{exact_active: $route.path == '/Infusiones'}">
@@ -45,5 +46,10 @@ h5{
  font-weight: bolder;
 }
 
+@media screen and (max-width: 750px){
+  .breadcrumbs{
+    justify-content: center;
+  }
+}
 
 </style>

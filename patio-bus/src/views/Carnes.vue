@@ -99,4 +99,11 @@ height: 40px;
     width: 100%;
     
 }
+
+
+@media screen and (max-width: 600px){
+  .carousel{
+  display: none;
+}
+}
 </style>

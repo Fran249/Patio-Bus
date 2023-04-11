@@ -1,9 +1,9 @@
 <template>
 <div>
-  <div class="d-flex flex-row justify-center" style="width: 100%">
+  <div class="cont-links" style="width: 100%">
               <h3>MENÚ</h3>
             </div>
-          <v-container style="display: flex ; justify-content: center;">
+          <v-container class="sub-cont-links">
 
         <v-breadcrumbs
           divider=" "
@@ -51,6 +51,30 @@
           </v-breadcrumbs>
           </div>
         </transition>
+        <div class="menu-mobile">
+          <div class="text-center">
+            <v-menu offset-y>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  color="transparent"
+                  v-bind="attrs"
+                  v-on="on"
+                  elevation="0"
+                >
+                  <h5 class="mt-3">Categorias</h5>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="(item, index) in items"
+                  :key="index"
+                >
+                  <v-list-item-title @click="$router.push(item.route)"><h5>{{ item.title }}</h5></v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
+        </div>
 </div>
 
 
@@ -114,6 +138,18 @@ export default{
 
 <style scoped>
 
+.menu-mobile{
+  display: none;
+}
+.cont-links{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.sub-cont-links{
+  display: flex ;
+  justify-content: center;
+}
 .fade-enter-active, .fade-leave-active {
  transition: opacity .5s
 }
@@ -137,5 +173,13 @@ h5{
  font-weight: bolder;
 }
 
+@media screen and (max-width: 600px){
+  .menu-mobile{
+  display: block;
+}
+.sub-cont-links{
+  display: none;
+}
+}
 
 </style>

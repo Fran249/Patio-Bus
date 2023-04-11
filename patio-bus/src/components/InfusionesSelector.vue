@@ -3,7 +3,7 @@
   <v-container class="card-container" v-if="show" >
 
             <v-row>
-                <v-col cols="6" v-for="(select,i) in selected" :key="i">
+                <v-col cols="12" md="6" xl="6" v-for="(select,i) in selected" :key="i">
                             <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;" >
                                 <v-img :src="select.url" style="height: 250px">
                                     
@@ -39,7 +39,7 @@
                 </v-card-actions>
             </v-card>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="12" md="6" xl="6">
                 <v-row>
                     <v-col cols="6" v-for="(cafe, i) in cafes" :key="i">
                         <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectCafe(cafe)">
@@ -367,6 +367,7 @@ export default {
     font-size: 25px;
     padding-left: 30px;
     padding-top: 10px;
+
 }
 .text-p{
     font-family: 'red-hat';
@@ -429,5 +430,29 @@ margin-left: 110rem;
 
 @media screen and (max-width: 1300px) {
    
+}
+
+
+@media screen and (max-width: 750px){
+    .title-cafe{
+    font-family: 'red-hat';
+    font-size: 15px;
+    padding-left: 30px;
+    padding-top: 10px;
+
+}
+
+.cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 0rem;
+
+}
+
+.container-selectors-up{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>

@@ -3,7 +3,7 @@
    <v-container class="card-container" v-if="show">
  
              <v-row>
-                 <v-col cols="6" v-for="(select,i) in selected" :key="i">
+                 <v-col cols="12" md="6" xl="6" v-for="(select,i) in selected" :key="i">
                              <v-card style="border-radius: 1px; border: 1px solid black; height: 100%;" >
                                <v-img :src="select.url" style="height: 250px">
                                    
@@ -67,7 +67,7 @@
                  </v-card-actions>
              </v-card>
              </v-col>
-             <v-col cols="6">
+             <v-col cols="12" md="6" xl="6">
                <v-row>
                    <v-col cols="6" v-for="(entrada, i) in entradas" :key="i">
                        <v-card style="border-radius: 1px; border: 1px solid black " class="cardone" @click="selectEntrada(entrada)">
@@ -87,9 +87,6 @@
                    <v-icon>
                        mdi-arrow-right
                    </v-icon>
-               </v-btn>
-               <v-btn @click="consolear()">
-                agidga
                </v-btn>
              </v-row>
              <div class="container-selectors-up">
@@ -350,7 +347,7 @@ import store from '@/store'
 .cambiar-pagina{
    position: absolute;
    place-self: center;
-   margin-left: 73rem;
+
 }
  .container-selectors-up{
    width: 100%;
@@ -505,4 +502,28 @@ import store from '@/store'
    margin-left: 73rem;
 }
  }
+
+
+ @media screen and (max-width: 750px){
+    .title-cafe{
+    font-family: 'red-hat';
+    font-size: 15px;
+    padding-left: 30px;
+    padding-top: 10px;
+
+}
+
+.cambiar-pagina{
+    position: absolute;
+    place-self: center;
+    margin-left: 0rem;
+
+}
+
+.container-selectors-up{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
  </style>

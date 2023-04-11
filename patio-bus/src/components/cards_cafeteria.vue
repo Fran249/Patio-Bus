@@ -2,7 +2,7 @@
   <template>
     <div>
     <v-container>
-    <v-row style="height: 400px;" class="v_row-gaper">
+    <v-row  class="v_row-gaper">
       <v-col cols="12" xs= "12" sm= "12" md= "6" lg= "6" xl= "6">
         <div class="card1">
           <div class="card__content1">
@@ -73,6 +73,7 @@ a, a:hover, a:focus, a:visited, button{
 }
 .v_row-gaper{
   gap: 0;
+  height: 400px;
 }
 .card1 {
   
@@ -172,12 +173,44 @@ a, a:hover, a:focus, a:visited, button{
 
 
 @media screen and (max-width: 600px){
+
+}
+
+@media screen and (max-width: 600px){
   .v_row-gaper{
     gap: 50px;
+    height: 100px;
   }
+
   .card__title1 {
   font-size: 1.5rem;
 
+}
+.card1 {
+  height: 150px;
+}
+.card__front1,.card__back1{
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card__front1::before {
+  height: 125px;
+
+}
+.card__title1{
+  font-size: 1rem;
+  order: 2;
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-family: 'red-hat';
+}
+.card__body1 button{
+  font-size: 1rem;
+}
+.card__content1{
+  height: 150px;
 }
 }
 </style>
